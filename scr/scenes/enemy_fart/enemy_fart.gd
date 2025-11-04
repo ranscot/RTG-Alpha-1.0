@@ -1,0 +1,169 @@
+extends CharacterBody2D
+
+## 1. Define all possible states
+enum State {
+	PATROL,
+	CHASE,
+	ATTACK 
+}
+
+## 2. Variables
+@export var speed: float = 100.0
+@export var patrol_speed: float = 60.0
+@export var attack_range: float = 50.0
+
+# --- CHANGED: Replaced patrol points with a radius ---
+@export var patrol_radius: float = 250.0 # How far to wander
+
+var current_state = State.PATROL
+var player = null
+
+## 3. Node references
+@onready var detection_area = $DetectionArea
+@onready var attack_area = $AttackArea
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var navigation_agent = $NavigationAgent2D
+@onready var patrol_timer = $PatrolTimer # <-- CHANGED
+
+func _ready():
+	# Connect signals for state changes
+	detection_area.body_entered.connect(_on_detection_area_body_entered)
+	detection_area.body_exited.connect(_on_detection_area_body_exited)
+	
+	attack_area.body_entered.connect(_on_attack_area_body_entered)
+	attack_area.body_exited.connect(_on_attack_area_body_exited)
+	
+	# --- CHANGED: Connect the timer ---
+	patrol_timer.timeout.connect(_on_patrol_timer_timeout)
+	
+	# We no longer connect navigation_finished
+	# We no longer call _go_to_next_patrol_point()
+	_pick_new_patrol_target()
+
+## 4. The "State Machine"
+func _physics_process(delta):
+	match current_state:
+		State.PATROL:
+			patrol_state(delta)
+		State.CHASE:
+			chase_state(delta)
+		State.ATTACK:
+			attack_state(delta)
+	
+	if current_state == State.ATTACK:
+		velocity = Vector2.ZERO
+		animated_sprite.play("attack")
+	else:
+		if not navigation_agent.is_navigation_finished():
+			var next_path_pos = navigation_agent.get_next_path_position()
+			var direction = global_position.direction_to(next_path_pos)
+			
+			if current_state == State.PATROL:
+				velocity = direction * patrol_speed
+			else: # CHASE
+				velocity = direction * speed
+			
+			_update_animations(direction)
+		else:
+			velocity = Vector2.ZERO
+			# --- CHANGED: Play idle when we arrive at a patrol point ---
+			if current_state == State.PATROL:
+				animated_sprite.play("idle")
+	
+	move_and_slide()
+
+
+# --- State Logic Functions ---
+
+func patrol_state(delta):
+	# Check for player (transition to CHASE)
+	if player != null:
+		current_state = State.CHASE
+		return
+	
+	# --- CHANGED: All logic is now handled by the timer ---
+	# We just wait for the timer to tell us to move.
+
+func chase_state(delta):
+	if player:
+		# Constantly update the agent's target to the player's position
+		navigation_agent.set_target_position(player.global_position)
+	else:
+		# Player got away, go back to patrolling
+		current_state = State.PATROL
+
+func attack_state(delta):
+	print("ATTACKING PLAYER!")
+
+
+## --- Helper Functions ---
+
+# --- REMOVED: _go_to_next_patrol_point() ---
+
+func _update_animations(direction: Vector2):
+	# (This function is unchanged)
+	animated_sprite.flip_h = false 
+	var new_anim = "" # Variable to hold the new animation name
+
+	# Decide which animation *should* be playing
+	if abs(direction.x) > abs(direction.y):
+		if direction.x < 0:
+			new_anim = "walk_left"   
+		else:
+			new_anim = "walk_right" 
+	else:
+		if direction.y < 0:
+			new_anim = "walk_up"  
+		else:
+			new_anim = "walk_down" 
+			new_anim = "run_down"
+	
+	# --- THIS IS THE FIX ---
+	# Only call .play() if the new animation is different
+	# from the one currently playing.
+	if animated_sprite.animation != new_anim:
+		animated_sprite.play(new_anim)
+## --- Signal Callbacks ---
+
+func _on_detection_area_body_entered(body):
+	if body.is_in_group("player"):
+		player = body
+		patrol_timer.stop() # <-- CHANGED: Stop timer while chasing
+
+func _on_detection_area_body_exited(body):
+	if body.is_in_group("player"):
+		player = null
+		current_state = State.PATROL
+		patrol_timer.start() # <-- CHANGED: Restart timer
+		_pick_new_patrol_target() # <-- CHANGED: Find a new spot now
+
+func _on_attack_area_body_entered(body):
+	if body.is_in_group("player"):
+		current_state = State.ATTACK
+		patrol_timer.stop() # <-- CHANGED: Stop timer while attacking
+
+func _on_attack_area_body_exited(body):
+	if body.is_in_group("player"):
+		if player != null:
+			current_state = State.CHASE
+			patrol_timer.stop() # <-- CHANGED: Keep timer stopped
+
+# --- REMOVED: _on_navigation_finished() ---
+
+# --- NEW FUNCTION: Called by the PatrolTimer ---
+func _on_patrol_timer_timeout():
+	# If we are patrolling, pick a new random target
+	if current_state == State.PATROL:
+		_pick_new_patrol_target()
+
+# --- NEW FUNCTION: Finds a random spot ---
+func _pick_new_patrol_target():
+	# Generate a random direction and distance
+	var random_direction = Vector2.from_angle(randf_range(0, 2 * PI))
+	var random_distance = randf_range(0, patrol_radius)
+	
+	# Calculate the new target position
+	var target_position = global_position + (random_direction * random_distance)
+	
+	# Set the agent's target
+	navigation_agent.set_target_position(target_position)

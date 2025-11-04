@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://834mv1kp6irl" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.tscn" id="3_83qkm"]
 [ext_resource type="Texture2D" uid="uid://c0tqig8nm6qn6" path="res://scr/assets/exteriors/2_City_Terrains_16x16.png" id="3_jvuxq"]
 [ext_resource type="Texture2D" uid="uid://boyv22wu65388" path="res://scr/assets/exteriors/12_Hotel_and_Hospital_16x16.png" id="4_1hih6"]
-[ext_resource type="PackedScene" uid="uid://bwk5knv3h62ah" path="res://scr/scenes/Enemy_1/enemy_bullet.tscn" id="5_hfk6k"]
+[ext_resource type="PackedScene" uid="uid://bwk5knv3h62ah" path="res://scr/scenes/top_levels/enemy_bullet.tscn" id="5_hfk6k"]
 [ext_resource type="Texture2D" uid="uid://ckqd12bgh3we4" path="res://scr/assets/exteriors/15_Police_Station_16x16.png" id="5_i8f45"]
 [ext_resource type="Texture2D" uid="uid://c01tqeumu577o" path="res://scr/assets/exteriors/17_Garden_16x16.png" id="6_6tydh"]
 [ext_resource type="PackedScene" uid="uid://c2e5s25eq2haw" path="res://scr/scenes/Enemy_2/enemy_laser.tscn" id="6_mt526"]

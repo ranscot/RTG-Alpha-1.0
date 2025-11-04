@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="1_ymmcg"]
 [ext_resource type="PackedScene" uid="uid://c2e5s25eq2haw" path="res://scr/scenes/Enemy_2/enemy_laser.tscn" id="4_kevts"]
 [ext_resource type="PackedScene" uid="uid://cse8h1dnp0vcx" path="res://scr/scenes/Enemy_3/enemy_grenade.tscn" id="5_0o8sn"]
-[ext_resource type="PackedScene" uid="uid://bwk5knv3h62ah" path="res://scr/scenes/Enemy_1/enemy_bullet.tscn" id="5_kj70x"]
+[ext_resource type="PackedScene" uid="uid://bwk5knv3h62ah" path="res://scr/scenes/top_levels/enemy_bullet.tscn" id="5_kj70x"]
 [ext_resource type="PackedScene" uid="uid://834mv1kp6irl" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.tscn" id="6_kj70x"]
 
 [node name="Main" type="Node2D"]

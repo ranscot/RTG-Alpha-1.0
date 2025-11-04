@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=4 uid="uid://cq8nxhviq2ah6"]
+[gd_scene load_steps=8 format=4 uid="uid://cq8nxhviq2ah6"]
 
 [ext_resource type="Script" uid="uid://1wc215vgwvxl" path="res://scr/scenes/top_levels/level_w.gd" id="1_76e78"]
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_m8u2d"]
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="2_qcjeg"]
 [ext_resource type="PackedScene" uid="uid://834mv1kp6irl" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.tscn" id="4_28x8u"]
-[ext_resource type="PackedScene" uid="uid://bwk5knv3h62ah" path="res://scr/scenes/Enemy_1/enemy_bullet.tscn" id="5_32pkr"]
+[ext_resource type="PackedScene" uid="uid://dyc1p0g37g4a5" path="res://scr/scenes/enemy_fart/enemy_fart.tscn" id="5_32pkr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw4ei"]
 size = Vector2(1071, 125)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_28x8u"]
+vertices = PackedVector2Array(341.78125, 377.85938, 337.21094, 162.9375, 514, 162.04688, 514, 361.5078, 836.96875, 371.1328, 553.9375, 359.52344, 836.03125, 56, 555.9297, 56)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(847, 381, 846, 46, 546, 46, 544, 350, 524, 351, 524, 152, 327, 153, 332, 388)])
 
 [node name="level_one" type="Node2D"]
 y_sort_enabled = true
@@ -103,34 +108,8 @@ position = Vector2(6, -2)
 position = Vector2(535.5, 455.5)
 shape = SubResource("RectangleShape2D_rw4ei")
 
-[node name="Enemies" type="Node" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_28x8u")
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(537, 361)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(761, 275)
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(686, 123)
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(704, 206)
-
-[node name="Enemy5" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(789, 336)
-
-[node name="Enemy6" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(691, 307)
-
-[node name="Enemy7" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(1020, 323)
-
-[node name="Enemy8" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(953, 345)
-
-[node name="Enemy9" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(810, 151)
-
-[node name="Enemy10" parent="Enemies" instance=ExtResource("5_32pkr")]
-position = Vector2(631, 162)
+[node name="Enemy_fart" parent="." instance=ExtResource("5_32pkr")]
+position = Vector2(686, 145)
