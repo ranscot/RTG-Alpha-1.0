@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://834mv1kp6irl"]
+
+[ext_resource type="Script" uid="uid://cxu1brbmvnsva" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.gd" id="1_4icsq"]
+
+[node name="AmmoUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4icsq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StandardLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LaserLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GrenadeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2

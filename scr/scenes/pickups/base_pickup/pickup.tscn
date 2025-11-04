@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://blsn6ta6mdrir"]
+
+[ext_resource type="Script" uid="uid://dedg62c01s8ws" path="res://scr/scenes/pickups/base_pickup/pickup.gd" id="1_ngsff"]
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_ngsff")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

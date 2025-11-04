@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://clnel45rwf36e"]
+
+[ext_resource type="PackedScene" uid="uid://blsn6ta6mdrir" path="res://scr/scenes/pickups/base_pickup/pickup.tscn" id="1_qt8s2"]
+[ext_resource type="Texture2D" uid="uid://cckiidwxkhan4" path="res://scr/assets/items/bullet2.png" id="2_i34xx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xnd2"]
+
+[node name="Pickup" instance=ExtResource("1_qt8s2")]
+type = 1
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(0.121569, 1, 1, 1)
+texture = ExtResource("2_i34xx")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_8xnd2")

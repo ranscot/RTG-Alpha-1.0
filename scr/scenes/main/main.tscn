@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2nh4mlrbvuxi"]
+
+[ext_resource type="Script" uid="uid://c4piptg10lygq" path="res://scr/scenes/main/main.gd" id="1_q80eb"]
+[ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="1_ymmcg"]
+[ext_resource type="PackedScene" uid="uid://c2e5s25eq2haw" path="res://scr/scenes/Enemy_2/enemy_laser.tscn" id="4_kevts"]
+[ext_resource type="PackedScene" uid="uid://cse8h1dnp0vcx" path="res://scr/scenes/Enemy_3/enemy_grenade.tscn" id="5_0o8sn"]
+[ext_resource type="PackedScene" uid="uid://bwk5knv3h62ah" path="res://scr/scenes/Enemy_1/enemy_bullet.tscn" id="5_kj70x"]
+[ext_resource type="PackedScene" uid="uid://834mv1kp6irl" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.tscn" id="6_kj70x"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_q80eb")
+
+[node name="Player" parent="." instance=ExtResource("1_ymmcg")]
+position = Vector2(698, 384)
+
+[node name="Enemy_Laser" parent="." instance=ExtResource("4_kevts")]
+position = Vector2(320, 340)
+
+[node name="Enemy_Laser2" parent="." instance=ExtResource("4_kevts")]
+position = Vector2(326, 177)
+
+[node name="Enemy_Grenade" parent="." instance=ExtResource("5_0o8sn")]
+position = Vector2(1009, 500)
+
+[node name="Enemy" parent="." instance=ExtResource("5_kj70x")]
+position = Vector2(859, 158)
+
+[node name="AmmoUI" parent="." instance=ExtResource("6_kj70x")]
+offset_right = 462.0
+offset_bottom = 180.0

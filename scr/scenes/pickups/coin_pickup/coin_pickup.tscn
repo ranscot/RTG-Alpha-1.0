@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://buo5pym0qleau"]
+
+[ext_resource type="PackedScene" uid="uid://blsn6ta6mdrir" path="res://scr/scenes/pickups/base_pickup/pickup.tscn" id="1_dnxol"]
+
+[node name="Pickup" instance=ExtResource("1_dnxol")]

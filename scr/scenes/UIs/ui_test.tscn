@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt7x4su37o04b"]
+
+[ext_resource type="PackedScene" uid="uid://834mv1kp6irl" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.tscn" id="1_irrse"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AmmoUI" parent="." instance=ExtResource("1_irrse")]
