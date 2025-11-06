@@ -7,9 +7,9 @@ signal coins_changed(new_count: int)
 
 # The dictionary to store our ammo counts.
 var ammo_counts: Dictionary = {
-	"standard": 150,
-	"laser": 50,
-	"grenade": 10
+	"bullet_fart": 150,
+	"bullet_cloat": 50,
+	"bullet_engage": 40
 }
 var coin_count: int = 0
 

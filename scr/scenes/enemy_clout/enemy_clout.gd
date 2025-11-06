@@ -4,16 +4,13 @@ extends CharacterBody2D
 enum State {
 	PATROL,
 	CHASE,
-	ATTACK,
-	DEATH
+	ATTACK 
 }
 
 ## 2. Variables
 @export var speed: float = 100.0
 @export var patrol_speed: float = 60.0
 @export var attack_range: float = 50.0
-@export var health: int = 50
-
 
 # --- CHANGED: Replaced patrol points with a radius ---
 @export var patrol_radius: float = 250.0 # How far to wander
@@ -35,9 +32,8 @@ func _ready():
 	# We no longer connect navigation_finished
 	# We no longer call _go_to_next_patrol_point()
 	_pick_new_patrol_target()
-	animated_sprite.animation_finished.connect(_on_animation_finished)
-	
-## The "State Machine"
+
+## 4. The "State Machine"
 func _physics_process(delta):
 	match current_state:
 		State.PATROL:
@@ -46,34 +42,26 @@ func _physics_process(delta):
 			chase_state(delta)
 		State.ATTACK:
 			attack_state(delta)
-		State.DEATH:
-			death_state(delta)
 	
 	if current_state == State.ATTACK:
 		velocity = Vector2.ZERO
-		if animated_sprite.animation != "attack":
-			animated_sprite.play("attack")
-	
-	elif current_state == State.DEATH:
-		velocity = Vector2.ZERO # Make sure we stop moving
-	
-	elif not navigation_agent.is_navigation_finished():
-		var next_path_pos = navigation_agent.get_next_path_position()
-		var direction = global_position.direction_to(next_path_pos)
-			
-		if current_state == State.PATROL:
-			velocity = direction * patrol_speed
-		else: # CHASE
-			velocity = direction * speed
-			
-		_update_animations(direction)
-		
+		animated_sprite.play("attack")
 	else:
+		if not navigation_agent.is_navigation_finished():
+			var next_path_pos = navigation_agent.get_next_path_position()
+			var direction = global_position.direction_to(next_path_pos)
+			
+			if current_state == State.PATROL:
+				velocity = direction * patrol_speed
+			else: # CHASE
+				velocity = direction * speed
+			
+			_update_animations(direction)
+		else:
 			velocity = Vector2.ZERO
 			# --- CHANGED: Play idle when we arrive at a patrol point ---
 			if current_state == State.PATROL:
-				if animated_sprite.animation != "idle":
-					animated_sprite.play("idle")
+				animated_sprite.play("idle")
 	
 	move_and_slide()
 
@@ -93,7 +81,7 @@ func patrol_state(_delta):
 	# We just wait for the timer to tell us to move.
 
 func chase_state(_delta):
-	# Check for Death State, basically if not Chase return out
+	# Check for Death State, basically if not Patrol return out
 	if current_state != State.CHASE: return
 	
 	if player:
@@ -108,23 +96,6 @@ func attack_state(_delta):
 	if current_state != State.ATTACK: return
 	
 	print("ATTACKING PLAYER!")
-	
-	
-func death_state(delta):
-	# This function is called every frame, but we only need to run our "die:
-	# logic once. We check the animation to see if its already playing
-	if animated_sprite.animation == "death":
-		return # We're already playing, just wait
-	# -- Stopping logic
-	patrol_timer.stop()
-	# disable collisions so enemy cannot be hit or block
-	$CollisionShape2D.disabled = true
-	$DetectionArea.monitoring = false
-	$AttackArea.monitoring = false
-	 
-	# Play the death animation 
-	animated_sprite.play("death")
-
 
 
 ## --- Helper Functions ---
@@ -156,15 +127,11 @@ func _update_animations(direction: Vector2):
 ## --- Signal Callbacks ---
 
 func _on_detection_area_body_entered(body):
-	if current_state == State.DEATH: return
-	
 	if body.is_in_group("player"):
 		player = body
 		patrol_timer.stop() # <-- CHANGED: Stop timer while chasing
 
 func _on_detection_area_body_exited(body):
-	if current_state == State.DEATH: return
-	
 	if body.is_in_group("player"):
 		player = null
 		current_state = State.PATROL
@@ -172,34 +139,20 @@ func _on_detection_area_body_exited(body):
 		_pick_new_patrol_target() # <-- CHANGED: Find a new spot now
 
 func _on_attack_area_body_entered(body):
-	if current_state == State.DEATH: return
-	
 	if body.is_in_group("player"):
 		current_state = State.ATTACK
 		patrol_timer.stop() # <-- CHANGED: Stop timer while attacking
 
 func _on_attack_area_body_exited(body):
-	if current_state == State.DEATH: return
-	
 	if body.is_in_group("player"):
 		if player != null:
 			current_state = State.CHASE
 			patrol_timer.stop() # <-- CHANGED: Keep timer stopped
 
-func _on_animation_finished():
-	#check if the animation that just finished was the death one
-	print("DEATH!!!!!!")
-	if animated_sprite.animation == "death":
-		# DROP LOOT 
-		queue_free()
-
-
 # --- REMOVED: _on_navigation_finished() ---
 
 # --- NEW FUNCTION: Called by the PatrolTimer ---
 func _on_patrol_timer_timeout():
-	if current_state == State.DEATH: return
-	
 	# If we are patrolling, pick a new random target
 	if current_state == State.PATROL:
 		_pick_new_patrol_target()
@@ -215,15 +168,3 @@ func _pick_new_patrol_target():
 	
 	# Set the agent's target
 	navigation_agent.set_target_position(target_position)
-
-# --- NEW FUNCTION: Calculates damage and Death State ---
-func take_damage(amount: int):
-	# Don't take damage if already dead
-	if current_state == State.DEATH:
-		return
-
-	health -= amount
-	print("Enemy health: ", health)
-	
-	if health <= 0:
-		current_state = State.DEATH

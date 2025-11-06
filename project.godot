@@ -10,7 +10,10 @@ config_version=5
 
 [application]
 
-config/name="New World Shooter"
+config/name="RTG 1.1"
+config/description="1.1
+Navigation Agent Added
+Navigation Server engaged"
 run/main_scene="uid://cq8nxhviq2ah6"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -72,11 +75,12 @@ fire_tertiary={
 [layer_names]
 
 2d_physics/layer_2="player"
-2d_physics/layer_3="enemy"
-2d_physics/layer_4="bullet"
-2d_physics/layer_5="laser"
-2d_physics/layer_6="grenade"
-2d_physics/layer_7="pickups"
+2d_physics/layer_3="world"
+2d_physics/layer_4="player_bullets"
+2d_physics/layer_5="enemies"
+2d_physics/layer_10="damage_fart"
+2d_physics/layer_11="damage_clout"
+2d_physics/layer_12="damage_engagement"
 
 [rendering]
 

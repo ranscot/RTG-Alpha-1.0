@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://l3fbfog8bwxe"]
+[gd_scene load_steps=4 format=3 uid="uid://yeu7y6rjnhbn"]
 
-[ext_resource type="Script" uid="uid://bknw245n3iosn" path="res://scr/scenes/bullets/bullet_base/bullet_base.gd" id="1_2mfcn"]
-[ext_resource type="Texture2D" uid="uid://dseyka8bb486m" path="res://scr/assets/items/bullet1.png" id="1_7vf0g"]
+[ext_resource type="Script" uid="uid://bpwimjaluwvqy" path="res://scr/scenes/bullets/bullet_engage/bullet_engage.gd" id="1_pj4gy"]
+[ext_resource type="Texture2D" uid="uid://c5ev60ex6jqj6" path="res://scr/assets/items/pixel heart 2.png" id="2_378g6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vf0g"]
 
-[node name="bullet" type="Area2D"]
-collision_layer = 520
-collision_mask = 8
-script = ExtResource("1_2mfcn")
+[node name="bullet_engage" type="Area2D"]
+collision_layer = 8
+collision_mask = 2048
+script = ExtResource("1_pj4gy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_7vf0g")
+texture = ExtResource("2_378g6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7vf0g")

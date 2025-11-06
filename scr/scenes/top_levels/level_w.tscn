@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://cq8nxhviq2ah6"]
+[gd_scene load_steps=10 format=4 uid="uid://cq8nxhviq2ah6"]
 
 [ext_resource type="Script" uid="uid://1wc215vgwvxl" path="res://scr/scenes/top_levels/level_w.gd" id="1_76e78"]
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_m8u2d"]
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="2_qcjeg"]
 [ext_resource type="PackedScene" uid="uid://834mv1kp6irl" path="res://scr/scenes/UIs/AmmoUI/ammo_ui.tscn" id="4_28x8u"]
 [ext_resource type="PackedScene" uid="uid://dyc1p0g37g4a5" path="res://scr/scenes/enemy_fart/enemy_fart.tscn" id="5_32pkr"]
+[ext_resource type="PackedScene" uid="uid://dguslukrmem4t" path="res://scr/scenes/enemy_clout/enemy_clout.tscn" id="6_fan6b"]
+[ext_resource type="PackedScene" uid="uid://bndiovnyys753" path="res://scr/scenes/enemy_engage/enemy_engage.tscn" id="7_30xqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw4ei"]
 size = Vector2(1071, 125)
@@ -90,7 +92,7 @@ tile_map_data = PackedByteArray("AAAAABcACgAXAC0AAAAAACEACgAZAC0AAAACABoACgAbACw
 tile_set = ExtResource("1_m8u2d")
 
 [node name="Player" parent="." instance=ExtResource("2_qcjeg")]
-position = Vector2(280, 222)
+position = Vector2(391, 1743)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -112,4 +114,10 @@ shape = SubResource("RectangleShape2D_rw4ei")
 navigation_polygon = SubResource("NavigationPolygon_28x8u")
 
 [node name="Enemy_fart" parent="." instance=ExtResource("5_32pkr")]
-position = Vector2(686, 145)
+position = Vector2(489, 1537)
+
+[node name="Enemy_clout" parent="." instance=ExtResource("6_fan6b")]
+position = Vector2(103, 1850)
+
+[node name="Enemy_engage" parent="." instance=ExtResource("7_30xqg")]
+position = Vector2(1179, 1818)

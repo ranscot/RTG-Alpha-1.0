@@ -4,9 +4,9 @@ extends CharacterBody2D
 # --- Signals and Exports ---
 signal shoot(bullet_scene, direction, location)
 
-@export var bullet_scene: PackedScene
-@export var laser_scene: PackedScene
-@export var grenade_scene: PackedScene
+@export var bullet_fart: PackedScene
+@export var bullet_cloat: PackedScene
+@export var bullet_engage: PackedScene
 @export var speed: float = 300.0
 
 @export var max_health: float = 100.0
@@ -33,16 +33,16 @@ func _input(event: InputEvent) -> void:
 
 	# We now check with the AmmoManager BEFORE emitting the signal.
 	if event.is_action_pressed("fire"):
-		if bullet_scene and AmmoManager.use_ammo("standard"):
-			shoot.emit(bullet_scene, fire_direction, muzzle.global_position)
+		if bullet_fart and AmmoManager.use_ammo("bullet_fart"):
+			shoot.emit(bullet_fart, fire_direction, muzzle.global_position)
 
 	if event.is_action_pressed("fire_secondary"):
-		if laser_scene and AmmoManager.use_ammo("laser"):
-			shoot.emit(laser_scene, fire_direction, muzzle.global_position)
+		if bullet_cloat and AmmoManager.use_ammo("bullet_cloat"):
+			shoot.emit(bullet_cloat, fire_direction, muzzle.global_position)
 
 	if event.is_action_pressed("fire_tertiary"):
-		if grenade_scene and AmmoManager.use_ammo("grenade"):
-			shoot.emit(grenade_scene, fire_direction, muzzle.global_position)
+		if bullet_engage and AmmoManager.use_ammo("bullet_engage"):
+			shoot.emit(bullet_engage, fire_direction, muzzle.global_position)
 
 # --- Custom Functions ---
 func take_damage(amount: float) -> void:
