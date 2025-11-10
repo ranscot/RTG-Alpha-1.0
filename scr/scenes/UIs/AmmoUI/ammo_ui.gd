@@ -1,28 +1,34 @@
 # ammo_ui.gd
 extends Control
 
-@onready var standard_label = $VBoxContainer/StandardLabel
-@onready var laser_label = $VBoxContainer/LaserLabel
-@onready var grenade_label = $VBoxContainer/GrenadeLabel
+@onready var clout_label: Label = $VBoxContainer/CloutLabel
+@onready var engage_label: Label = $VBoxContainer/EngageLabel
+@onready var fart_label: Label = $VBoxContainer/FartLabel
+@onready var tom_coin_label: Label = $VBoxContainer/TomCoinLabel
 
 func _ready() -> void:
 	AmmoManager.ammo_changed.connect(_on_ammo_changed)
+	AmmoManager.coins_changed.connect(_on_coin_changed)
 	update_all_labels()
 
 func update_all_labels() -> void:
 	# Use the '%' operator to insert the values
-	standard_label.text = "Standard: %s" % AmmoManager.get_ammo_count('standard')
-	laser_label.text = "Laser: %s" % AmmoManager.get_ammo_count('laser')
-	grenade_label.text = "Grenade: %s" % AmmoManager.get_ammo_count('grenade')
-
+	fart_label.text = "Farts: %s" % AmmoManager.get_ammo_count('bullet_fart')
+	clout_label.text = "Clout: %s" % AmmoManager.get_ammo_count('bullet_clout')
+	engage_label.text = "Engage: %s" % AmmoManager.get_ammo_count('bullet_engage')
+	tom_coin_label.text = "TomCoin: %s" % AmmoManager.get_coin_count()
+	
+func _on_coin_changed(new_count: int) -> void:
+	tom_coin_label.text = "TomCoins: %s" % new_count	
+	
 func _on_ammo_changed(ammo_type: String, new_count: int) -> void:
 	match ammo_type:
-		"standard":
+		"bullet_fart":
 			# Use the '%' operator here
-			standard_label.text = "Standard: %s" % new_count
-		"laser":
+			fart_label.text = "Farts: %s" % new_count
+		"bullet_clout":
 			# Use the '%' operator here
-			laser_label.text = "Laser: %s" % new_count
-		"grenade":
+			clout_label.text = "Clout: %s" % new_count
+		"bullet_engage":
 			# Use the '%' operator here
-			grenade_label.text = "Grenade: %s" % new_count
+			engage_label.text = "Engage: %s" % new_count

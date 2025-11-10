@@ -5,8 +5,8 @@ extends Node2D
 func _ready() -> void:
 	# Connect the player's "shoot" signal to a function in this script.
 	# When the player emits "shoot", the "_on_player_shoot" function will run.
-	player.shoot.connect(_on_player_shoot)
-
+	# player.shoot.connect(_on_player_shoot)
+	pass
 # This function runs whenever the player emits the "shoot" signal.
 # It receives the parameters we sent with it.
 func _on_player_shoot(bullet_scene: PackedScene, direction: Vector2, location: Vector2) -> void:

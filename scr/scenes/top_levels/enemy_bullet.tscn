@@ -228,7 +228,7 @@ height = 50.0
 radius = 165.0
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 8
+collision_layer = 520
 collision_mask = 3
 script = ExtResource("1_cy3dx")
 drop_pickup_scene = ExtResource("2_vonvv")

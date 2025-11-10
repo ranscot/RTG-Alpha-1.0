@@ -11,7 +11,12 @@ func process_physics(_delta: float) -> void:
 
 	# Otherwise, apply movement logic.
 	character.velocity = direction * character.speed
-	character.last_move_direction = direction
+	
+	# --- THIS IS THE FIX ---
+	# Use 'direction', not 'input_direction'
+	character.facing_direction = direction.normalized()
+	# --- END FIX ---
+	
 	character.move_and_slide()
 	update_animation()
 

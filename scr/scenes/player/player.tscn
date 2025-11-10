@@ -1,9 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dj3kxh2wnllgh"]
+[gd_scene load_steps=31 format=3 uid="uid://dj3kxh2wnllgh"]
 
 [ext_resource type="Script" uid="uid://bqytilcnv12v0" path="res://scr/scenes/player/player_1.gd" id="1_qdj1w"]
 [ext_resource type="PackedScene" uid="uid://drv0dov3bvu6b" path="res://scr/scenes/bullets/bullet_fart/bullet_fart.tscn" id="2_j721o"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="3_0b72k"]
-[ext_resource type="PackedScene" uid="uid://cqojs4mvwyydc" path="res://scr/scenes/bullets/bullet_clout/bullet_clout.tscn" id="3_58ypy"]
+[ext_resource type="PackedScene" uid="uid://cqojs4mvwyydc" path="res://scr/scenes/bullets/bullet_clout/bullet_clout.tscn" id="3_j721o"]
 [ext_resource type="PackedScene" uid="uid://yeu7y6rjnhbn" path="res://scr/scenes/bullets/bullet_engage/bullet_engage.tscn" id="4_guipa"]
 [ext_resource type="Script" uid="uid://bvjwbdv5otxmp" path="res://scr/scenes/player/state_machine.gd" id="6_f8nuf"]
 [ext_resource type="Script" uid="uid://p1xl7frsqy11" path="res://scr/scenes/player/idle_state.gd" id="7_lgkyv"]
@@ -166,14 +166,17 @@ bg_color = Color(1, 0.0196078, 0.0901961, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58ypy"]
 bg_color = Color(0.465356, 0.674183, 0.201698, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j721o"]
+radius = 50.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
-collision_layer = 2
-collision_mask = 53
+collision_layer = 34
+collision_mask = 21
 script = ExtResource("1_qdj1w")
 bullet_fart = ExtResource("2_j721o")
-bullet_cloat = ExtResource("3_58ypy")
+bullet_cloat = ExtResource("3_j721o")
 bullet_engage = ExtResource("4_guipa")
 
 [node name="Muzzle" type="Marker2D" parent="."]
@@ -212,5 +215,15 @@ show_percentage = false
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="DamageArea" type="Area2D" parent="." groups=["player"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_j721o")
+
+[node name="DamageTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="timers/DeathTimer" to="." method="_on_death_timer_timeout"]

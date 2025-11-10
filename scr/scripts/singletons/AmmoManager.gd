@@ -8,7 +8,7 @@ signal coins_changed(new_count: int)
 # The dictionary to store our ammo counts.
 var ammo_counts: Dictionary = {
 	"bullet_fart": 150,
-	"bullet_cloat": 50,
+	"bullet_clout": 50,
 	"bullet_engage": 40
 }
 var coin_count: int = 0
@@ -32,6 +32,9 @@ func get_ammo_count(ammo_type: String) -> int:
 		return ammo_counts[ammo_type]
 	return 0
 
+func get_coin_count():
+	return coin_count
+
 # We can use this later for ammo pickups.
 func add_ammo(ammo_type: String, amount: int) -> void:
 	if ammo_counts.has(ammo_type):
@@ -42,4 +45,4 @@ func add_ammo(ammo_type: String, amount: int) -> void:
 func add_coins(amount: int) -> void:
 	coin_count += amount
 	coins_changed.emit(coin_count)
-	print("Picked up {amount} coin(s). Total: {coin_count}")
+	

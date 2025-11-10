@@ -14,11 +14,14 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="StandardLabel" type="Label" parent="VBoxContainer"]
+[node name="FartLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="LaserLabel" type="Label" parent="VBoxContainer"]
+[node name="CloutLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="GrenadeLabel" type="Label" parent="VBoxContainer"]
+[node name="EngageLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TomCoinLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2

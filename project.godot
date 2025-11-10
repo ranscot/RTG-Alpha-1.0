@@ -29,6 +29,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 player=""
+overworld_enemies=""
 
 [input]
 
@@ -78,6 +79,7 @@ fire_tertiary={
 2d_physics/layer_3="world"
 2d_physics/layer_4="player_bullets"
 2d_physics/layer_5="enemies"
+2d_physics/layer_6="pick_ups"
 2d_physics/layer_10="damage_fart"
 2d_physics/layer_11="damage_clout"
 2d_physics/layer_12="damage_engagement"

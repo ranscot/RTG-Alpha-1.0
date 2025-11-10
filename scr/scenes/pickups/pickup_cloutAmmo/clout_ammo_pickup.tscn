@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv78t42cuntyd"]
+
+[ext_resource type="Script" uid="uid://bmfa7bf8a3oun" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.gd" id="1_fjwob"]
+[ext_resource type="Texture2D" uid="uid://dseyka8bb486m" path="res://scr/assets/items/bullet1.png" id="2_k08l7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmrc7"]
+atlas = ExtResource("2_k08l7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0xs4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmrc7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ds30"]
+radius = 11.0
+
+[node name="cloutAmmoPickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("1_fjwob")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i0xs4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2ds30")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

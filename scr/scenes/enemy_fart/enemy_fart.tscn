@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://dyc1p0g37g4a5"]
+[gd_scene load_steps=26 format=3 uid="uid://dyc1p0g37g4a5"]
 
 [ext_resource type="Script" uid="uid://bbb17b2yj1t23" path="res://scr/scenes/enemy_fart/enemy_fart.gd" id="1_dnnsq"]
+[ext_resource type="PackedScene" uid="uid://cv78t42cuntyd" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.tscn" id="2_7ekxg"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_ylcfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2nkn"]
@@ -167,10 +168,11 @@ radius = 83.240616
 radius = 15.0
 height = 50.0
 
-[node name="Enemy_fart" type="CharacterBody2D"]
+[node name="Enemy_fart" type="CharacterBody2D" groups=["overworld_enemies"]]
 collision_layer = 528
-collision_mask = 0
+collision_mask = 3
 script = ExtResource("1_dnnsq")
+drop_scene = ExtResource("2_7ekxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hxnro")

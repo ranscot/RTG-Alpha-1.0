@@ -12,9 +12,9 @@
 size = Vector2(1071, 125)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_28x8u"]
-vertices = PackedVector2Array(341.78125, 377.85938, 337.21094, 162.9375, 514, 162.04688, 514, 361.5078, 836.96875, 371.1328, 553.9375, 359.52344, 836.03125, 56, 555.9297, 56)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(847, 381, 846, 46, 546, 46, 544, 350, 524, 351, 524, 152, 327, 153, 332, 388)])
+vertices = PackedVector2Array(1058.9609, 1535.0625, 248.02344, 1539.9297, 251, 195.95313, 1052.0313, -298.03125, 246.86719, -300.96094, 247, -125.11719, 246, -232.86719)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1069, 1545, 1062, -308, 237, -311, 236, -233, 237, -125, 241, 196, 238, 1550)])
 
 [node name="level_one" type="Node2D"]
 y_sort_enabled = true
@@ -92,7 +92,7 @@ tile_map_data = PackedByteArray("AAAAABcACgAXAC0AAAAAACEACgAZAC0AAAACABoACgAbACw
 tile_set = ExtResource("1_m8u2d")
 
 [node name="Player" parent="." instance=ExtResource("2_qcjeg")]
-position = Vector2(391, 1743)
+position = Vector2(927, 954)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -111,13 +111,98 @@ position = Vector2(535.5, 455.5)
 shape = SubResource("RectangleShape2D_rw4ei")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-225, 1331)
 navigation_polygon = SubResource("NavigationPolygon_28x8u")
 
-[node name="Enemy_fart" parent="." instance=ExtResource("5_32pkr")]
-position = Vector2(489, 1537)
+[node name="enemies" type="Node2D" parent="."]
+position = Vector2(-225, 1331)
 
-[node name="Enemy_clout" parent="." instance=ExtResource("6_fan6b")]
-position = Vector2(103, 1850)
+[node name="Enemy_clout" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(552, 20)
 
-[node name="Enemy_engage" parent="." instance=ExtResource("7_30xqg")]
-position = Vector2(1179, 1818)
+[node name="Enemy_clout2" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(373, -142)
+
+[node name="Enemy_clout3" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(935, -262)
+
+[node name="Enemy_clout4" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(757, -237)
+
+[node name="Enemy_clout5" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(542, -192)
+
+[node name="Enemy_clout6" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(612, -108)
+
+[node name="Enemy_clout7" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(542, -136)
+
+[node name="Enemy_clout8" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(716, -68)
+
+[node name="Enemy_clout9" parent="enemies" instance=ExtResource("6_fan6b")]
+position = Vector2(661, 16)
+
+[node name="Enemy_fart" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(714, 206)
+
+[node name="Enemy_fart2" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(497, 206)
+
+[node name="Enemy_fart3" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(497, 206)
+
+[node name="Enemy_fart4" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(531, 1113)
+
+[node name="Enemy_fart5" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(425, 1013)
+
+[node name="Enemy_fart6" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(456, 1229)
+
+[node name="Enemy_fart7" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(591, 1165)
+
+[node name="Enemy_fart8" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(336, 1057)
+
+[node name="Enemy_fart9" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(539, 894)
+
+[node name="Enemy_fart10" parent="enemies" instance=ExtResource("5_32pkr")]
+position = Vector2(450, 785)
+
+[node name="Enemy_engage" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(877, -60)
+
+[node name="Enemy_engage2" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(410, 500)
+
+[node name="Enemy_engage3" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(381, 376)
+
+[node name="Enemy_engage4" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(381, 376)
+
+[node name="Enemy_engage5" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(331, 516)
+
+[node name="Enemy_engage6" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(544, 680)
+
+[node name="Enemy_engage7" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(535, 1329)
+
+[node name="Enemy_engage9" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(440, 1327)
+
+[node name="Enemy_engage10" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(317, 1228)
+
+[node name="Enemy_engage11" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(467, 1167)
+
+[node name="Enemy_engage8" parent="enemies" instance=ExtResource("7_30xqg")]
+position = Vector2(504, 709)

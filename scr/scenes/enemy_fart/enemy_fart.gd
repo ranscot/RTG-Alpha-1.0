@@ -13,7 +13,8 @@ enum State {
 @export var patrol_speed: float = 60.0
 @export var attack_range: float = 50.0
 @export var health: int = 50
-
+# set the drop scene
+@export var drop_scene: PackedScene
 
 # --- CHANGED: Replaced patrol points with a radius ---
 @export var patrol_radius: float = 250.0 # How far to wander
@@ -188,11 +189,12 @@ func _on_attack_area_body_exited(body):
 
 func _on_animation_finished():
 	#check if the animation that just finished was the death one
-	print("DEATH!!!!!!")
 	if animated_sprite.animation == "death":
-		# DROP LOOT 
+		if drop_scene:
+			var drop = drop_scene.instantiate()
+			get_tree().root.add_child(drop)
+			drop.global_position = global_position # Spawn it where the enemy died
 		queue_free()
-
 
 # --- REMOVED: _on_navigation_finished() ---
 
