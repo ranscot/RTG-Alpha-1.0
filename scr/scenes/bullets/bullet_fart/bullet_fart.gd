@@ -1,9 +1,13 @@
 extends Area2D
 
-@export var speed: float = 600.0  # Pixels per second
+@export var speed: float = 5.0  # Pixels per second
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # This will be set by the scene that creates the bullet
 var direction: Vector2 = Vector2.UP
+
+func _ready() -> void:
+	animation_player.play("fart_bullet_animation")
 
 func _process(delta: float) -> void:
 	# Move the bullet every frame
@@ -17,11 +21,13 @@ func _on_body_entered(body: Node) -> void:
 	#     body.take_damage(10)
 	print("FART!")
 	if body.has_method("take_damage"):
-		body.take_damage(10) # We'll create this function on the enemy.
-	call_deferred("queue_free") # Destroy the bullet on impact after frames calculated
+		body.take_damage(10) # We'll create this function on the enemy. 
+	# call_deferred("queue_free") # Destroy the bullet on impact after frames calculated
 
-# This function is called when the bullet leaves the screen
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free() # Destroy the bullet when it's off-screen
+
 	
 	
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv78t42cuntyd"]
+[gd_scene load_steps=7 format=3 uid="uid://cv78t42cuntyd"]
 
 [ext_resource type="Script" uid="uid://bmfa7bf8a3oun" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.gd" id="1_fjwob"]
 [ext_resource type="Texture2D" uid="uid://dseyka8bb486m" path="res://scr/assets/items/bullet1.png" id="2_k08l7"]
+[ext_resource type="AudioStream" uid="uid://bsf5xgrldtc0f" path="res://scr/assets/audio/enemies/enemies_fart_pickup.wav" id="3_1h0sb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmrc7"]
 atlas = ExtResource("2_k08l7")
@@ -31,5 +32,8 @@ sprite_frames = SubResource("SpriteFrames_i0xs4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2ds30")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1h0sb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -28,6 +28,8 @@ var player = null
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var navigation_agent = $NavigationAgent2D
 @onready var patrol_timer = $PatrolTimer # <-- CHANGED
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
 
 func _ready():
 	# --- CHANGED: Connect the timer ---
@@ -38,8 +40,11 @@ func _ready():
 	_pick_new_patrol_target()
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
-## The "State Machine"
+	
+	
+	
 func _physics_process(delta):
+	# 1. Run State Logic (Decides Intent)
 	match current_state:
 		State.PATROL:
 			patrol_state(delta)
@@ -49,34 +54,56 @@ func _physics_process(delta):
 			attack_state(delta)
 		State.DEATH:
 			death_state(delta)
+
+	# 2. CALCULATE INTENDED VELOCITY (But do NOT move yet)
+	var intended_velocity = Vector2.ZERO
 	
-	if current_state == State.ATTACK:
-		velocity = Vector2.ZERO
-		if animated_sprite.animation != "attack":
+	if current_state == State.ATTACK or current_state == State.DEATH:
+		intended_velocity = Vector2.ZERO
+		if current_state == State.ATTACK and animated_sprite.animation != "attack":
 			animated_sprite.play("attack")
-	
-	elif current_state == State.DEATH:
-		velocity = Vector2.ZERO # Make sure we stop moving
-	
+			
 	elif not navigation_agent.is_navigation_finished():
 		var next_path_pos = navigation_agent.get_next_path_position()
 		var direction = global_position.direction_to(next_path_pos)
-			
-		if current_state == State.PATROL:
-			velocity = direction * patrol_speed
-		else: # CHASE
-			velocity = direction * speed
-			
-		_update_animations(direction)
 		
-	else:
-			velocity = Vector2.ZERO
-			# --- CHANGED: Play idle when we arrive at a patrol point ---
-			if current_state == State.PATROL:
-				if animated_sprite.animation != "idle":
-					animated_sprite.play("idle")
+		# Apply logic for speed based on state
+		var current_speed = speed
+		if current_state == State.PATROL:
+			current_speed = patrol_speed
+			
+		# --- CHASE DISTANCE CHECK (From our previous fix) ---
+		if current_state == State.CHASE:
+			if global_position.distance_to(player.global_position) > 40.0:
+				intended_velocity = direction * current_speed
+			else:
+				intended_velocity = Vector2.ZERO
+		else:
+			# Normal movement for Patrol
+			intended_velocity = direction * current_speed
+			
+		# Update animations
+		if intended_velocity.length() > 0:
+			_update_animations(direction)
+		elif current_state == State.PATROL:
+			animated_sprite.play("idle")
+
+	# 3. SEND VELOCITY TO AGENT
+	# Instead of moving, we tell the agent: "I want to go this fast."
+	# The agent will calculate avoidance and then call the signal below.
+	navigation_agent.set_velocity(intended_velocity)
+
+
+# --- NEW SIGNAL CALLBACK ---
+# This function is called automatically by the NavigationAgent
+# once it has calculated a safe path around other enemies.
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	if current_state == State.DEATH: return
 	
+	# Apply the safe velocity calculated by the avoidance algorithm
+	velocity = safe_velocity
 	move_and_slide()
+
 
 
 # --- State Logic Functions ---
@@ -126,7 +153,8 @@ func death_state(delta):
 	# Play the death animation 
 	animated_sprite.play("death")
 
-
+	# Play the death sound 
+	death_sound_player.play()
 
 ## --- Helper Functions ---
 
@@ -223,7 +251,9 @@ func take_damage(amount: int):
 	# Don't take damage if already dead
 	if current_state == State.DEATH:
 		return
-
+	
+	# Play our "Hit_Flash" animation
+	animation_player.play("Hit_Flash")
 	health -= amount
 	print("Enemy health: ", health)
 	

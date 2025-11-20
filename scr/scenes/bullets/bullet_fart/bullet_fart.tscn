@@ -1,9 +1,85 @@
-[gd_scene load_steps=4 format=3 uid="uid://drv0dov3bvu6b"]
+[gd_scene load_steps=7 format=3 uid="uid://drv0dov3bvu6b"]
 
 [ext_resource type="Script" uid="uid://ca5aindpp8jxf" path="res://scr/scenes/bullets/bullet_fart/bullet_fart.gd" id="1_cjkii"]
-[ext_resource type="Texture2D" uid="uid://dseyka8bb486m" path="res://scr/assets/items/bullet1.png" id="2_v8ga2"]
+[ext_resource type="Texture2D" uid="uid://brx0b4m6yjwqt" path="res://scr/assets/Tom_Effects/fart_test.png" id="2_cjkii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vf0g"]
+radius = 167.6723
+
+[sub_resource type="Animation" id="Animation_cjkii"]
+resource_name = "fart_bullet_animation"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.5, 0.5), Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.7333333, 2.8666666, 3.5),
+"transitions": PackedFloat32Array(0.3298769, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.6862745), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v8ga2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pbm7"]
+_data = {
+&"RESET": SubResource("Animation_v8ga2"),
+&"fart_bullet_animation": SubResource("Animation_cjkii")
+}
 
 [node name="bullet_fart" type="Area2D"]
 collision_layer = 8
@@ -11,12 +87,19 @@ collision_mask = 512
 script = ExtResource("1_cjkii")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_v8ga2")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cjkii")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7vf0g")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6pbm7")
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

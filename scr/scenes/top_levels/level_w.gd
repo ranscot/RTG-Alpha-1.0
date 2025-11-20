@@ -19,4 +19,3 @@ func _on_player_shoot(bullet_scene: PackedScene, direction: Vector2, location: V
 
 	# Add the new bullet to the scene tree
 	add_child(new_bullet)
-	print("Bullet Fired!")

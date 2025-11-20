@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyc1p0g37g4a5"]
+[gd_scene load_steps=31 format=3 uid="uid://dyc1p0g37g4a5"]
 
 [ext_resource type="Script" uid="uid://bbb17b2yj1t23" path="res://scr/scenes/enemy_fart/enemy_fart.gd" id="1_dnnsq"]
 [ext_resource type="PackedScene" uid="uid://cv78t42cuntyd" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.tscn" id="2_7ekxg"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_ylcfb"]
+[ext_resource type="AudioStream" uid="uid://cb6fnkeksvaex" path="res://scr/assets/audio/enemies/enemie_fart.wav" id="4_7ekxg"]
+[ext_resource type="AudioStream" uid="uid://gp8bco3phtj5" path="res://scr/assets/audio/enemies/enemie_fart_death.wav" id="5_hxnro"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2nkn"]
 atlas = ExtResource("2_ylcfb")
@@ -168,15 +170,71 @@ radius = 83.240616
 radius = 15.0
 height = 50.0
 
+[sub_resource type="Animation" id="Animation_hxnro"]
+resource_name = "Hit_Flash"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.24313726, 0.101960786, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7ekxg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkoul"]
+_data = {
+&"Hit_Flash": SubResource("Animation_hxnro"),
+&"RESET": SubResource("Animation_7ekxg")
+}
+
 [node name="Enemy_fart" type="CharacterBody2D" groups=["overworld_enemies"]]
 collision_layer = 528
 collision_mask = 3
 script = ExtResource("1_dnnsq")
+speed = null
+patrol_speed = null
+attack_range = null
+health = null
 drop_scene = ExtResource("2_7ekxg")
+patrol_radius = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hxnro")
-animation = &"death"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9)
@@ -198,6 +256,10 @@ self_modulate = Color(1, 0.5137255, 1, 0.78039217)
 shape = SubResource("CircleShape2D_dnnsq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 50.0
+avoidance_enabled = true
+radius = 25.0
+neighbor_distance = 100.0
 
 [node name="PatrolTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -212,7 +274,19 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dnnsq")
 debug_color = Color(0.91179776, 0.20666179, 0.5344274, 0.41960785)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lkoul")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7ekxg")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hxnro")
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
