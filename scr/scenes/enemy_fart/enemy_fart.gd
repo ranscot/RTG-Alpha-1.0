@@ -29,7 +29,8 @@ var player = null
 @onready var navigation_agent = $NavigationAgent2D
 @onready var patrol_timer = $PatrolTimer # <-- CHANGED
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var death_sound_player: AudioStreamPlayer = $DeathSoundPlayer
+@onready var death_sound_player: AudioStreamPlayer2D = $DeathSoundPlayer
+@onready var hit_sound_player: AudioStreamPlayer2D = $HitSoundPlayer
 
 func _ready():
 	# --- CHANGED: Connect the timer ---
@@ -254,6 +255,7 @@ func take_damage(amount: int):
 	
 	# Play our "Hit_Flash" animation
 	animation_player.play("Hit_Flash")
+	hit_sound_player.play()
 	health -= amount
 	print("Enemy health: ", health)
 	

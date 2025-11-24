@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dluwncqvkwqfg"]
+[gd_scene load_steps=7 format=3 uid="uid://dluwncqvkwqfg"]
 
 [ext_resource type="Script" uid="uid://bm87fydi47lnd" path="res://scr/scenes/pickups/pickup_engageAmmo/engage_ammo_pickup.gd" id="1_jtq6f"]
 [ext_resource type="Texture2D" uid="uid://c5ev60ex6jqj6" path="res://scr/assets/items/pixel heart 2.png" id="2_ka3gn"]
+[ext_resource type="AudioStream" uid="uid://denjoxqnd3hhw" path="res://scr/assets/audio/enemies/enemy_engage_pickup.wav" id="3_vhaey"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vhaey"]
 atlas = ExtResource("2_ka3gn")
@@ -31,3 +32,6 @@ sprite_frames = SubResource("SpriteFrames_i0xs4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2ds30")
+
+[node name="EngageAmmo_Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vhaey")

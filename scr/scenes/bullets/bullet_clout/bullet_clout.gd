@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: float = 800.0  # Pixels per second
+@export var speed: float = 400.0  # Pixels per second
 
 # This will be set by the scene that creates the bullet
 var direction: Vector2 = Vector2.UP

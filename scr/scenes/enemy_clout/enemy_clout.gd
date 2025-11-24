@@ -28,6 +28,10 @@ var player = null
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var navigation_agent = $NavigationAgent2D
 @onready var patrol_timer = $PatrolTimer # <-- CHANGED
+@onready var on_death_sound: AudioStreamPlayer2D = $Sounds/On_Death_Sound
+@onready var on_hurt_sound: AudioStreamPlayer2D = $Sounds/On_Hurt_Sound
+
+
 
 func _ready():
 	# --- CHANGED: Connect the timer ---
@@ -145,6 +149,7 @@ func death_state(delta):
 	$AttackArea.monitoring = false
 	 
 	# Play the death animation 
+	on_death_sound.play()
 	animated_sprite.play("death")
 
 
@@ -246,7 +251,7 @@ func take_damage(amount: int):
 		return
 
 	health -= amount
-	print("Enemy health: ", health)
+	on_hurt_sound.play()
 	
 	if health <= 0:
 		current_state = State.DEATH

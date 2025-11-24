@@ -10,7 +10,6 @@ func _ready():
 	pass
 	
 func _on_body_entered(body):
-	print("chasing pickup")
 	# Check if the body that entered is the player
 	
 	# 1. Give the ammo

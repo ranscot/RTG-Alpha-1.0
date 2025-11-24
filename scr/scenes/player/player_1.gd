@@ -17,11 +17,18 @@ var enemies_in_area: Array = []
 # --- Node References ---
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = $ProgressBar
-@onready var death_timer: Timer = $timers/DeathTimer
+@onready var death_timer: Timer = $DeathTimer
 @onready var state_machine: Node = $StateMachine
-@onready var muzzle: Marker2D = $Muzzle # <-- ADD THIS
+@onready var weapon_pivot: Node2D = $WeaponPivot
+@onready var clout_weapon_muzzle: Marker2D = $WeaponPivot/CloutWeapon_Muzzle
+@onready var fart_weapon_muzzle: Marker2D = $WeaponPivot/Muzzle
+@onready var engage_weapon_muzzle: Marker2D = $WeaponPivot/EngageWeapon_Muzzle
 @onready var damage_area: Area2D = $DamageArea
 @onready var damage_timer: Timer = $DamageTimer
+@onready var fart_weapon_shoot: AudioStreamPlayer2D = $Sounds/Fart_Weapon_Shoot
+@onready var clout_weapon_shoot: AudioStreamPlayer2D = $Sounds/Clout_Weapon_Shoot
+
+
 
 # --- Properties ---
 # We rename this so it's clear what it's for.
@@ -34,7 +41,7 @@ func _ready() -> void:
 	health_bar.value = health
 	
 	# Add this check to make sure the Muzzle exists
-	if not muzzle:
+	if not fart_weapon_muzzle or clout_weapon_muzzle or engage_weapon_muzzle:
 		print("ERROR: Player script needs a Marker2D node named 'Muzzle'.")
 		
 	# checks every second for damage
@@ -42,8 +49,16 @@ func _ready() -> void:
 	damage_area.body_entered.connect(_on_damage_area_body_entered)
 	damage_area.body_exited.connect(_on_damage_area_body_exited)
 	
-	
+func _physics_process(delta: float) -> void:
 
+
+	# 2. AIMING - ROTATE THE PIVOT
+	# This rotates the parent, carrying all muzzles around the player
+	if weapon_pivot:
+		weapon_pivot.rotation = facing_direction.angle()
+	
+ 	
+	
 func _input(event: InputEvent) -> void:
 	# --- THIS IS THE SHOOTING FIX ---
 	# We've removed "var muzzle = $Muzzle" because it's an @onready var now
@@ -55,31 +70,33 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire"):
 
 		if bullet_fart and AmmoManager.use_ammo("bullet_fart"):
-			_spawn_bullet(bullet_fart) # <-- CHANGED
+			fart_weapon_shoot.play()
+			_spawn_bullet(bullet_fart, fart_weapon_muzzle) # <-- CHANGED
 
 	if event.is_action_pressed("fire_secondary"):
 		if bullet_cloat and AmmoManager.use_ammo("bullet_clout"):
-			_spawn_bullet(bullet_cloat) # <-- CHANGED 
+			clout_weapon_shoot.play()
+			_spawn_bullet(bullet_cloat, clout_weapon_muzzle) # <-- CHANGED 
   
 	if event.is_action_pressed("fire_tertiary"):
 		if bullet_engage and AmmoManager.use_ammo("bullet_engage"):
-			_spawn_bullet(bullet_engage) # <-- CHANGED
+			_spawn_bullet(bullet_engage, engage_weapon_muzzle) # <-- CHANGED
 
 # --- Custom Functions ---
 
 # --- ADD THIS NEW FUNCTION ---
-func _spawn_bullet(bullet_scene: PackedScene):
-	print("fire fart")
-	if not muzzle: return # Don't spawn if muzzle is missing
+func _spawn_bullet(bullet_scene: PackedScene, which_muzzle: Marker2D):
+	if not which_muzzle: return # Don't spawn if muzzle is missing
 		
 	# Create an instance of the bullet
 	var bullet = bullet_scene.instantiate()
 	
-	# Set its position and rotation from the muzzle
-	bullet.global_position = muzzle.global_position
-	# The bullet script will move forward based on its rotation
-	bullet.rotation = facing_direction.angle() 
+	# Setting the muzzle for the weapon type
+	bullet.global_position = which_muzzle.global_position
+	# Setting the rotation based on player direction 
+	bullet.rotation = which_muzzle.global_rotation
 	
+		
 	# Add the bullet to the main game world
 	get_tree().root.add_child(bullet)
 # --- END NEW FUNCTION ---

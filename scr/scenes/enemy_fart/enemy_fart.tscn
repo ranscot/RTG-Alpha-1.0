@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bbb17b2yj1t23" path="res://scr/scenes/enemy_fart/enemy_fart.gd" id="1_dnnsq"]
 [ext_resource type="PackedScene" uid="uid://cv78t42cuntyd" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.tscn" id="2_7ekxg"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_ylcfb"]
-[ext_resource type="AudioStream" uid="uid://cb6fnkeksvaex" path="res://scr/assets/audio/enemies/enemie_fart.wav" id="4_7ekxg"]
 [ext_resource type="AudioStream" uid="uid://gp8bco3phtj5" path="res://scr/assets/audio/enemies/enemie_fart_death.wav" id="5_hxnro"]
+[ext_resource type="AudioStream" uid="uid://c0eo1p30xb2y0" path="res://scr/assets/audio/enemies/enemy_fart_hit.wav" id="5_lkoul"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2nkn"]
 atlas = ExtResource("2_ylcfb")
@@ -185,20 +185,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.24313726, 0.101960786, 1), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_7ekxg"]
 length = 0.001
@@ -225,12 +211,7 @@ _data = {
 collision_layer = 528
 collision_mask = 3
 script = ExtResource("1_dnnsq")
-speed = null
-patrol_speed = null
-attack_range = null
-health = null
 drop_scene = ExtResource("2_7ekxg")
-patrol_radius = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hxnro")
@@ -279,11 +260,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_lkoul")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_7ekxg")
-
-[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hxnro")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lkoul")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
