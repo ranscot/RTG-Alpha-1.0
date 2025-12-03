@@ -30,6 +30,10 @@ var player = null
 @onready var navigation_agent = $NavigationAgent2D
 @onready var patrol_timer = $PatrolTimer # <-- CHANGED
 
+@onready var on_death_sound: AudioStreamPlayer2D = $Sounds/On_death
+@onready var on_hurt_sound: AudioStreamPlayer2D = $Sounds/On_hurt
+
+
 func _ready():
 	# --- CHANGED: Connect the timer ---
 	patrol_timer.timeout.connect(_on_patrol_timer_timeout)
@@ -136,6 +140,7 @@ func attack_state(_delta):
 func death_state(delta):
 	# This function is called every frame, but we only need to run our "die:
 	# logic once. We check the animation to see if its already playing
+	on_death_sound.play()
 	if animated_sprite.animation == "death":
 		return # We're already playing, just wait
 	# -- Stopping logic
@@ -247,6 +252,7 @@ func take_damage(amount: int):
 	if current_state == State.DEATH:
 		return
 
+	on_hurt_sound.play()
 	health -= amount
 	print("Enemy health: ", health)
 	

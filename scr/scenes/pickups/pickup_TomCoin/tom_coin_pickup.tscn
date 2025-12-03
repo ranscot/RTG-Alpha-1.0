@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuaga1ifc0i4o"]
+[gd_scene load_steps=7 format=3 uid="uid://cuaga1ifc0i4o"]
 
 [ext_resource type="Script" uid="uid://cnydv38ge1p5y" path="res://scr/scenes/pickups/pickup_TomCoin/tom_coin_pickup.gd" id="1_cmrc7"]
 [ext_resource type="Texture2D" uid="uid://bw60gexefihw5" path="res://scr/assets/items/TomCoin.png" id="2_cmrc7"]
+[ext_resource type="AudioStream" uid="uid://cvb84u1w7eube" path="res://scr/assets/audio/enemies/enemy_tomcoin_pickup.wav" id="3_i0xs4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0xs4"]
 atlas = ExtResource("2_cmrc7")
@@ -31,3 +32,6 @@ sprite_frames = SubResource("SpriteFrames_i0xs4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2ds30")
+
+[node name="On_pickup_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i0xs4")
