@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://bp2oqjjc4rsyr"]
+
+[ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="1_2i0ig"]
+[ext_resource type="Script" uid="uid://u4afxsns2tqb" path="res://scr/scenes/NPCs/Act1/BurritoDealer/burrito_dealer.gd" id="1_fo7og"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo7og"]
+atlas = ExtResource("1_2i0ig")
+region = Rect2(144, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aeqi"]
+atlas = ExtResource("1_2i0ig")
+region = Rect2(192, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6cvi"]
+atlas = ExtResource("1_2i0ig")
+region = Rect2(192, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dve8f"]
+atlas = ExtResource("1_2i0ig")
+region = Rect2(240, 192, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qse64"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo7og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7aeqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6cvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dve8f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hr414"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kyopo"]
+radius = 47.169907
+
+[sub_resource type="LabelSettings" id="LabelSettings_dpirj"]
+font_size = 11
+
+[node name="BurritoDealer" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_fo7og")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qse64")
+frame_progress = 0.27088463
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_hr414")
+
+[node name="TalkingZone" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkingZone"]
+shape = SubResource("CircleShape2D_kyopo")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+offset_left = -39.0
+offset_top = -50.0
+offset_right = 38.0
+offset_bottom = -27.0
+text = "Press E to Talk"
+label_settings = SubResource("LabelSettings_dpirj")
+horizontal_alignment = 1
+
+[node name="CooldownTimer" type="Timer" parent="."]

@@ -5,7 +5,7 @@ extends CharacterBody2D
 # signal shoot(bullet_scene, direction, location) 
 
 @export var bullet_fart: PackedScene
-@export var bullet_cloat: PackedScene
+@export var bullet_clout: PackedScene
 @export var bullet_engage: PackedScene
 @export var speed: float = 300.0
 @export var max_health: float = 100.0
@@ -100,9 +100,11 @@ func _input(event: InputEvent) -> void:
 			_spawn_bullet(bullet_fart, fart_weapon_muzzle) # <-- CHANGED
 
 	if event.is_action_pressed("fire_secondary"):
-		if bullet_cloat and AmmoManager.use_ammo("bullet_clout"):
+
+		if bullet_clout and AmmoManager.use_ammo("bullet_clout"):
+			print("CLOUT FIRE")
 			clout_weapon_shoot.play()
-			_spawn_bullet(bullet_cloat, clout_weapon_muzzle) # <-- CHANGED 
+			_spawn_bullet(bullet_clout, clout_weapon_muzzle) # <-- CHANGED 
   
 #	if event.is_action_pressed("fire_tertiary"):
 #		if bullet_engage and AmmoManager.use_ammo("bullet_engage"):

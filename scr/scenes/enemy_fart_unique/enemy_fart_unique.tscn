@@ -1,77 +1,76 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyc1p0g37g4a5"]
+[gd_scene load_steps=31 format=3 uid="uid://ctc0xgdq3jocv"]
 
-[ext_resource type="Script" uid="uid://bbb17b2yj1t23" path="res://scr/scenes/enemy_fart/enemy_fart.gd" id="1_dnnsq"]
-[ext_resource type="PackedScene" uid="uid://cv78t42cuntyd" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.tscn" id="2_7ekxg"]
-[ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_ylcfb"]
-[ext_resource type="AudioStream" uid="uid://gp8bco3phtj5" path="res://scr/assets/audio/enemies/enemie_fart_death.wav" id="5_hxnro"]
-[ext_resource type="AudioStream" uid="uid://c0eo1p30xb2y0" path="res://scr/assets/audio/enemies/enemy_fart_hit.wav" id="5_lkoul"]
+[ext_resource type="Script" uid="uid://lxiguqq8fdkn" path="res://scr/scenes/enemy_fart_unique/enemy_fart_unique.gd" id="1_njhgx"]
+[ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="3_x2r0v"]
+[ext_resource type="AudioStream" uid="uid://gp8bco3phtj5" path="res://scr/assets/audio/enemies/enemie_fart_death.wav" id="4_aa6xc"]
+[ext_resource type="AudioStream" uid="uid://c0eo1p30xb2y0" path="res://scr/assets/audio/enemies/enemy_fart_hit.wav" id="5_xr3yi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2nkn"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2kpgk"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi2rf"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16w1a"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ekxg"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnnsq"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ylcfb"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxnro"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkoul"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(144, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ub1to"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpn5a"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(240, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0fip"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(144, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_koiw3"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6b1bc"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(240, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjwrf"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(144, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0sgt"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(192, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwx7t"]
-atlas = ExtResource("2_ylcfb")
+atlas = ExtResource("3_x2r0v")
 region = Rect2(240, 144, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hxnro"]
@@ -207,11 +206,13 @@ _data = {
 &"RESET": SubResource("Animation_7ekxg")
 }
 
-[node name="Enemy_fart" type="CharacterBody2D" groups=["overworld_enemies"]]
+[sub_resource type="LabelSettings" id="LabelSettings_3cw0o"]
+font_size = 12
+
+[node name="Enemy_fart_unique" type="CharacterBody2D" groups=["overworld_enemies"]]
 collision_layer = 528
 collision_mask = 3
-script = ExtResource("1_dnnsq")
-drop_scene = ExtResource("2_7ekxg")
+script = ExtResource("1_njhgx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hxnro")
@@ -236,10 +237,6 @@ visible = false
 self_modulate = Color(1, 0.5137255, 1, 0.78039217)
 shape = SubResource("CircleShape2D_dnnsq")
 
-[node name="PatrolTimer" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
-
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 528
 collision_mask = 0
@@ -255,16 +252,28 @@ libraries = {
 }
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_hxnro")
+stream = ExtResource("4_aa6xc")
 
 [node name="HitSoundPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_lkoul")
+stream = ExtResource("5_xr3yi")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
+[node name="NameTag" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="NameTag"]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -43.0
+offset_right = 51.0
+offset_bottom = -20.0
+text = "Default Name"
+label_settings = SubResource("LabelSettings_3cw0o")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

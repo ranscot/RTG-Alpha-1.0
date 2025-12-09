@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpaum6bqqfflk"]
+
+[ext_resource type="PackedScene" uid="uid://ctc0xgdq3jocv" path="res://scr/scenes/enemy_fart_unique/enemy_fart_unique.tscn" id="1_ft328"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ft328"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Enemy_fart_NuclearlandLord" instance=ExtResource("1_ft328")]
+
+[node name="Label" parent="NameTag" index="0"]
+text = "NuclearLand_Lord"
+
+[node name="Control" type="Control" parent="." index="9"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" index="0"]
+layout_mode = 0
+offset_left = -91.0
+offset_top = -181.0
+offset_right = 94.0
+offset_bottom = -57.0
+
+[node name="Label" type="Label" parent="Control" index="1"]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -159.0
+offset_right = 68.0
+offset_bottom = -79.0
+text = "Eat out of the
+trash
+TRASH BOY"
+label_settings = SubResource("LabelSettings_ft328")

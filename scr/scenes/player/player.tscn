@@ -174,16 +174,16 @@ bg_color = Color(0.465356, 0.674183, 0.201698, 1)
 radius = 50.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 1
 y_sort_enabled = true
 collision_layer = 34
 collision_mask = 21
 script = ExtResource("1_qdj1w")
 bullet_fart = ExtResource("2_j721o")
-bullet_cloat = ExtResource("3_j721o")
+bullet_clout = ExtResource("3_j721o")
 bullet_engage = ExtResource("4_guipa")
 
 [node name="WeaponPivot" type="Node2D" parent="."]
+position = Vector2(1, -24)
 
 [node name="Muzzle" type="Marker2D" parent="WeaponPivot"]
 
@@ -199,6 +199,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WeaponPivot/EngageCone"]
+visible = false
 polygon = PackedVector2Array(26, -1, 75, -22, 91, -21, 98, -14, 100, -2, 100, 1, 95, 12, 91, 18, 75, 20, 25, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="WeaponPivot/EngageCone"]
@@ -214,11 +215,12 @@ wait_time = 0.2
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -24)
 sprite_frames = SubResource("SpriteFrames_4uy5w")
 animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 19)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_j721o")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -232,10 +234,11 @@ script = ExtResource("7_lgkyv")
 script = ExtResource("8_j721o")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -25.0
-offset_top = -44.0
-offset_right = 25.0
-offset_bottom = -29.0
+z_index = 1
+offset_left = -24.0
+offset_top = -68.0
+offset_right = 26.0
+offset_bottom = -53.0
 theme_override_styles/background = SubResource("StyleBoxFlat_j721o")
 theme_override_styles/fill = SubResource("StyleBoxFlat_58ypy")
 value = 100.0
@@ -244,8 +247,10 @@ show_percentage = false
 [node name="timers" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -24)
 
 [node name="DamageArea" type="Area2D" parent="." groups=["player"]]
+position = Vector2(1, -24)
 collision_layer = 16
 collision_mask = 16
 
@@ -256,6 +261,7 @@ shape = SubResource("CircleShape2D_j721o")
 autostart = true
 
 [node name="Sounds" type="Node2D" parent="."]
+position = Vector2(1, -24)
 
 [node name="Fart_Weapon_Shoot" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("9_58ypy")

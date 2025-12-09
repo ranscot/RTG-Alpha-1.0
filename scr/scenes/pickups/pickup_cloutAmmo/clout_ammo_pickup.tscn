@@ -35,5 +35,6 @@ shape = SubResource("CircleShape2D_2ds30")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1h0sb")
+volume_db = -15.621
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
