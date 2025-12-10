@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8pegqt0isdt0"]
+
+[ext_resource type="Script" uid="uid://j7b5dk1t620g" path="res://scr/scenes/cutscenes/act1/burritodealer/burrito_cutscene.gd" id="1_jxd5k"]
+[ext_resource type="Texture2D" uid="uid://cucxxdt53rxi7" path="res://scr/assets/player/RetrogradeTom-portrait1.png" id="2_mabwc"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="3_gwoqq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jxd5k"]
+
+[node name="BurritoCutscene" type="CanvasLayer"]
+script = ExtResource("1_jxd5k")
+
+[node name="alphaBlend" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.12941177)
+offset_left = 67.0
+offset_top = 48.0
+offset_right = 1083.0
+offset_bottom = 609.0
+
+[node name="WhiteColorRect" type="ColorRect" parent="."]
+self_modulate = Color(0, 0, 0, 0.78431374)
+offset_left = 106.0
+offset_top = 74.0
+offset_right = 1033.0
+offset_bottom = 588.0
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerPortrait" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 139.0
+offset_top = 141.0
+offset_right = 589.0
+offset_bottom = 591.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_mabwc")
+
+[node name="DealerPortrait" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 705.0
+offset_top = 125.0
+offset_right = 1009.0
+offset_bottom = 516.0
+texture = ExtResource("3_gwoqq")
+
+[node name="PlayerLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 578.0
+offset_top = 169.0
+offset_right = 994.0
+offset_bottom = 509.0
+label_settings = SubResource("LabelSettings_jxd5k")
+
+[node name="DealerLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 164.0
+offset_top = 166.0
+offset_right = 620.0
+offset_bottom = 542.0
