@@ -1,35 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpaum6bqqfflk"]
+[gd_scene load_steps=4 format=3 uid="uid://cpaum6bqqfflk"]
 
 [ext_resource type="PackedScene" uid="uid://ctc0xgdq3jocv" path="res://scr/scenes/enemy_fart_unique/enemy_fart_unique.tscn" id="1_ft328"]
+[ext_resource type="Script" uid="uid://dca3en246jexq" path="res://scr/scenes/enemy_fart_unique/enemy_fart_nuclearland_lord.gd" id="2_w13vo"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ft328"]
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="CircleShape2D" id="CircleShape2D_w13vo"]
+radius = 82.0
 
 [node name="Enemy_fart_NuclearlandLord" instance=ExtResource("1_ft328")]
+script = ExtResource("2_w13vo")
+opening_cutscene = null
+closing_cutscene = null
+waiting_cutscene = null
 
 [node name="Label" parent="NameTag" index="0"]
+offset_left = -72.0
+offset_top = -54.0
+offset_right = 87.0
+offset_bottom = -28.0
 text = "NuclearLand_Lord"
 
-[node name="Control" type="Control" parent="." index="9"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="QuestDetection" type="Area2D" parent="." index="9"]
 
-[node name="ColorRect" type="ColorRect" parent="Control" index="0"]
-layout_mode = 0
-offset_left = -91.0
-offset_top = -181.0
-offset_right = 94.0
-offset_bottom = -57.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestDetection" index="0"]
+shape = SubResource("CircleShape2D_w13vo")
 
-[node name="Label" type="Label" parent="Control" index="1"]
-layout_mode = 0
-offset_left = -64.0
-offset_top = -159.0
-offset_right = 68.0
-offset_bottom = -79.0
-text = "Eat out of the
-trash
-TRASH BOY"
-label_settings = SubResource("LabelSettings_ft328")
+[connection signal="body_entered" from="QuestDetection" to="." method="_on_quest_detection_body_entered"]
+[connection signal="body_exited" from="QuestDetection" to="." method="_on_quest_detection_body_exited"]

@@ -25,7 +25,7 @@ script = ExtResource("1_pa67k")
 y_sort_enabled = true
 
 [node name="Player" parent="Tile_Level_Handler" instance=ExtResource("3_6hknt")]
-position = Vector2(449, 355)
+position = Vector2(328, 251)
 
 [node name="Story_enemies" type="Node2D" parent="Tile_Level_Handler"]
 y_sort_enabled = true

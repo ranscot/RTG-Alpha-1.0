@@ -17,7 +17,7 @@ var dialogue_lines = [
 	},
 	{
 		"speaker": "dealer",
-		"text": "For you! FOR YOU! World famous RetroGrade Tom?"
+		"text": "For you! [shake rate=20 level=10]FOR YOU![/shake] World famous RetroGrade Tom?"
 	},
 	{
 		"speaker": "dealer",
@@ -31,8 +31,8 @@ var can_advance = false # safety lock
 # 2. grab references to all of the UI elements
 @onready var player_portrait: TextureRect = $Panel/PlayerPortrait
 @onready var dealer_portrait: TextureRect = $Panel/DealerPortrait
-@onready var player_label: Label = $Panel/PlayerLabel
-@onready var dealer_label: Label = $Panel/DealerLabel
+@onready var dealer_label: RichTextLabel = $Panel/VBoxContainer/DealerLabel
+@onready var player_label: RichTextLabel = $Panel/VBoxContainer2/PlayerLabel
 
 func _ready() -> void:
 	print("A NEW CUTSCENE WAS BORN! Total: ", get_parent().get_child_count())

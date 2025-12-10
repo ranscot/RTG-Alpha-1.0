@@ -160,7 +160,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkoul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ub1to"]
-radius = 181.33394
+radius = 82.38932
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dnnsq"]
 radius = 83.240616
@@ -207,7 +207,8 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_3cw0o"]
-font_size = 12
+font_size = 18
+outline_size = 1
 
 [node name="Enemy_fart_unique" type="CharacterBody2D" groups=["overworld_enemies"]]
 collision_layer = 528
@@ -265,10 +266,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="NameTag"]
 layout_mode = 0
-offset_left = -47.0
-offset_top = -43.0
-offset_right = 51.0
-offset_bottom = -20.0
+offset_left = -60.0
+offset_top = -49.0
+offset_right = 61.0
+offset_bottom = -23.0
 text = "Default Name"
 label_settings = SubResource("LabelSettings_3cw0o")
 horizontal_alignment = 1

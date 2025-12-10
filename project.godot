@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 AmmoManager="*res://scr/scripts/singletons/AmmoManager.gd"
+QuestManager="*res://scr/scripts/singletons/QuestManager.gd"
 
 [display]
 
