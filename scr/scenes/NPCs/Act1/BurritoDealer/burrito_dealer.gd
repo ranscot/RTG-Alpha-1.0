@@ -1,102 +1,39 @@
 extends CharacterBody2D
 
-# --- Configuration ---
-@export var ammo_to_give: int = 10
-@export var cooldown_time: float = 5.0
-# define exactly which key in the AmmoManager dictonaru we are adding to 
-@export var ammo_type_key: String = "bullet_fart"
+# Signal to send to the Quest Manager or UI
+signal quest_requested
 
-# --- Cutscene Resource ---
-var cutscene_scene = preload("res://scr/scenes/cutscenes/act1/burritodealer/burrito_cutscene.tscn")
-
-# --- Start Variables 
-var player_in_range = null
-var can_give_burrito = true 
-var is_talking: bool = false # to prevent delta spam while talking
-
-# --- Node References ---
-@onready var label: Label = $Label
-@onready var cooldown_timer: Timer = $CooldownTimer
-@onready var talking_zone: Area2D = $TalkingZone
+var player_in_range: bool = false
 
 func _ready() -> void:
-	# connect signals for detection
-	$TalkingZone.body_entered.connect(_on_TalkingZone_body_entered)
-	$TalkingZone.body_exited.connect(_on_TalkingZone_body_exited)
-	
-	# 1. Setup cooldown timer
-	cooldown_timer.wait_time = cooldown_time
-	cooldown_timer.one_shot = true
-	cooldown_timer.timeout.connect(_on_cooldown_finished)
-		
-	if label:
-		label.visible = false 
-		
-		
-func _input(event: InputEvent) -> void:
-	# check if player pressed "interact" (Space/Enter or "E")
-	if event.is_action_pressed("interaction") and player_in_range and can_give_burrito and not is_talking:
-		start_conversation()
-		
-		
-func start_conversation():
-	print("Starting conversation")
-	is_talking = true
-	
-	if label:
-		label.visible = false
-		
-	# instantiate and add the cutscene
-	var cutscene_instance = cutscene_scene.instantiate()
-	get_tree().root.add_child(cutscene_instance)
-		
-	# listen for the cutscene is done
-	cutscene_instance.cutscene_finished.connect(_on_cutscene_ended)
-	
-	
-func _on_cutscene_ended():
-	print("Conversation is over. giving rewards")
-	is_talking = false
-	
-	give_burrito()	
-# -- Reward Logic ---
+	$Area2D.body_entered.connect(_on_area_2d_body_entered)
+	$Area2D.body_exited.connect(_on_area_2d_body_exited)
 
-func give_burrito():
-	print("Burrito BlaST GIVEN")
-	
-	# 1. -- Intregrate with the Ammo Manager
-	# Call the "add_ammo" function in Ammo Manager
-	AmmoManager.add_ammo(ammo_type_key, ammo_to_give)
-	
-	# 2. Start cooldown
-	can_give_burrito = false
-	cooldown_timer.start()
-	
-	# 3. Visual Feedback
-	if label:
-		label.text = "EATING AT BACO TELL "
-		label.visible = true
-		
-func _on_cooldown_finished():
-	can_give_burrito = true
-	if player_in_range and label:
-		label.text = "Press T for Burrito"
-		label.visible = true
-		
-		
-# --- Signal callbacks --- 
+func _unhandled_input(event: InputEvent) -> void:
+	if player_in_range and event.is_action_pressed("ui_accept"):
+		start_interaction()
 
-func _on_TalkingZone_body_entered(body: Node2D) -> void:
-	print("BODY WAS ENTERED FOR BURRITO BOY")
-	if body.is_in_group("player"):
-		player_in_range = body
-		if can_give_burrito and label:
-			label.text = "Press T for Burrito"
-			label.visible = true
+func start_interaction() -> void:
+	# 1. CASE: The Quest is Active (The "Happy Path")
+	# We need to check if the quest is actually running so we can perform the action
+	if QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.ACCEPTED:
+		print("Ah, you look starving! Here is that special burrito.")
+		# Add logic here to actually give the item or advance the quest
+		# e.g., QuestManager.advance_quest() 
+		
+	# 2. CASE: Quest hasn't started yet (Your code)
+	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.NOT_STARTED: 
+		print("I can't sell you this. You don't look hungry enough (Start the quest first).") 
+	
+	# 3. CASE: Quest is already finished (Your code)
+	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.BURRITO_EATEN: 
+		print("You already ate one! Do you want to explode?")
 
+# ... (Rest of the area enter/exit code stays the same)
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		player_in_range = true
 
-func _on_TalkingZone_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_range = null
-		if label:
-			label.visible = false
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		player_in_range = false
