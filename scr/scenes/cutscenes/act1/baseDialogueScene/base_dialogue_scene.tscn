@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://62y0m8rwf8qj"]
+
+[ext_resource type="Script" uid="uid://bsqvxy1ybpqq8" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.gd" id="1_cu5b7"]
+
+[node name="BaseDialogueScene" type="Node2D"]
+script = ExtResource("1_cu5b7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/PlayerGroup"]
+layout_mode = 2
+
+[node name="PlayerText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/PlayerGroup"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+
+[node name="NPCGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NPCText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/NPCGroup"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+
+[node name="NPCPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/NPCGroup"]
+layout_mode = 2

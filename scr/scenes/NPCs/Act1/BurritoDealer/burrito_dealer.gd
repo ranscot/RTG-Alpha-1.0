@@ -3,32 +3,87 @@ extends CharacterBody2D
 # Signal to send to the Quest Manager or UI
 signal quest_requested
 
+
+# --- EXPORT VARIABLES (The cutscenes depending on State)
+@export_group("Cutscenes")
+@export var cutscene_quest_accepted: PackedScene
+@export var cutscene_quest_not_started: PackedScene
+@export var cutscene_quest_already_eaten: PackedScene
+@export var cutscene_quest_completed: PackedScene
+
+# --- SET VARIABLES
 var player_in_range: bool = false
+var is_cutscene_playing: bool = false
+
+
+@onready var talking_zone: Area2D = $TalkingZone
+
 
 func _ready() -> void:
-	$Area2D.body_entered.connect(_on_area_2d_body_entered)
-	$Area2D.body_exited.connect(_on_area_2d_body_exited)
+	# Setting player entering and exiting the QuestionDetection Area
+	talking_zone.body_entered.connect(_on_area_2d_body_entered)
+	talking_zone.body_exited.connect(_on_area_2d_body_exited)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if player_in_range and event.is_action_pressed("ui_accept"):
+	if player_in_range and event.is_action_pressed("interaction") and not is_cutscene_playing:
 		start_interaction()
 
 func start_interaction() -> void:
-	# 1. CASE: The Quest is Active (The "Happy Path")
-	# We need to check if the quest is actually running so we can perform the action
-	if QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.ACCEPTED:
-		print("Ah, you look starving! Here is that special burrito.")
-		# Add logic here to actually give the item or advance the quest
-		# e.g., QuestManager.advance_quest() 
-		
-	# 2. CASE: Quest hasn't started yet (Your code)
-	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.NOT_STARTED: 
-		print("I can't sell you this. You don't look hungry enough (Start the quest first).") 
-	
-	# 3. CASE: Quest is already finished (Your code)
-	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.BURRITO_EATEN: 
-		print("You already ate one! Do you want to explode?")
+	# 1. NOT STARTED (You have this hooked up!)
+	if QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.NOT_STARTED: 
+		await play_scene_cutscene(cutscene_quest_not_started)
 
+	# 2. ACCEPTED (Needs to give item)
+	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.ACCEPTED:
+		await play_scene_cutscene(cutscene_quest_accepted)
+		# CRITICAL: After the cutscene, give the item!
+		print("Giving the burrito to the player...")
+		# Example: Inventory.add_item("Burrito")
+		# Example: QuestManager.burritoQuest_current_state = QuestManager.BurritoQuestState.BURRITO_RECEIVED
+
+	# 3. ALREADY EATEN (Funny dialogue)
+	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.BURRITO_EATEN: 
+		await play_scene_cutscene(cutscene_quest_already_eaten)
+
+	# 4. COMPLETED (The new state - maybe for "Thanks for eating at my shop")
+	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.COMPLETED:
+		await play_scene_cutscene(cutscene_quest_completed)
+
+# --- this plays the passed cutscene from Start Interaction
+func play_scene_cutscene(scene_to_play: PackedScene) -> void:
+	if scene_to_play == null:
+		print("Error: No cutscene assigned for this state - BurritoDealer")
+		return
+		
+	is_cutscene_playing = true
+	
+	# A. Lock the Player (Using the new variable)
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.is_cutscene_locked = true  # <--- CHANGED THIS
+	
+	# B. Spawn the Cutscene
+	var cutscene_instance = scene_to_play.instantiate()
+	get_tree().root.add_child(cutscene_instance)
+	
+	# C. Wait for the cutscene to finish
+	if cutscene_instance.has_signal("finished"):
+		await cutscene_instance.finished
+	else:
+		await get_tree().create_timer(2.0).timeout
+		
+	# D. Cleanup
+	if is_instance_valid(cutscene_instance):
+		cutscene_instance.queue_free()
+
+	await get_tree().create_timer(0.5).timeout
+
+	# E. Unlock Player
+	if player:
+		player.is_cutscene_locked = false # <--- CHANGED THIS
+		
+	is_cutscene_playing = false
+	
 # ... (Rest of the area enter/exit code stays the same)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

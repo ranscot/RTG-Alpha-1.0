@@ -19,6 +19,21 @@ var health: float
 # an array of enemies inside of the DamageArea
 var enemies_in_area: Array = []
 
+# locks the player input but no physics_process during Cut Scenes
+# When this variable changes, it automatically turns the State Machine ON or OFF.
+var is_cutscene_locked: bool = false:
+	set(value):
+		is_cutscene_locked = value
+		if state_machine:
+			if is_cutscene_locked:
+				# 1. Turn off the Brain (State Machine)
+				state_machine.process_mode = Node.PROCESS_MODE_DISABLED
+				# 2. Kill momentum immediately
+				velocity = Vector2.ZERO 
+			else:
+				# 3. Turn the Brain back on
+				state_machine.process_mode = Node.PROCESS_MODE_INHERIT
+
 # --- Node References ---
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar: ProgressBar = $ProgressBar
@@ -69,7 +84,12 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-
+	# locking movement if in cutscene
+	if is_cutscene_locked:
+		# Force the player to stop sliding if they were moving
+		# Optional: Force "Idle" animation here if you have an AnimationPlayer
+		# $AnimationPlayer.play("Idle")		
+		return # Stop reading code below this line
 
 	# 2. AIMING - ROTATE THE PIVOT
 	# This rotates the parent, carrying all muzzles around the player

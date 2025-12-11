@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy8sh5kyapndg"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_hpte1"]
+[ext_resource type="Script" uid="uid://dk5eomn8t34kt" path="res://scr/scenes/cutscenes/act1/burritodealer/burrito_quest_cutscene_not_started.gd" id="2_jori7"]
+[ext_resource type="Texture2D" uid="uid://cucxxdt53rxi7" path="res://scr/assets/player/RetrogradeTom-portrait1.png" id="3_lppg1"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="4_jec4u"]
+
+[node name="BurritoQuest_Cutscene_NotStarted" instance=ExtResource("1_hpte1")]
+script = ExtResource("2_jori7")
+player_neutral = ExtResource("3_lppg1")
+player_happy = ExtResource("3_lppg1")
+npc_neutral = ExtResource("4_jec4u")
+npc_angry = ExtResource("4_jec4u")
