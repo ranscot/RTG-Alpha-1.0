@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl404d1tsqo7e"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_ipg7n"]
+[ext_resource type="Script" uid="uid://chbsymeixh1s1" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/closing_cutscene.gd" id="2_qodfq"]
+
+[node name="Closing_Cutscene" instance=ExtResource("1_ipg7n")]
+script = ExtResource("2_qodfq")
+npc_face_image = null

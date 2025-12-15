@@ -20,12 +20,12 @@ func _ready() -> void:
 		},
 		{
 			"speaker": "npc",
-			"text": "Magic beyond your current understanding!",
+			"text": "[wave amp=50 freq=2]Magic[/wave] beyond your current understanding!",
 			"texture": npc_angry
 		},
 		{
 			"speaker": "player",
-			"text": "Cool, I am just gonna go.",
+			"text": "Cool, I am just gonna [color=red][shake rate=20 level=10]GO[/shake][/color].",
 			"texture": player_happy
 		}
 	]

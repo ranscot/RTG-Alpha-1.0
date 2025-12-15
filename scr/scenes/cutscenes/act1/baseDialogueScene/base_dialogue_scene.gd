@@ -9,13 +9,13 @@ signal finished
 const INPUT_ACTION = "interaction" 
 
 # --- UI NODES ---
-@onready var player_group = $CanvasLayer/DialogueControl/PlayerGroup
-@onready var player_portrait = $CanvasLayer/DialogueControl/PlayerGroup/PlayerPortrait
-@onready var player_label = $CanvasLayer/DialogueControl/PlayerGroup/PlayerText
+@onready var player_group = $CanvasLayer/DialogueControl/Panel/PlayerGroup
+@onready var player_portrait = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerPortrait
+@onready var player_label = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerText
 
-@onready var npc_group = $CanvasLayer/DialogueControl/NPCGroup
-@onready var npc_portrait = $CanvasLayer/DialogueControl/NPCGroup/NPCPortrait
-@onready var npc_label = $CanvasLayer/DialogueControl/NPCGroup/NPCText
+@onready var npc_group = $CanvasLayer/DialogueControl/Panel/NPCGroup
+@onready var npc_portrait = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCPortrait
+@onready var npc_label = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCText
 
 # --- STATE ---
 var dialogue_data: Array = []

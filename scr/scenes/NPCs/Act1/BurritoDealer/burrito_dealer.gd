@@ -40,7 +40,14 @@ func start_interaction() -> void:
 		print("Giving the burrito to the player...")
 		# Example: Inventory.add_item("Burrito")
 		# Example: QuestManager.burritoQuest_current_state = QuestManager.BurritoQuestState.BURRITO_RECEIVED
-
+		
+		# Update the manager state
+		QuestManager.eat_burrito() # Sets state to Burrito_Eatn
+		
+		# give ammo
+		AmmoManager.add_ammo("bullet_fart", 10)
+		
+		
 	# 3. ALREADY EATEN (Funny dialogue)
 	elif QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.BURRITO_EATEN: 
 		await play_scene_cutscene(cutscene_quest_already_eaten)

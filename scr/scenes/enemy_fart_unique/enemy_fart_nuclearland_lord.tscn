@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpaum6bqqfflk"]
+[gd_scene load_steps=7 format=3 uid="uid://cpaum6bqqfflk"]
 
 [ext_resource type="PackedScene" uid="uid://ctc0xgdq3jocv" path="res://scr/scenes/enemy_fart_unique/enemy_fart_unique.tscn" id="1_ft328"]
 [ext_resource type="Script" uid="uid://dca3en246jexq" path="res://scr/scenes/enemy_fart_unique/enemy_fart_nuclearland_lord.gd" id="2_w13vo"]
+[ext_resource type="PackedScene" uid="uid://do42i6eqywn70" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/quest_offer_cutscene.tscn" id="3_r2fnj"]
+[ext_resource type="PackedScene" uid="uid://dvs4qb0kp872b" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/waiting_cutscene.tscn" id="4_oialn"]
+[ext_resource type="PackedScene" uid="uid://cl404d1tsqo7e" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/closing_cutscene.tscn" id="5_vmvhx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w13vo"]
 radius = 82.0
 
 [node name="Enemy_fart_NuclearlandLord" instance=ExtResource("1_ft328")]
 script = ExtResource("2_w13vo")
-opening_cutscene = null
-closing_cutscene = null
-waiting_cutscene = null
+opening_cutscene = ExtResource("3_r2fnj")
+waiting_cutscene = ExtResource("4_oialn")
+closing_cutscene = ExtResource("5_vmvhx")
 
 [node name="Label" parent="NameTag" index="0"]
 offset_left = -72.0

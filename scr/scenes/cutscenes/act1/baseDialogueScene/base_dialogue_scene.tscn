@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://62y0m8rwf8qj"]
+[gd_scene load_steps=7 format=3 uid="uid://62y0m8rwf8qj"]
 
 [ext_resource type="Script" uid="uid://bsqvxy1ybpqq8" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.gd" id="1_cu5b7"]
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="2_cw27t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cw27t"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0, 0, 0, 0.12941177)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogqlu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cw27t"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogqlu"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 
 [node name="BaseDialogueScene" type="Node2D"]
 script = ExtResource("1_cu5b7")
@@ -9,36 +39,58 @@ script = ExtResource("1_cu5b7")
 
 [node name="DialogueControl" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PlayerGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl"]
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/DialogueControl"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cw27t")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/DialogueControl/Panel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogqlu")
+
+[node name="PlayerGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl/Panel"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/PlayerGroup"]
 layout_mode = 2
 
-[node name="PlayerText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/PlayerGroup"]
+[node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup"]
+layout_mode = 2
+
+[node name="PlayerText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_cw27t")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cw27t")
 bbcode_enabled = true
 
-[node name="NPCGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl"]
+[node name="NPCGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl/Panel"]
 visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 
-[node name="NPCText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/NPCGroup"]
+[node name="NPCText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("2_cw27t")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ogqlu")
 bbcode_enabled = true
 
-[node name="NPCPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/NPCGroup"]
+[node name="NPCPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
 layout_mode = 2

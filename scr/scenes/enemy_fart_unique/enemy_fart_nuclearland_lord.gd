@@ -10,10 +10,18 @@ var player_in_range: bool = false
 var active_cutscene_instance = null
 
 func _process(_delta) -> void:
+	# --- DEBUG START ---
+	if Input.is_action_just_pressed("interaction"):
+		print("DEBUG: 'T' Key Detected.")
+		print("DEBUG: Is Player in Range? ", player_in_range)
+		print("DEBUG: Is Cutscene null? ", active_cutscene_instance == null)
+	# --- DEBUG END ---
+	
 	# --- 1. HANDLE INTERACTION (Press T) ---
 	# We only start a dialogue if the player is close, no cutscene is open, and they press Interact
 	if player_in_range and active_cutscene_instance == null and Input.is_action_just_pressed("interaction"):
 		
+		print("Quest moving forwards")
 		# Scenario A: Quest hasn't started yet
 		if QuestManager.burritoQuest_current_state == QuestManager.BurritoQuestState.NOT_STARTED:
 			start_cutscene()
@@ -37,11 +45,31 @@ func _process(_delta) -> void:
 func start_cutscene():
 	active_cutscene_instance = opening_cutscene.instantiate()
 	get_tree().root.add_child(active_cutscene_instance)
-
+	
+	# Wait for the dialogue to finish
+	if active_cutscene_instance.has_signal("finished"):
+		await active_cutscene_instance.finished
+	
+	# Start the Quest
+	QuestManager.accept_burritoQuest()
+	
+	# Clear up tak again later 
+	if is_instance_valid(active_cutscene_instance):
+		active_cutscene_instance.queue_free()
+	active_cutscene_instance = null
+	
 func start_awaiting_cutscene():
 	# Fixed: Now instantiates the 'waiting' scene, not opening
 	active_cutscene_instance = waiting_cutscene.instantiate()
 	get_tree().root.add_child(active_cutscene_instance)
+
+	# Add clean up or the NPC will break after one talk
+	if active_cutscene_instance.has_signal("finished"):
+		await active_cutscene_instance.finished
+		
+	if is_instance_valid(active_cutscene_instance):
+		active_cutscene_instance.queue_free()
+	active_cutscene_instance = null
 
 func start_closing_cutscene():
 	# Fixed: Now instantiates the 'closing' scene (which should say "Press F")
@@ -54,7 +82,8 @@ func trigger_fart_ending():
 	# 1. Close the UI
 	if active_cutscene_instance:
 		active_cutscene_instance.queue_free()
-		active_cutscene_instance = null
+	active_cutscene_instance = null
+		
 		
 	# 2. Update Quest State
 	QuestManager.burritoQuest_current_state = QuestManager.BurritoQuestState.COMPLETED
@@ -66,11 +95,11 @@ func trigger_fart_ending():
 # --- SIGNAL CONNECTIONS ---
 
 func _on_quest_detection_body_entered(body: Node2D) -> void:
-	if body.name == "Player": # Ensure this matches your Player node name
+	if body.is_in_group("player"): # Ensure this matches your Player node name
 		player_in_range = true
 
 func _on_quest_detection_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.is_in_group("player"):
 		player_in_range = false
 		# Optional: Close cutscene if player walks away
 		if active_cutscene_instance != null:
