@@ -1,51 +1,41 @@
 extends BaseDialogueCutscene
 
-# Signal to tell QuestGiver what the Player has choosen
-signal choice_made(was_accepted)
 
-@onready var button_container: HBoxContainer = $CanvasLayer/DialogueControl/Panel/ButtonContainer
-@onready var yes_button: Button = $CanvasLayer/DialogueControl/Panel/ButtonContainer/YesButton
-@onready var no_button: Button = $CanvasLayer/DialogueControl/Panel/ButtonContainer/NoButton
+# 1 EXPORT VARIABLES - Create one for each new player/npc image
+@export_group("Player Portraits")
+@export var player_neutral: Texture2D
+
+@export_group("NPC Portraits")
+@export var npc_face_image: Texture2D
 
 func _ready() -> void:
 		# Define the dialogue 
 	dialogue_data = [
 		{
 			"speaker": "npc",
-			"text": "I need a joke that can choke. I need eye watering clout.",
-			"texture": npc_portrait
+			"text": "WOW! THE RetrogradeTom! What is going on!",
+			"texture": npc_face_image
+		},
+		{
+			"speaker": "player",
+			"text": "On my way to the cheese cake factory, I think I am finally famous enough to get a table.",
+			"texture": player_neutral
 		},
 		{
 			"speaker": "npc",
-			"text": "I need a joke that can choke. I need eye watering clout.",
-			"texture": npc_portrait
+			"text": "Cool! I wish I could visit such a valhalla.",
+			"texture": npc_face_image
+		},		
+		{
+			"speaker": "player",
+			"text": "Mind if I get by here?",
+			"texture": player_neutral
+		},
+		{
+			"speaker": "npc",
+			"text": "Actually, yes I do mind. I want to match the mind of the greatest PuzzWizz of all time, basically Mensa. I will not let you pass unless you do as well.",
+			"texture": npc_face_image
 		}
 	]
 	
-		# connect tbusston
-	yes_button.pressed.connect(_on_yes_pressed)
-	no_button.pressed.connect(_on_no_pressed)
-	button_container.hide()
-	
-	super._ready() # run bas setup
-	
-func _process(_delta: float) -> void:
-	# D. CHECK FOR END OF DIALOGUE
-	# We use 'current_line_index' because that is what your Base Class uses.
-	if current_line_index == dialogue_data.size() - 1:
-		
-		# Only run this once when we hit the last page
-		if not button_container.visible:
-			button_container.show()
-			
-			# CRITICAL: Stop the "T" key from working so they MUST click a button
-			set_process_unhandled_input(false)
-		
-
-func _on_yes_pressed():
-	emit_signal("choise_made", true)
-	queue_free()
-	
-func _on_no_pressed():
-	emit_signal("choice_made", false)
-	queue_free()
+	super._ready() # run base setup

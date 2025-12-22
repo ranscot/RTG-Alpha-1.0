@@ -10,12 +10,6 @@ var player_in_range: bool = false
 var active_cutscene_instance = null
 
 func _process(_delta) -> void:
-	# --- DEBUG START ---
-	if Input.is_action_just_pressed("interaction"):
-		print("DEBUG: 'T' Key Detected.")
-		print("DEBUG: Is Player in Range? ", player_in_range)
-		print("DEBUG: Is Cutscene null? ", active_cutscene_instance == null)
-	# --- DEBUG END ---
 	
 	# --- 1. HANDLE INTERACTION (Press T) ---
 	# We only start a dialogue if the player is close, no cutscene is open, and they press Interact
@@ -46,33 +40,35 @@ func start_cutscene():
 	active_cutscene_instance = opening_cutscene.instantiate()
 	get_tree().root.add_child(active_cutscene_instance)
 	
-	# Wait for the dialogue to finish
+#  We now wait for the standard 'finished' signal
 	if active_cutscene_instance.has_signal("finished"):
 		await active_cutscene_instance.finished
 	
-	# Start the Quest
+	# AUTOMATIC ACCEPTANCE
+	# Since there is no "No" button, we assume if they finished reading, they accepted.
+	print("Dialogue finished - Quest Started")
 	QuestManager.accept_burritoQuest()
 	
-	# Clear up tak again later 
+	# Cleanup
 	if is_instance_valid(active_cutscene_instance):
 		active_cutscene_instance.queue_free()
 	active_cutscene_instance = null
 	
 func start_awaiting_cutscene():
-	# Fixed: Now instantiates the 'waiting' scene, not opening
 	active_cutscene_instance = waiting_cutscene.instantiate()
 	get_tree().root.add_child(active_cutscene_instance)
 
-	# Add clean up or the NPC will break after one talk
+	# This uses the standard "finished" signal from BaseDialogueCutscene
 	if active_cutscene_instance.has_signal("finished"):
 		await active_cutscene_instance.finished
 		
+	# --- FIX: TYPO CORRECTED HERE ---
 	if is_instance_valid(active_cutscene_instance):
 		active_cutscene_instance.queue_free()
 	active_cutscene_instance = null
 
 func start_closing_cutscene():
-	# Fixed: Now instantiates the 'closing' scene (which should say "Press F")
+# We don't await this one, because we are waiting for the 'F' key event
 	active_cutscene_instance = closing_cutscene.instantiate()
 	get_tree().root.add_child(active_cutscene_instance)
 

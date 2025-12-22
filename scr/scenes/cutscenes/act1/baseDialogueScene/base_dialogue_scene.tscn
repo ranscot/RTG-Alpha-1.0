@@ -93,4 +93,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ogqlu")
 bbcode_enabled = true
 
 [node name="NPCPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2

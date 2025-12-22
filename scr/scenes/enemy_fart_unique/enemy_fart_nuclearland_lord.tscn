@@ -23,6 +23,8 @@ offset_bottom = -28.0
 text = "NuclearLand_Lord"
 
 [node name="QuestDetection" type="Area2D" parent="." index="9"]
+collision_layer = 8193
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="QuestDetection" index="0"]
 shape = SubResource("CircleShape2D_w13vo")
