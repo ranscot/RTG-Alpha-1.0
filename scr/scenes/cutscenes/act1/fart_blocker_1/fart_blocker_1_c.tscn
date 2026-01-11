@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://6e8nqddinc2v"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_h4c72"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_ujuri"]
+[ext_resource type="Texture2D" uid="uid://b2isvissdncu0" path="res://scr/assets/pictures/SF_Actor1_6.png" id="3_pmad4"]
+
+[sub_resource type="Resource" id="Resource_5l24s"]
+script = ExtResource("2_ujuri")
+text = "May the clout of my essence help you achieve your goal of sitting at the bar, nah, NAH like the horse I am..."
+portrait = ExtResource("3_pmad4")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_4p5gf"]
+script = ExtResource("2_ujuri")
+text = "You will sit at a table, A TABLE! a the legendary Cheese Cake factory. 
+
+Seek the ones who will help your control the clout you are about recieve. "
+portrait = ExtResource("3_pmad4")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Fart Blocker 1 C" instance=ExtResource("1_h4c72")]
+dialogue_timeline = Array[ExtResource("2_ujuri")]([SubResource("Resource_5l24s"), SubResource("Resource_4p5gf")])

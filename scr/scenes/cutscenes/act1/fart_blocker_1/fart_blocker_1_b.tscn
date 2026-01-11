@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2blwedq5ud4l"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_uttk2"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_fv8oq"]
+[ext_resource type="Texture2D" uid="uid://b2isvissdncu0" path="res://scr/assets/pictures/SF_Actor1_6.png" id="3_cr118"]
+
+[sub_resource type="Resource" id="Resource_xb1d3"]
+script = ExtResource("2_fv8oq")
+text = "I could taste that one, eye watering clout."
+portrait = ExtResource("3_cr118")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Fart Blocker 1 B" instance=ExtResource("1_uttk2")]
+dialogue_timeline = Array[ExtResource("2_fv8oq")]([SubResource("Resource_xb1d3")])

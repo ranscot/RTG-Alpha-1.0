@@ -15,7 +15,7 @@ func _ready() -> void:
 	dialogue_data = [
 		{
 			"speaker": "player",
-			"text": "That burrito was incredible!",
+			"text": "That burrito was incredible! Keeping gassy and classy.",
 			"texture": player_happy  # <--- Using the exported variable
 		},
 		{
@@ -23,14 +23,14 @@ func _ready() -> void:
 			"text": "The Baco Tell Burrito Experience will keep your adoring public at bay.",
 			"texture": npc_angry
 		},
-		{
+				{
 			"speaker": "player",
-			"text": "What do I do now?",
+			"text": "Thanks, I have mastered the art of Fartillery. They will be in for a gasly time!",
 			"texture": player_happy
 		},
 		{
 			"speaker": "npc",
-			"text": "Show the one who sent you you no longer chop by hand.",
+			"text": "Then go to the one who sent you here, whp said that you no longer chop by hand.",
 			"texture": npc_angry
 		}
 	]

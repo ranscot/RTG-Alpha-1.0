@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmce01temtfuw"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_gpu8l"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_bb7od"]
+[ext_resource type="Texture2D" uid="uid://u2i1p3k3fuax" path="res://scr/assets/npcs/burrito_quest_giver.png" id="3_4ah7i"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="4_hiyvp"]
+[ext_resource type="Texture2D" uid="uid://vdi1dhdsl1u0" path="res://scr/assets/Tom_Effects/fart_npc.png" id="5_gpu8l"]
+
+[sub_resource type="Resource" id="Resource_km2cu"]
+script = ExtResource("2_bb7od")
+text = "Using a burrito power would be flatus-tically funny."
+portrait = ExtResource("3_4ah7i")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_oeu4m"]
+script = ExtResource("2_bb7od")
+text = "It would rip my heart out if you have already ripped one."
+portrait = ExtResource("3_4ah7i")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_r7et0"]
+script = ExtResource("2_bb7od")
+speaker = "player"
+text = "\"I was gonna let Joe do a shout out later, but I decided to let this grind."
+portrait = ExtResource("4_hiyvp")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_5ymlp"]
+script = ExtResource("2_bb7od")
+text = "I feel like I was kust gaslighted, butt seriously Wind-erful performance"
+portrait = ExtResource("3_4ah7i")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_opa2s"]
+script = ExtResource("2_bb7od")
+text = "Thy shall pass for thy has passed. Fly you fool. You must have your Night at the Cheesecake Factory!"
+portrait = ExtResource("3_4ah7i")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_2xw11"]
+script = ExtResource("2_bb7od")
+text = "(Press 'Space' to unleash a Fart Attack)"
+portrait = ExtResource("5_gpu8l")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Cutscene_Burrito_Closing" instance=ExtResource("1_gpu8l")]
+dialogue_timeline = Array[ExtResource("2_bb7od")]([SubResource("Resource_km2cu"), SubResource("Resource_oeu4m"), SubResource("Resource_r7et0"), SubResource("Resource_5ymlp"), SubResource("Resource_opa2s"), SubResource("Resource_2xw11")])

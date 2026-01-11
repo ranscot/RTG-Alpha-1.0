@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://u53tmldqwr6u"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_p26dp"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_cl78y"]
+[ext_resource type="Texture2D" uid="uid://cahwnpxaqugr2" path="res://scr/assets/player/retrogradetom-twitch1.png" id="3_m8uwi"]
+[ext_resource type="Texture2D" uid="uid://u2i1p3k3fuax" path="res://scr/assets/npcs/burrito_quest_giver.png" id="4_pl23v"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="5_gh7fg"]
+
+[sub_resource type="Resource" id="Resource_oe6uq"]
+script = ExtResource("2_cl78y")
+speaker = "player"
+text = "I have no idea what to do. Maybe the Hint Store has a walkthrough service? Like a Drive thru but for real gamers?	"
+portrait = ExtResource("3_m8uwi")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_me7s8"]
+script = ExtResource("2_cl78y")
+text = "Have you seen the Burrito Dealer yet?"
+portrait = ExtResource("4_pl23v")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_3dh00"]
+script = ExtResource("2_cl78y")
+text = "I was guided to the post, and it said, \"I am so hungry I may PASS out!\" 
+Imagine that, eating, and PASSING... "
+portrait = ExtResource("4_pl23v")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_mye13"]
+script = ExtResource("2_cl78y")
+speaker = "player"
+text = "..."
+portrait = ExtResource("5_gh7fg")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_86igh"]
+script = ExtResource("2_cl78y")
+text = "..."
+portrait = ExtResource("4_pl23v")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Cutscene_Burrito_Waiting" instance=ExtResource("1_p26dp")]
+dialogue_timeline = Array[ExtResource("2_cl78y")]([SubResource("Resource_oe6uq"), SubResource("Resource_me7s8"), SubResource("Resource_3dh00"), SubResource("Resource_mye13"), SubResource("Resource_86igh")])

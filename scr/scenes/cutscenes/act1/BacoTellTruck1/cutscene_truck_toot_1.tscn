@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx5gj1p5o6hfy"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_kwi0r"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_kdxwx"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="3_hc2xm"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="4_y4wfo"]
+
+[sub_resource type="Resource" id="Resource_hc2xm"]
+script = ExtResource("2_kdxwx")
+text = "It's our newest influencer mega star, Retrograde Tom!"
+portrait = ExtResource("3_hc2xm")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_y4wfo"]
+script = ExtResource("2_kdxwx")
+speaker = "player"
+text = "The one and only Puzz to Wizz all day baby!"
+portrait = ExtResource("4_y4wfo")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_mk06n"]
+script = ExtResource("2_kdxwx")
+text = "Here is your complimentary BurritoBlast Experience. Insert clever chat fart reference. "
+portrait = ExtResource("3_hc2xm")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Cutscene_Truck_Toot1" instance=ExtResource("1_kwi0r")]
+dialogue_timeline = Array[ExtResource("2_kdxwx")]([SubResource("Resource_hc2xm"), SubResource("Resource_y4wfo"), SubResource("Resource_mk06n")])

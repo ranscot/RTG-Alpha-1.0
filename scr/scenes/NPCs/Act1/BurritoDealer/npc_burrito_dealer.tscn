@@ -1,0 +1,64 @@
+[gd_scene load_steps=14 format=3 uid="uid://c28ermyvl6gq"]
+
+[ext_resource type="PackedScene" uid="uid://bay1km57cl2hb" path="res://scr/scenes/NPCs/QuestGiver_Template/quest_giver_template.tscn" id="1_fsug0"]
+[ext_resource type="Script" uid="uid://hp07qokey4xl" path="res://scr/scenes/NPCs/Act1/BurritoDealer/npc_burrito_dealer.gd" id="2_wwn1p"]
+[ext_resource type="PackedScene" uid="uid://dtmf4twmtjbgg" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_accepted.tscn" id="3_wwn1p"]
+[ext_resource type="PackedScene" uid="uid://cfwas85vr3tad" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_not_accepted.tscn" id="4_pslay"]
+[ext_resource type="PackedScene" uid="uid://c4q7n0u33vxrf" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_already_eaten.tscn" id="5_raaua"]
+[ext_resource type="PackedScene" uid="uid://j1j2cait527l" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_completed.tscn" id="6_fefjw"]
+[ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="7_wwn1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pslay"]
+atlas = ExtResource("7_wwn1p")
+region = Rect2(192, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raaua"]
+atlas = ExtResource("7_wwn1p")
+region = Rect2(240, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fefjw"]
+atlas = ExtResource("7_wwn1p")
+region = Rect2(144, 192, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ku4ne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pslay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raaua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fefjw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.25
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwn1p"]
+radius = 14.0
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pslay"]
+radius = 55.0
+
+[node name="NPC_BurritoDealer" instance=ExtResource("1_fsug0")]
+script = ExtResource("2_wwn1p")
+scene_not_started = ExtResource("4_pslay")
+scene_accepted = ExtResource("3_wwn1p")
+scene_already_eaten = ExtResource("5_raaua")
+scene_completed = ExtResource("6_fefjw")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ku4ne")
+frame_progress = 0.5696267
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_wwn1p")
+
+[node name="CollisionShape2D" parent="QuestDetection" index="0"]
+shape = SubResource("CircleShape2D_pslay")
+debug_color = Color(0.868936, 0.26254657, 0.5994284, 0.41960785)

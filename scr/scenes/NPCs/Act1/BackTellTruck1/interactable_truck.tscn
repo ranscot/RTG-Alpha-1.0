@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://6iab5i8oflgf"]
+
+[ext_resource type="PackedScene" uid="uid://bay1km57cl2hb" path="res://scr/scenes/NPCs/QuestGiver_Template/quest_giver_template.tscn" id="1_5bcl2"]
+[ext_resource type="Script" uid="uid://b4jspuntljsrg" path="res://scr/scenes/NPCs/Act1/BackTellTruck1/interactable_truck.gd" id="2_i4il8"]
+[ext_resource type="PackedScene" uid="uid://cx5gj1p5o6hfy" path="res://scr/scenes/cutscenes/act1/BacoTellTruck1/cutscene_truck_toot_1.tscn" id="3_rb7ya"]
+[ext_resource type="PackedScene" uid="uid://bm32nfghwcjqc" path="res://scr/scenes/cutscenes/act1/BacoTellTruck1/cutscene_truck_toot_2.tscn" id="4_s2xf6"]
+[ext_resource type="PackedScene" uid="uid://qvata012issu" path="res://scr/scenes/cutscenes/act1/BacoTellTruck1/cutscene_truck_toot_3.tscn" id="5_gxujw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2xf6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gxujw"]
+radius = 37.48333
+
+[node name="Interactable_Truck" instance=ExtResource("1_5bcl2")]
+script = ExtResource("2_i4il8")
+scene_first_toot = ExtResource("3_rb7ya")
+scene_second_toot = ExtResource("4_s2xf6")
+scene_final_toot = ExtResource("5_gxujw")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_s2xf6")
+
+[node name="CollisionShape2D" parent="QuestDetection" index="0"]
+shape = SubResource("CircleShape2D_gxujw")
+debug_color = Color(0.812612, 0.34268203, 0.58804536, 0.41960785)

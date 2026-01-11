@@ -1,0 +1,44 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtmf4twmtjbgg"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_p3nc3"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_byymj"]
+[ext_resource type="Texture2D" uid="uid://cucxxdt53rxi7" path="res://scr/assets/player/RetrogradeTom-portrait1.png" id="3_bgomo"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="4_thss0"]
+[ext_resource type="Texture2D" uid="uid://caadiciqle5d8" path="res://scr/assets/npcs/spider_ona_couch.jpeg" id="5_lcext"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="6_5vgqp"]
+
+[sub_resource type="Resource" id="Resource_y0q73"]
+script = ExtResource("2_byymj")
+speaker = "player"
+text = "Can I buy a burrito please?"
+portrait = ExtResource("3_bgomo")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_0t572"]
+script = ExtResource("2_byymj")
+text = "With great power, comes greater responsibility. Just ask Spiderman on a couch."
+portrait = ExtResource("4_thss0")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_48var"]
+script = ExtResource("2_byymj")
+text = "Toot Toot! Coming through! Eat the burrito, drop a mixtape out your backside."
+portrait = ExtResource("5_lcext")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_bgomo"]
+script = ExtResource("2_byymj")
+text = "Nothing like dustcropping the haters.
+			Or the ones who you love the most. Spiderman out!"
+portrait = ExtResource("5_lcext")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_thss0"]
+script = ExtResource("2_byymj")
+speaker = "player"
+text = "Thanks, I'm kind a gas-hole now."
+portrait = ExtResource("6_5vgqp")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="cutscene_burritoDealer_accepted" instance=ExtResource("1_p3nc3")]
+dialogue_timeline = Array[ExtResource("2_byymj")]([SubResource("Resource_y0q73"), SubResource("Resource_0t572"), SubResource("Resource_48var"), SubResource("Resource_bgomo"), SubResource("Resource_thss0")])

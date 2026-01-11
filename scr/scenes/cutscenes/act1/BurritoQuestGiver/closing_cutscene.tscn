@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl404d1tsqo7e"]
+[gd_scene load_steps=5 format=3 uid="uid://cl404d1tsqo7e"]
 
 [ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_ipg7n"]
 [ext_resource type="Script" uid="uid://chbsymeixh1s1" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/closing_cutscene.gd" id="2_qodfq"]
+[ext_resource type="Texture2D" uid="uid://u2i1p3k3fuax" path="res://scr/assets/npcs/burrito_quest_giver.png" id="3_hf125"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="4_tb7iv"]
 
 [node name="Closing_Cutscene" instance=ExtResource("1_ipg7n")]
 script = ExtResource("2_qodfq")
-npc_face_image = null
+npc_face_image = ExtResource("3_hf125")
+player_neutral = ExtResource("4_tb7iv")

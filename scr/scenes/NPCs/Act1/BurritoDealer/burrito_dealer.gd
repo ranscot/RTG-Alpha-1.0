@@ -19,11 +19,6 @@ var is_cutscene_playing: bool = false
 @onready var talking_zone: Area2D = $TalkingZone
 
 
-func _ready() -> void:
-	# Setting player entering and exiting the QuestionDetection Area
-	talking_zone.body_entered.connect(_on_area_2d_body_entered)
-	talking_zone.body_exited.connect(_on_area_2d_body_exited)
-
 func _unhandled_input(event: InputEvent) -> void:
 	if player_in_range and event.is_action_pressed("interaction") and not is_cutscene_playing:
 		start_interaction()
@@ -91,11 +86,3 @@ func play_scene_cutscene(scene_to_play: PackedScene) -> void:
 		
 	is_cutscene_playing = false
 	
-# ... (Rest of the area enter/exit code stays the same)
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		player_in_range = true
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
-		player_in_range = false

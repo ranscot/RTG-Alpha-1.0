@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bay1km57cl2hb"]
+
+[ext_resource type="Script" uid="uid://bcvpavaw0ljk1" path="res://scr/scripts/BaseQuestGiver.gd" id="1_hwp8l"]
+
+[node name="QuestGiver_Template" type="CharacterBody2D"]
+collision_layer = 5
+script = ExtResource("1_hwp8l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="QuestDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestDetection"]
+
+[connection signal="body_entered" from="QuestDetection" to="." method="_on_quest_detection_body_entered"]
+[connection signal="body_exited" from="QuestDetection" to="." method="_on_quest_detection_body_exited"]

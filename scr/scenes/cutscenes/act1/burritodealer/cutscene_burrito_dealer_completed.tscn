@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://j1j2cait527l"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_v1why"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_4ufy4"]
+[ext_resource type="Texture2D" uid="uid://cahwnpxaqugr2" path="res://scr/assets/player/retrogradetom-twitch1.png" id="3_mcvac"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="4_xp0ng"]
+[ext_resource type="Texture2D" uid="uid://cucxxdt53rxi7" path="res://scr/assets/player/RetrogradeTom-portrait1.png" id="5_6ax5j"]
+
+[sub_resource type="Resource" id="Resource_jhb8m"]
+script = ExtResource("2_4ufy4")
+speaker = "player"
+text = "Let's clear the air, that was me!"
+portrait = ExtResource("3_mcvac")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_q88va"]
+script = ExtResource("2_4ufy4")
+text = "That is why the world loves you. Witty, windy and wildy unfiltered. Just like the last time I ate at Baco Tell."
+portrait = ExtResource("4_xp0ng")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_rlq5l"]
+script = ExtResource("2_4ufy4")
+speaker = "player"
+text = "What do you call a dinosaur fart? A blast from the past!"
+portrait = ExtResource("5_6ax5j")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_cd78p"]
+script = ExtResource("2_4ufy4")
+text = "You should take this cheeky performance on the road."
+portrait = ExtResource("4_xp0ng")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="cutscene_BurritoDealer_completed" instance=ExtResource("1_v1why")]
+dialogue_timeline = Array[ExtResource("2_4ufy4")]([SubResource("Resource_jhb8m"), SubResource("Resource_q88va"), SubResource("Resource_rlq5l"), SubResource("Resource_cd78p")])

@@ -18,7 +18,9 @@ const INPUT_ACTION = "interaction"
 @onready var npc_label = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCText
 
 # --- STATE ---
-var dialogue_data: Array = []
+#--- Replaced old Arry variable with an Export Resource Array 
+@export var dialogue_timeline: Array[DialogueItem]
+
 var current_line_index: int = -1
 
 func _ready() -> void:
@@ -26,18 +28,17 @@ func _ready() -> void:
 	player_group.visible = false
 	npc_group.visible = false
 	
-	# If the child script defined dialogue in _ready, start it now.
-	# Use call_deferred to ensure the child's _ready runs first.
-	call_deferred("start_dialogue")
-
+	# --- we dont need call_defferred because the data is loaded in Inspector 
+	start_dialogue()
+	
 func _unhandled_input(event: InputEvent) -> void:
 	# Check for "T" press
 	if event.is_action_pressed(INPUT_ACTION):
 		advance_dialogue()
 
 func start_dialogue() -> void:
-	if dialogue_data.is_empty():
-		print("Warning: Dialogue Array is empty. Ending immediately.")
+	if dialogue_timeline.is_empty():
+		print("Warning: Dialogue Timeline in Inspector is empty. Ending immediately.")
 		end_cutscene()
 		return
 		
@@ -47,18 +48,19 @@ func advance_dialogue() -> void:
 	current_line_index += 1
 	
 	# CHECK: Have we reached the end?
-	if current_line_index >= dialogue_data.size():
+	if current_line_index >= dialogue_timeline.size():
 		end_cutscene()
 		return
 	
 	# GET DATA: Current line
-	var line_data = dialogue_data[current_line_index]
+	var line_data = dialogue_timeline[current_line_index]
 	display_line(line_data)
 
-func display_line(data: Dictionary) -> void:
-	var speaker = data.get("speaker", "npc") # Default to npc if missing
-	var text = data.get("text", "...")
-	var texture = data.get("texture", null) # Optional: pass a loaded texture resource
+func display_line(item: DialogueItem) -> void:
+	# --- Read the properties from Form in Inspector	
+	var speaker = item.speaker
+	var text = item.text
+	var texture = item.portrait
 	
 	# 1. Reset Visibility
 	player_group.visible = false

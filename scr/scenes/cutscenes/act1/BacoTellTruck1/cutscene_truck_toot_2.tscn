@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm32nfghwcjqc"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_llg76"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_rpv6w"]
+[ext_resource type="Texture2D" uid="uid://u2i1p3k3fuax" path="res://scr/assets/npcs/burrito_quest_giver.png" id="3_fafqi"]
+[ext_resource type="Texture2D" uid="uid://cahwnpxaqugr2" path="res://scr/assets/player/retrogradetom-twitch1.png" id="4_fd7dv"]
+
+[sub_resource type="Resource" id="Resource_4kj52"]
+script = ExtResource("2_rpv6w")
+text = "Toot on my once shame on you, toot on me twice, that be nice.
+
+"
+portrait = ExtResource("3_fafqi")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_x1usx"]
+script = ExtResource("2_rpv6w")
+speaker = "player"
+text = "Tom would tip the Baco Tell employee ten dollars.  There was an incoomfortable silence for what seems an eternity.
+
+Without making eye contact, the Baco Teller gave Tom  his Burrito Blast Experience."
+portrait = ExtResource("4_fd7dv")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="cutscene_truck_toot_2" instance=ExtResource("1_llg76")]
+dialogue_timeline = Array[ExtResource("2_rpv6w")]([SubResource("Resource_4kj52"), SubResource("Resource_x1usx")])

@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="RTG 1.1"
+config/name="RTG 1.1.5"
 config/description="1.1
 Navigation Agent Added
 Navigation Server engaged"

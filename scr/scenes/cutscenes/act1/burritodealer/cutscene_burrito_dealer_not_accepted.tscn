@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfwas85vr3tad"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_ycc0x"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_5ocwt"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="3_xrnyn"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="4_wlwxc"]
+
+[sub_resource type="Resource" id="Resource_ecnas"]
+script = ExtResource("2_5ocwt")
+speaker = "player"
+text = "What you selling?"
+portrait = ExtResource("3_xrnyn")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_ucsd7"]
+script = ExtResource("2_5ocwt")
+text = "[wave amp=50 freq=2]Magic[/wave] beyond your current understanding!"
+portrait = ExtResource("4_wlwxc")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_y6yfx"]
+script = ExtResource("2_5ocwt")
+text = "Cool, I am just gonna [color=red][shake rate=20 level=10]GO[/shake][/color]."
+portrait = ExtResource("4_wlwxc")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="cutscene_BurritoDealer_notAccepted" instance=ExtResource("1_ycc0x")]
+dialogue_timeline = Array[ExtResource("2_5ocwt")]([SubResource("Resource_ecnas"), SubResource("Resource_ucsd7"), SubResource("Resource_y6yfx")])

@@ -19,17 +19,32 @@ var health: float
 # an array of enemies inside of the DamageArea
 var enemies_in_area: Array = []
 
+
 # locks the player input but no physics_process during Cut Scenes
 # When this variable changes, it automatically turns the State Machine ON or OFF.
 var is_cutscene_locked: bool = false:
 	set(value):
 		is_cutscene_locked = value
+		
 		if state_machine:
 			if is_cutscene_locked:
 				# 1. Turn off the Brain (State Machine)
 				state_machine.process_mode = Node.PROCESS_MODE_DISABLED
 				# 2. Kill momentum immediately
 				velocity = Vector2.ZERO 
+				# 3. Force Weapons Off
+				# this is to keep the flame thrower from getting stuck on
+				if engage_cone:
+					engage_cone.monitoring = false
+					engage_cone.visible = false
+					
+				if cone_visuals:
+					cone_visuals.visible = false
+				if engage_weapon_shoot:
+					engage_weapon_shoot.stop()
+				if cone_damage_timer:
+					cone_damage_timer.stop()
+			
 			else:
 				# 3. Turn the Brain back on
 				state_machine.process_mode = Node.PROCESS_MODE_INHERIT
@@ -106,9 +121,10 @@ func _physics_process(delta: float) -> void:
  	
 		
 func _input(event: InputEvent) -> void:
-	# --- THIS IS THE SHOOTING FIX ---
-	# We've removed "var muzzle = $Muzzle" because it's an @onready var now
-	# We've removed "var fire_direction = ..."
+	if is_cutscene_locked:
+		return
+	# Removed "var muzzle = $Muzzle" because it's an @onready var now
+	# Removed "var fire_direction = ..."
 	
 	# Check with the AmmoManager and spawn bullet directly. 
 	# 1, Act is "fire_fart"

@@ -1,7 +1,7 @@
 # QuestManager.gd
 extends Node
 
-# Define our states
+# Define our BurritoQuest
 enum BurritoQuestState {
 	NOT_STARTED,
 	ACCEPTED,
@@ -26,3 +26,14 @@ func eat_burrito():
 func completed_burritoQuest():
 	burritoQuest_current_state = BurritoQuestState.COMPLETED
 	print("QUEST BURRITO COMPLETED")
+
+
+
+# Define our BacoTell truck
+enum TruckState {
+	FRESH, 
+	TOOTED_ONCE,
+	TOOTED_TWICE
+}
+
+var truck_current_state: TruckState = TruckState.FRESH

@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4q7n0u33vxrf"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_mac3t"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_ixvl8"]
+[ext_resource type="Texture2D" uid="uid://cucxxdt53rxi7" path="res://scr/assets/player/RetrogradeTom-portrait1.png" id="3_ibyv0"]
+[ext_resource type="Texture2D" uid="uid://dhsr6cdgr3ou" path="res://scr/assets/npcs/burrito_dealer.png" id="4_morir"]
+
+[sub_resource type="Resource" id="Resource_odnb0"]
+script = ExtResource("2_ixvl8")
+speaker = "player"
+text = "That burrito was incredible! Keeping gassy and classy."
+portrait = ExtResource("3_ibyv0")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_gc3wm"]
+script = ExtResource("2_ixvl8")
+text = "The Baco Tell Burrito Experience will keep your adoring public at bay."
+portrait = ExtResource("4_morir")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_2mfxm"]
+script = ExtResource("2_ixvl8")
+speaker = "player"
+text = "Thanks, I have mastered the art of Fartillery. They will be in for a gasly time!"
+portrait = ExtResource("3_ibyv0")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_dhnkk"]
+script = ExtResource("2_ixvl8")
+text = "Then go to the one who sent you here, whp said that you no longer chop by hand."
+portrait = ExtResource("4_morir")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Cutscene_BurritoDealer_Already_Eaten" instance=ExtResource("1_mac3t")]
+dialogue_timeline = Array[ExtResource("2_ixvl8")]([SubResource("Resource_odnb0"), SubResource("Resource_gc3wm"), SubResource("Resource_2mfxm"), SubResource("Resource_dhnkk")])

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://bftnf7en5is40"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_tvdal"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_8fwe6"]
+[ext_resource type="Texture2D" uid="uid://b2isvissdncu0" path="res://scr/assets/pictures/SF_Actor1_6.png" id="3_vj5qx"]
+
+[sub_resource type="Resource" id="Resource_u2jtj"]
+script = ExtResource("2_8fwe6")
+text = "I'll give you internet brownie points if you smell like making brownies. "
+portrait = ExtResource("3_vj5qx")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Fart Blocker 1 A" instance=ExtResource("1_tvdal")]
+dialogue_timeline = Array[ExtResource("2_8fwe6")]([SubResource("Resource_u2jtj")])

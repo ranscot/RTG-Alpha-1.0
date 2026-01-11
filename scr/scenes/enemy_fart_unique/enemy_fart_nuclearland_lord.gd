@@ -3,17 +3,18 @@ extends CharacterBody2D
 # Assign these in the Inspector
 @export var opening_cutscene: PackedScene  # Interaction 1: "Do you want a quest?"
 @export var waiting_cutscene: PackedScene  # Interaction 2: "I am still waiting."
-@export var closing_cutscene: PackedScene  # Interaction 3: "Press F to Fart"
+@export var closing_cutscene: PackedScene  # Interaction 3: "Press Space to Fart"
 
 # State Variables
 var player_in_range: bool = false
 var active_cutscene_instance = null
+var is_interacting_cooldown: bool = false 
 
 func _process(_delta) -> void:
 	
 	# --- 1. HANDLE INTERACTION (Press T) ---
 	# We only start a dialogue if the player is close, no cutscene is open, and they press Interact
-	if player_in_range and active_cutscene_instance == null and Input.is_action_just_pressed("interaction"):
+	if player_in_range and active_cutscene_instance == null and not is_interacting_cooldown and Input.is_action_just_pressed("interaction"):
 		
 		print("Quest moving forwards")
 		# Scenario A: Quest hasn't started yet
@@ -50,9 +51,7 @@ func start_cutscene():
 	QuestManager.accept_burritoQuest()
 	
 	# Cleanup
-	if is_instance_valid(active_cutscene_instance):
-		active_cutscene_instance.queue_free()
-	active_cutscene_instance = null
+	cleanup_interaction()
 	
 func start_awaiting_cutscene():
 	active_cutscene_instance = waiting_cutscene.instantiate()
@@ -62,10 +61,12 @@ func start_awaiting_cutscene():
 	if active_cutscene_instance.has_signal("finished"):
 		await active_cutscene_instance.finished
 		
-	# --- FIX: TYPO CORRECTED HERE ---
-	if is_instance_valid(active_cutscene_instance):
-		active_cutscene_instance.queue_free()
-	active_cutscene_instance = null
+	cleanup_interaction()
+	
+	# Probably getting rid of this, this got moved to helper cleanup	
+	#if is_instance_valid(active_cutscene_instance):
+		#active_cutscene_instance.queue_free()
+	#active_cutscene_instance = null
 
 func start_closing_cutscene():
 # We don't await this one, because we are waiting for the 'F' key event
@@ -88,6 +89,24 @@ func trigger_fart_ending():
 	# Add explosion effect or animation code here
 	queue_free() # Removes the NPC from the game
 
+
+# -- Helpers -- #
+func cleanup_interaction():
+	# 1. 2. Start Clowndown (Prevents Double T moving quest forward)
+	is_interacting_cooldown = true
+	
+	# 2. Remove the UI
+	if is_instance_valid(active_cutscene_instance):
+		active_cutscene_instance.queue_free()
+	
+	#3. Clear the variable so the script known the UI is gone 
+	active_cutscene_instance = null
+	
+	#4. Wait for the button press to "expire"
+	await get_tree().create_timer(0.5).timeout # Wait 0.5 seconds
+	is_interacting_cooldown = false
+
+
 # --- SIGNAL CONNECTIONS ---
 
 func _on_quest_detection_body_entered(body: Node2D) -> void:
@@ -101,3 +120,5 @@ func _on_quest_detection_body_exited(body: Node2D) -> void:
 		if active_cutscene_instance != null:
 			active_cutscene_instance.queue_free()
 			active_cutscene_instance = null
+			
+		

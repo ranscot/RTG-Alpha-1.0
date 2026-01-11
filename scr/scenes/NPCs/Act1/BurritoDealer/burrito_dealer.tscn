@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="1_2i0ig"]
 [ext_resource type="Script" uid="uid://u4afxsns2tqb" path="res://scr/scenes/NPCs/Act1/BurritoDealer/burrito_dealer.gd" id="1_fo7og"]
-[ext_resource type="PackedScene" uid="uid://8ggc6mf7van0" path="res://scr/scenes/cutscenes/act1/burritodealer/BurritoDealer_cutscene_accepted.tscn" id="2_qse64"]
-[ext_resource type="PackedScene" uid="uid://dy8sh5kyapndg" path="res://scr/scenes/cutscenes/act1/burritodealer/burrito_quest_cutscene_not_started.tscn" id="3_hr414"]
-[ext_resource type="PackedScene" uid="uid://8i66f62o616w" path="res://scr/scenes/cutscenes/act1/burritodealer/burrito_quest_cutscene_already_eaten.tscn" id="4_kyopo"]
-[ext_resource type="PackedScene" uid="uid://brv5mwam7csn3" path="res://scr/scenes/cutscenes/act1/burritodealer/burrito_quest_cutscene_completed.tscn" id="5_dpirj"]
+[ext_resource type="PackedScene" uid="uid://cfwas85vr3tad" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_not_accepted.tscn" id="2_qse64"]
+[ext_resource type="PackedScene" uid="uid://dtmf4twmtjbgg" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_accepted.tscn" id="3_hr414"]
+[ext_resource type="PackedScene" uid="uid://c4q7n0u33vxrf" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_already_eaten.tscn" id="4_kyopo"]
+[ext_resource type="PackedScene" uid="uid://j1j2cait527l" path="res://scr/scenes/cutscenes/act1/burritodealer/cutscene_burrito_dealer_completed.tscn" id="5_dpirj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo7og"]
 atlas = ExtResource("1_2i0ig")
@@ -53,8 +53,7 @@ font_size = 11
 
 [node name="BurritoDealer" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 3
-collision_mask = 3
+collision_layer = 5
 script = ExtResource("1_fo7og")
 cutscene_quest_accepted = ExtResource("2_qse64")
 cutscene_quest_not_started = ExtResource("3_hr414")
@@ -87,3 +86,6 @@ label_settings = SubResource("LabelSettings_dpirj")
 horizontal_alignment = 1
 
 [node name="CooldownTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="TalkingZone" to="." method="_on_talking_zone_body_entered"]
+[connection signal="body_exited" from="TalkingZone" to="." method="_on_talking_zone_body_exited"]

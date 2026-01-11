@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://cf47um26spffa"]
+
+[ext_resource type="PackedScene" uid="uid://bay1km57cl2hb" path="res://scr/scenes/NPCs/QuestGiver_Template/quest_giver_template.tscn" id="1_tf4b8"]
+[ext_resource type="Script" uid="uid://ccm4cjm7h2d0c" path="res://scr/scenes/NPCs/Act1/BurritoQuestGiver/quest_giver_burrito.gd" id="2_qtufr"]
+[ext_resource type="PackedScene" uid="uid://nflxp50j3ht3" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/cutscene_burrito_giver_offer.tscn" id="3_uqqiy"]
+[ext_resource type="PackedScene" uid="uid://u53tmldqwr6u" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/cutscene_burrito_waiting.tscn" id="4_i0maw"]
+[ext_resource type="PackedScene" uid="uid://bmce01temtfuw" path="res://scr/scenes/cutscenes/act1/BurritoQuestGiver/cutscene_burrito_closing.tscn" id="5_ig06r"]
+[ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="6_uqqiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0maw"]
+atlas = ExtResource("6_uqqiy")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig06r"]
+atlas = ExtResource("6_uqqiy")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6p3l"]
+atlas = ExtResource("6_uqqiy")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbyy2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0maw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig06r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6p3l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phio0"]
+radius = 19.0
+height = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42ilg"]
+radius = 65.03076
+
+[node name="QuestGiver_Burrito" instance=ExtResource("1_tf4b8")]
+script = ExtResource("2_qtufr")
+opening_cutscene = ExtResource("3_uqqiy")
+waiting_cutscene = ExtResource("4_i0maw")
+closing_cutscene = ExtResource("5_ig06r")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_bbyy2")
+frame_progress = 0.3486813
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_phio0")
+
+[node name="CollisionShape2D" parent="QuestDetection" index="0"]
+shape = SubResource("CircleShape2D_42ilg")
+debug_color = Color(0.718319, 0.47103733, 0.27874237, 0.41960785)
