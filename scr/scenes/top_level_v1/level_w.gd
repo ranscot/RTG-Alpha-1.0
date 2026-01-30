@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player: CharacterBody2D = $Tile_Level_Handler/Player
+@onready var player: CharacterBody2D = $Player
 
 func _ready() -> void:
 	# Connect the player's "shoot" signal to a function in this script.

@@ -53,7 +53,7 @@ func take_damage(amount: int):
 	print("NPC Hit! Health: ", health)
 	
 	if health <= 0:
-		die()
+		call_deferred("die")
 		return # If dead, don't start the timer
 
 	# 3. START COOLDOWN (The Logic)

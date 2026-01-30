@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3uxwj27vofrs"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_neco1"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_l68xr"]
+[ext_resource type="Texture2D" uid="uid://b1owec2l7gbtm" path="res://scr/assets/pictures/Actor2_1.png" id="3_byubk"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="4_3uhrf"]
+[ext_resource type="Texture2D" uid="uid://cahwnpxaqugr2" path="res://scr/assets/player/retrogradetom-twitch1.png" id="5_mbavd"]
+
+[sub_resource type="Resource" id="Resource_702i8"]
+script = ExtResource("2_l68xr")
+text = "Tom, you have enough corn for now. TondaGossa is looking for new talent. "
+portrait = ExtResource("3_byubk")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_21he5"]
+script = ExtResource("2_l68xr")
+speaker = "player"
+text = "Does he know how to turn raw clout into Hype Trains?
+I want to progress my training."
+portrait = ExtResource("4_3uhrf")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_lunpp"]
+script = ExtResource("2_l68xr")
+speaker = "player"
+text = "Where is he?
+
+"
+portrait = ExtResource("5_mbavd")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_knnmn"]
+script = ExtResource("2_l68xr")
+text = "Speak to a local Cloat Racer who is also part of the Tommunity.
+
+But take this, it will let you store the power of a Baco Tell fart to make sure thats not bread. "
+portrait = ExtResource("3_byubk")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Cutscene_KillingMoon_NotStarted" instance=ExtResource("1_neco1")]
+dialogue_timeline = Array[ExtResource("2_l68xr")]([SubResource("Resource_702i8"), SubResource("Resource_21he5"), SubResource("Resource_lunpp"), SubResource("Resource_knnmn")])

@@ -37,3 +37,22 @@ enum TruckState {
 }
 
 var truck_current_state: TruckState = TruckState.FRESH
+
+
+# MAIN QUEST LINE
+# --- Hype Train Quest to use cloutAmmo
+enum CloutTrainQuestState {
+	NOT_STARTED,
+	STARTED, # -- Has talked to Killer Moon and knows to quest for Tonda
+	COMPLETED, # - have defeated Tonda at DayTonda Driving and CloutWeapon is Active
+}
+
+var clout_train_quest_state : CloutTrainQuestState = CloutTrainQuestState.NOT_STARTED
+
+func start_clout_train_quest():
+	clout_train_quest_state = CloutTrainQuestState.STARTED
+	print("Go find Tonda!")
+	
+func finish_cloud_train_quest():
+	clout_train_quest_state = CloutTrainQuestState.COMPLETED
+	print("Hype Train Finished")

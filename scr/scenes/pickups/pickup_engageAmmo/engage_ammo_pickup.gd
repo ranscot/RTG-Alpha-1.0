@@ -1,18 +1,37 @@
 extends Area2D
 
-@onready var engage_ammo_pickup: AudioStreamPlayer2D = $EngageAmmo_Pickup
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-func _ready():
-	# Connect the signal to our function
-	self.body_entered.connect(_on_body_entered)
+# --- Add a GateKeeper
+var is_collected: bool = false
 
+
+	
 func _on_body_entered(body):
-	# Check if the body that entered is the player
+	# Check the gate
+	if is_collected:
+		return
+	
+	# 1. Give the ammo
 	if body.is_in_group("player"): # <-- ASSUMING YOUR PLAYER IS IN THE "player" GROUP
-		# Add 1 coin
-		AmmoManager.add_ammo("bullet_engage", 10)
+		is_collected = true
 		
-		# (Optional: play a sound)
-		engage_ammo_pickup
-		# Remove the coin from the world
+		# Disable physics
+		collision_shape_2d.set_deferred("disabled", true)
+		
+		# Add 10 coin
+		AmmoManager.add_ammo("bullet_clout", 10)
+
+		# 2. PLay the sound
+		audio_stream_player.play()
+		
+		# 3. Make the object "disappear" immediately
+		animated_sprite_2d.visible = false
+		
+		# 4. Wait for the sound to finish playing
+		await audio_stream_player.finished  
+	
+		# 5. Now delete the object
 		queue_free()

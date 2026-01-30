@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://byb8jv0tu8ra7"]
+
+[ext_resource type="PackedScene" uid="uid://bay1km57cl2hb" path="res://scr/scenes/NPCs/QuestGiver_Template/quest_giver_template.tscn" id="1_ceh10"]
+[ext_resource type="Script" uid="uid://bggxw0lxtg1vj" path="res://scr/scenes/NPCs/Act1/Killer_Moon_Quests/killer_moon_quest_giver.gd" id="2_q3id5"]
+[ext_resource type="Texture2D" uid="uid://dewp63eq4kjfu" path="res://scr/assets/sv_actors/Actor2_1.png" id="2_vug6f"]
+[ext_resource type="PackedScene" uid="uid://d3uxwj27vofrs" path="res://scr/scenes/cutscenes/act1/killing_moon_quests/cutscene_killingMoon_not_started.tscn" id="3_mov21"]
+[ext_resource type="PackedScene" uid="uid://ctxvwp0xgp43l" path="res://scr/scenes/cutscenes/act1/killing_moon_quests/cutscene_killing_moon_started.tscn" id="4_8xpqi"]
+[ext_resource type="PackedScene" uid="uid://b0dv2382xcy34" path="res://scr/scenes/cutscenes/act1/killing_moon_quests/cutscene_killing_moon_completed.tscn" id="5_8w2d0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2h73"]
+atlas = ExtResource("2_vug6f")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrrcw"]
+atlas = ExtResource("2_vug6f")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3id5"]
+atlas = ExtResource("2_vug6f")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mov21"]
+atlas = ExtResource("2_vug6f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xpqi"]
+atlas = ExtResource("2_vug6f")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w2d0"]
+atlas = ExtResource("2_vug6f")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jirsb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2h73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrrcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3id5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mov21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xpqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w2d0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q3id5"]
+radius = 20.0
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mov21"]
+radius = 76.105194
+
+[node name="Killer_Moon_QuestGiver" instance=ExtResource("1_ceh10")]
+script = ExtResource("2_q3id5")
+scene_assign_quest = ExtResource("3_mov21")
+scene_reminder = ExtResource("4_8xpqi")
+scene_post_quest = ExtResource("5_8w2d0")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_jirsb")
+frame_progress = 0.54295826
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_q3id5")
+
+[node name="CollisionShape2D" parent="QuestDetection" index="0"]
+shape = SubResource("CircleShape2D_mov21")
+debug_color = Color(0.6714913, 0.50779074, 0.082986884, 0.41960785)

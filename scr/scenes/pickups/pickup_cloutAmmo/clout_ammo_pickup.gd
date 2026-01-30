@@ -4,16 +4,23 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
-func _ready():
-	# Connect the signal to our function
-	# self.body_entered.connect(_on_body_entered)
-	pass
+# --- Add a GateKeeper
+var is_collected: bool = false
+
+
 	
 func _on_body_entered(body):
-	# Check if the body that entered is the player
+	# Check the gate
+	if is_collected:
+		return
 	
 	# 1. Give the ammo
 	if body.is_in_group("player"): # <-- ASSUMING YOUR PLAYER IS IN THE "player" GROUP
+		is_collected = true
+		
+		# Disable physics
+		collision_shape_2d.set_deferred("disabled", true)
+		
 		# Add 10 coin
 		AmmoManager.add_ammo("bullet_clout", 10)
 

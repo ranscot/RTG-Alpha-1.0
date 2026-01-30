@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0dv2382xcy34"]
+
+[ext_resource type="PackedScene" uid="uid://62y0m8rwf8qj" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.tscn" id="1_l0onr"]
+[ext_resource type="Script" uid="uid://ddnyulx4oal64" path="res://scr/scripts/DialogueItem.gd" id="2_bdcqj"]
+[ext_resource type="Texture2D" uid="uid://b1owec2l7gbtm" path="res://scr/assets/pictures/Actor2_1.png" id="3_r4h47"]
+[ext_resource type="Texture2D" uid="uid://dne1y1t5xurob" path="res://scr/assets/player/tom-glasses.png" id="4_hrie3"]
+
+[sub_resource type="Resource" id="Resource_fdmcw"]
+script = ExtResource("2_bdcqj")
+text = "I heard you suplexed a train."
+portrait = ExtResource("3_r4h47")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_6p8j8"]
+script = ExtResource("2_bdcqj")
+speaker = "player"
+text = "First time every time, basically mensa. "
+portrait = ExtResource("4_hrie3")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[sub_resource type="Resource" id="Resource_c61fg"]
+script = ExtResource("2_bdcqj")
+text = "This is where we start ACT 2"
+portrait = ExtResource("3_r4h47")
+metadata/_custom_type_script = "uid://ddnyulx4oal64"
+
+[node name="Cutscene_KillingMoon_Completed" instance=ExtResource("1_l0onr")]
+dialogue_timeline = Array[ExtResource("2_bdcqj")]([SubResource("Resource_fdmcw"), SubResource("Resource_6p8j8"), SubResource("Resource_c61fg")])
