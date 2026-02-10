@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cttgslglkcp25"]
+[gd_scene load_steps=17 format=4 uid="uid://cttgslglkcp25"]
 
 [ext_resource type="Script" uid="uid://de5p4i3r376da" path="res://scr/scenes/top_level_v1/level_w.gd" id="1_pa67k"]
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="2_esluy"]
@@ -20,11 +20,26 @@ vertices = PackedVector2Array(1058.9609, 1535.0625, 248.02344, 1539.9297, 251, 1
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1069, 1545, 1062, -308, 237, -311, 236, -233, 237, -125, 241, 196, 238, 1550)])
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_polph"]
+vertices = PackedVector2Array(1368.0078, 3383.9375, 495.03125, 3379.0469, 503.96094, 944, 1371.9766, 944)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(494, 934, 1382, 934, 1378, 3394, 485, 3389)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_366fu"]
+vertices = PackedVector2Array(2241.4688, 362.03125, 874.96875, 366.96094, 874.02344, 21.921875, 2223.5, 12.0625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2252, 372, 865, 377, 864, 12, 2233, 2)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jpy4l"]
+vertices = PackedVector2Array(2865, 2777.289, 2872.6016, 2970.0234, 1067.0391, 2973.9688, 1077.9531, 549.0078, 2845.9219, 1703.8203, 2878.9297, 551.97656, 2872.0234, 1678.7109)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(4, 3, 5, 6)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1068, 539, 2889, 542, 2882, 1683, 2856, 1708, 2875, 2777, 2883, 2980, 1057, 2984)])
+
 [node name="level_one" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_pa67k")
 metadata/_edit_vertical_guides_ = [896.0, 1056.0, 2999.0, 6000.0, 9001.0]
-metadata/_edit_horizontal_guides_ = [384.0, 529.0, 6001.0, -3000.0, 5603.0]
+metadata/_edit_horizontal_guides_ = [384.0, 529.0, 6001.0, -3000.0, 5603.0, 2999.0]
 
 [node name="Tile_Level_Handler" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -40,14 +55,12 @@ tile_map_data = PackedByteArray("AAAAAAoAAAAAABsAAAAAAAsAAAAAABwAAAAAAAwAAAAAAB0
 tile_set = ExtResource("2_esluy")
 
 [node name="ground +1" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 use_parent_material = true
 position = Vector2(-1, 0)
 tile_map_data = PackedByteArray("AAAtAI8ACAAKABUAAAAtAJAACAAKABYAAAAuAI8ACAALABUAAAAuAJAACAALABYAAAAvAI8ACAAEABMAAAAvAJAACAAEABQAAAAwAI8ACAAFABMAAAAwAJAACAAFABQAAAAcAIkACAAKABAAAAAcAIoACAAKABEAAAAcAIsACAAKABIAAAAcAIwACAAFABEAAAAdAIkACAALABAAAAAdAIoACAALABEAAAAdAIsACAALABIAAAAdAIwACAAFABEAAAAcAI0ACAAFABIAAAAdAI0ACAAFABIAAAAbAIwACAAFABEAAAAbAI0ACAAFABIAAAAaAIwACAAEABEAAAAaAI0ACAAEABIAAAAYAIwACAAEAAsAAAAZAIwACAAFAAsAAAAxAI8ACAAEAAsAAAAyAI8ACAAFAAsAAAAeAIwACAAGAAsAAAAsAI8ACAAGAAsAAAAtAI4ACAAEAAsAAAAuAI4ACAAEAAsAAAAvAI4ACAAEAAsAAAAsAI4ACAAEAAsAAAAwAI4ACAAEAAsAAAAxAI4ACAAEAAsAAAAyAI4ACAAEAAsAAAAiAJ4ACAADAAwAAAAiAJ8ACAADAA0AAAAiAKAACAALABcAABAjAJ4ACAAEAAwAAAAjAJ8ACAAEAA0AAAAjAKAACAALABcAAAAkAJ4ACAAFAAwAAAAkAJ8ACAAFAA0AAAAkAKAACAAFAA4AAAAlAJ4ACAAGAAwAAAAlAJ8ACAAGAA0AAAAlAKAACAAGAA4AAAAeAJ4ACAADAAwAAAAeAJ8ACAADAA0AAAAeAKAACAADAA4AAAAfAJ4ACAAEAAwAAAAfAJ8ACAAEAA0AAAAfAKAACAAEAA4AAAAgAJ4ACAAFAAwAAAAgAJ8ACAAFAA0AAAAgAKAACAAFAA4AAAAhAJ4ACAAGAAwAAAAhAJ8ACAAGAA0AAAAhAKAACAAGAA4AAAAdAJ8ACAAEAAsAAAAdAJ4ACAAEAAsAAAAmAJ8ACAAEAAsAAAAmAJ4ACAAEAAsAAAAjAKEACAALABgAAAAjAKIACAALABkAAAAiAKEACAALABgAABAiAKIACAALABkAABBmAKcAAwABAAUAAABlAKcAAwABAAUAAABkAKcAAwADAAYAAABfAKcAAwABAAUAAABgAKcAAwABAAUAAABhAKcAAwAEAAYAAABRAJEAAAAnAC4AAABRAJIAAAAnAC8AAABSAJEAAAAoAC4AAABSAJIAAAAoAC8AAABTAJEAAAApAC4AAABTAJIAAAApAC8AAABUAJEAAAAqAC4AAABUAJIAAAAqAC8AAABRAJMAAAAnAC4AAABRAJQAAAAnAC4AAABSAJMAAAAoAC4AAABSAJQAAAAoAC4AAABTAJMAAAApAC4AAABTAJQAAAApAC4AAABUAJMAAAAqAC4AAABUAJQAAAAqAC4AAABRAJUAAAAnAC8AAABSAJUAAAAoAC8AAABTAJUAAAApAC8AAABUAJUAAAAqAC8AAABXAJEAAAAnAC4AAABXAJIAAAAnAC8AAABYAJEAAAAoAC4AAABYAJIAAAAoAC8AAABZAJEAAAApAC4AAABZAJIAAAApAC8AAABaAJEAAAAqAC4AAABaAJIAAAAqAC8AAABXAJMAAAAnAC4AAABXAJQAAAAnAC4AAABYAJMAAAAoAC4AAABYAJQAAAAoAC4AAABZAJMAAAApAC4AAABZAJQAAAApAC4AAABaAJMAAAAqAC4AAABaAJQAAAAqAC4AAABXAJUAAAAnAC8AAABYAJUAAAAoAC8AAABZAJUAAAApAC8AAABaAJUAAAAqAC8AAABJAJEAAAAnAC4AAABJAJIAAAAnAC4AAABKAJEAAAAoAC4AAABKAJIAAAAoAC4AAABLAJEAAAApAC4AAABLAJIAAAApAC4AAABMAJEAAAAqAC4AAABMAJIAAAAqAC4AAABJAJMAAAAnAC8AAABKAJMAAAAoAC8AAABLAJMAAAApAC8AAABMAJMAAAAqAC8AAABJAJQAAAAnAC4AAABJAJUAAAAnAC8AAABKAJQAAAAoAC4AAABKAJUAAAAoAC8AAABLAJQAAAApAC4AAABLAJUAAAApAC8AAABMAJQAAAAqAC4AAABMAJUAAAAqAC8AAABUAI0AAwAUAAAAAABUAI4AAwAUAAEAAABVAI0AAwAVAAAAAABVAI4AAwAVAAEAAABXAI0AAwASAAAAAABXAI4AAwASAAEAAABYAI0AAwATAAAAAABYAI4AAwATAAEAAABIAI0AAwAYAAAAAABIAI4AAwAYAAEAAABJAI0AAwAZAAAAAABJAI4AAwAZAAEAAABMAI0AAwASAAAAAABMAI4AAwASAAEAAABNAI0AAwATAAAAAABNAI4AAwATAAEAAABQAI0AAwAQAAAAAABQAI4AAwAQAAEAAABRAI0AAwARAAAAAABRAI4AAwARAAEAAABIAIoAAwAQAAAAAABIAIsAAwAQAAEAAABJAIoAAwARAAAAAABJAIsAAwARAAEAAABQAIcAAwAQAAAAAABQAIgAAwAQAAEAAABRAIcAAwARAAAAAABRAIgAAwARAAEAAABYAIYAAwAQAAAAAABYAIcAAwAQAAEAAABZAIYAAwARAAAAAABZAIcAAwARAAEAAABYAIoAAwASAAAAAABYAIsAAwASAAEAAABZAIoAAwATAAAAAABZAIsAAwATAAEAAABMAIYAAwASAAAAAABMAIcAAwASAAEAAABNAIYAAwATAAAAAABNAIcAAwATAAEAAABUAIkAAwAUAAAAAABUAIoAAwAUAAEAAABVAIkAAwAVAAAAAABVAIoAAwAVAAEAAABLAIkAAwAUAAAAAABLAIoAAwAUAAEAAABMAIkAAwAVAAAAAABMAIoAAwAVAAEAAABIAIcAAwAUAAAAAABIAIgAAwAUAAEAAABJAIcAAwAVAAAAAABJAIgAAwAVAAEAAABUAIcAAwAYAAAAAABUAIgAAwAYAAEAAABVAIcAAwAZAAAAAABVAIgAAwAZAAEAAABQAIoAAwAdAA4AAABdAKQAAwASAAAAAABdAKUAAwASAAEAAABeAKQAAwATAAAAAABeAKUAAwATAAEAAABfAKQAAwAYAAAAAABfAKUAAwAYAAEAAABgAKQAAwAZAAAAAABgAKUAAwAZAAEAAAB9AJUAAwAaAAAAAAB9AJYAAwAaAAEAAAB+AJUAAwAbAAAAAAB+AJYAAwAbAAEAAAB7AJUAAwAaAAAAAAB7AJYAAwAaAAEAAAB8AJUAAwAbAAAAAAB8AJYAAwAbAAEAAABuAJEAAwAaAAAAAABuAJIAAwAaAAEAAABvAJEAAwAbAAAAAABvAJIAAwAbAAEAAABpAJUAAwASAAAAAABpAJYAAwASAAEAAABqAJUAAwATAAAAAABqAJYAAwATAAEAAAB7AJEAAwASAAAAAAB7AJIAAwASAAEAAAB8AJEAAwATAAAAAAB8AJIAAwATAAEAAAB+AJEAAwASAAAAAAB+AJIAAwASAAEAAAB/AJEAAwATAAAAAAB/AJIAAwATAAEAAAByAJUAAwAUAAAAAAByAJYAAwAUAAEAAABzAJUAAwAVAAAAAABzAJYAAwAVAAEAAAB1AJIAAwAUAAAAAAB1AJMAAwAUAAEAAAB2AJIAAwAVAAAAAAB2AJMAAwAVAAEAAABpAJEAAwAWAAAAAABpAJIAAwAWAAEAAABqAJEAAwAXAAAAAABqAJIAAwAXAAEAAABsAJ0AAwAWAAAAAABsAJ4AAwAWAAEAAABtAJ0AAwAXAAAAAABtAJ4AAwAXAAEAAABvAJ0AAwAaAAAAAABvAJ4AAwAaAAEAAABwAJ0AAwAbAAAAAABwAJ4AAwAbAAEAAAB7AJ0AAwAaAAAAAAB7AJ4AAwAaAAEAAAB8AJ0AAwAbAAAAAAB8AJ4AAwAbAAEAAAB/AKEAAwAWAAAAAAB/AKIAAwAWAAEAAACAAKEAAwAXAAAAAACAAKIAAwAXAAEAAAB/AJ0AAwAWAAAAAAB/AJ4AAwAWAAEAAACAAJ0AAwAXAAAAAACAAJ4AAwAXAAEAAAB7AKEAAwASAAAAAAB7AKIAAwASAAEAAAB8AKEAAwATAAAAAAB8AKIAAwATAAEAAACHAJwAAwAYABkAAACIAKAAAwARABoAAACMAI8AAwAdAA4AAAA=")
 tile_set = ExtResource("2_esluy")
 
 [node name="Fences" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -55,7 +68,6 @@ tile_map_data = PackedByteArray("AAAgAAEAAgABABgAAAAfAAEAAgABABgAAAAeAAEAAgABABg
 tile_set = ExtResource("2_esluy")
 
 [node name="Fixtures" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -63,7 +75,6 @@ tile_map_data = PackedByteArray("AAAlAAwACAAbACEAAAAlAA0ACAAbACIAAAAlAA8ACAAbACE
 tile_set = ExtResource("2_esluy")
 
 [node name="Flora" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -71,7 +82,6 @@ tile_map_data = PackedByteArray("AAD9/7oACAAHAGwAAAD+/7gACAAIAGoAAAD+/7kACAAIAGs
 tile_set = ExtResource("2_esluy")
 
 [node name="flora+1" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -79,7 +89,6 @@ tile_map_data = PackedByteArray("AABdAA8ABwAbAB0AAABdABAABwAbAB4AAABeAA8ABwAcAB0
 tile_set = ExtResource("2_esluy")
 
 [node name="Buildings" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -87,7 +96,6 @@ tile_map_data = PackedByteArray("AAAkAAUABgASAEMAAAAkAJUACAAAACUAAAAkAJYACAAAACY
 tile_set = ExtResource("2_esluy")
 
 [node name="Fixtures+" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -95,7 +103,6 @@ tile_map_data = PackedByteArray("AAAtAI8ACAAIAKoAAAAtAJAACAAIAKsAAAAvAJEACAAIAKo
 tile_set = ExtResource("2_esluy")
 
 [node name="vehicles" type="TileMapLayer" parent="Tile_Level_Handler/Level_Tiles"]
-visible = false
 y_sort_enabled = true
 use_parent_material = true
 position = Vector2(-1, 0)
@@ -140,7 +147,7 @@ y_sort_enabled = true
 position = Vector2(460, 2224)
 
 [node name="Player" parent="." instance=ExtResource("3_6hknt")]
-position = Vector2(465, 288)
+position = Vector2(105, 1847)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -159,6 +166,7 @@ position = Vector2(535.5, 455.5)
 shape = SubResource("RectangleShape2D_rw4ei")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-225, 1331)
 navigation_polygon = SubResource("NavigationPolygon_28x8u")
 
@@ -197,3 +205,15 @@ position = Vector2(539, 894)
 
 [node name="Enemy_fart10" parent="enemies" instance=ExtResource("6_366fu")]
 position = Vector2(450, 785)
+
+[node name="WorldNavigation_Regions" type="Node2D" parent="."]
+
+[node name="NavRegion_Park" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
+position = Vector2(-486, -404)
+navigation_polygon = SubResource("NavigationPolygon_polph")
+
+[node name="NavRegion_TopOpeningArea" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
+navigation_polygon = SubResource("NavigationPolygon_366fu")
+
+[node name="NavRegion_FartStreet" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
+navigation_polygon = SubResource("NavigationPolygon_jpy4l")

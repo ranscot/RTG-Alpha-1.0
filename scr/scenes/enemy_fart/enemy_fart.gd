@@ -34,12 +34,30 @@ var player = null
 @onready var hit_sound_player: AudioStreamPlayer2D = $HitSoundPlayer
 
 func _ready():
+	# Safety Wait
+	# We must wait for the Navigation Server to sync the map befor asking for a path
+	# this prevents "Navigation map query failed" error on spawn 
+	await get_tree().physics_frame
+	
+	# Await Critical Connections
+	# makes sure the defined avoidance function is connected 
+	navigation_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
+	
+	# set home if not set externally
+	if home_position == Vector2.ZERO:
+		home_position = global_position
+	
 	# Connect the timer
 	patrol_timer.timeout.connect(_on_patrol_timer_timeout)
+	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	# Start patrolling immediately
 	_pick_new_patrol_target()
-	animated_sprite.animation_finished.connect(_on_animation_finished)
+	
+# Call this function immeditately after .instantiate() to assign a specific zone
+func setup_patrol(target_zone_center: Vector2, patrol_size: float):
+	home_position = target_zone_center
+	patrol_radius = patrol_size
 	
 func _physics_process(delta):
 	# 1. Run State Logic
@@ -89,8 +107,12 @@ func _physics_process(delta):
 			animated_sprite.play("idle")
 
 	# 3. SEND VELOCITY TO AGENT
-	navigation_agent.set_velocity(intended_velocity)
-
+	# if Avoidance is on, we send the velocity to the agent
+	# if Avoidance is off, we move immediately 
+	if navigation_agent.avoidance_enabled:
+		navigation_agent.set_velocity(intended_velocity)
+	else: 
+		_on_navigation_agent_2d_velocity_computed(intended_velocity)
 
 # --- SIGNAL CALLBACK: Avoidance ---
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
