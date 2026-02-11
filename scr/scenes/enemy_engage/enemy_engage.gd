@@ -18,7 +18,8 @@ enum State {
 @export var drop_scene: PackedScene
 
 # --- CHANGED: Replaced patrol points with a radius ---
-@export var patrol_radius: float = 250.0 # How far to wander
+var home_position: Vector2 = Vector2.ZERO
+var patrol_radius: float = 300.0 # How far to wander
 
 var current_state = State.PATROL
 var player = null
@@ -26,8 +27,8 @@ var player = null
 ## 3. Node references
 @onready var detection_area = $DetectionArea
 @onready var attack_area = $AttackArea
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var navigation_agent = $NavigationAgent2D
+@onready var animated_sprite: AnimatableBody2D = $AnimatedSprite2D
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var patrol_timer = $PatrolTimer # <-- CHANGED
 
 @onready var on_death_sound: AudioStreamPlayer2D = $Sounds/On_death
@@ -258,3 +259,46 @@ func take_damage(amount: int):
 	
 	if health <= 0:
 		current_state = State.DEATH
+
+# --- SPAWNER CONFIGURATION ---
+# This function is called by the Spawner immediately after creation
+func setup_enemy(home_pos: Vector2, patrol_range: float, nav_layers: int, new_name: String = ""):
+	# 1. Store the Patrol Data
+	home_position = home_pos
+	patrol_radius = patrol_range
+	
+	# 2. Set the Navigation Layer (Park vs Street)
+	# (Make sure your node is actually named 'NavigationAgent2D')
+	if has_node("NavigationAgent2D"):
+		$NavigationAgent2D.navigation_layers = nav_layers
+	
+	# 3. Apply the Name Label
+	# (Make sure you added a Label node named 'LabelName' to your scene!)
+	if has_node("LabelName") and new_name != "":
+		$LabelName.text = new_name
+	
+	# 4. Kickstart the Logic
+	# If the enemy was idle, this forces them to pick a target immediately
+	if has_method("_pick_new_patrol_target"):
+		_pick_new_patrol_target()
+
+# --- VISUAL VARIATION ---
+# This function applies the specific look (SpriteFrames)
+func apply_variant(variant_data: EnemyVariant):
+	# 1. Override the Name (Optional, if the Variant has a specific name like "Boss")
+	# If the variant name is empty, we keep the random name we just got.
+	if variant_data.name_text != "" and has_node("LabelName"):
+		$LabelName.text = variant_data.name_text
+
+	# 2. Swap the Animation Set (The Costume)
+	# (Make sure your node is actually named 'AnimatedSprite2D')
+	if has_node("AnimatedSprite2D") and variant_data.animation_set:
+		var anim_sprite = $AnimatedSprite2D
+		anim_sprite.sprite_frames = variant_data.animation_set
+		
+		# CRITICAL: Play an animation immediately so it doesn't disappear
+		# Ensure ALL your variants have an animation with this exact name!
+		if anim_sprite.sprite_frames.has_animation("idle"):
+			anim_sprite.play("idle")
+		elif anim_sprite.sprite_frames.has_animation("default"):
+			anim_sprite.play("default")

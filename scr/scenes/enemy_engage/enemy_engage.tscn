@@ -213,6 +213,10 @@ stream = ExtResource("4_6g6qy")
 [node name="On_death" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("5_4ldqf")
 
+[node name="LabelName" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
