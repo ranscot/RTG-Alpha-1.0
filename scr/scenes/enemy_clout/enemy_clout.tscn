@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dguslukrmem4t"]
+[gd_scene load_steps=28 format=3 uid="uid://dguslukrmem4t"]
 
 [ext_resource type="Script" uid="uid://tiawevsq7qp1" path="res://scr/scenes/enemy_clout/enemy_clout.gd" id="1_ayhpj"]
 [ext_resource type="PackedScene" uid="uid://dluwncqvkwqfg" path="res://scr/scenes/pickups/pickup_engageAmmo/engage_ammo_pickup.tscn" id="2_2nil3"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_33vyj"]
 [ext_resource type="AudioStream" uid="uid://cxx8lwsdwerro" path="res://scr/assets/audio/enemies/enemy_clout_hurt.wav" id="4_t6yna"]
 [ext_resource type="AudioStream" uid="uid://blogfy1laqwg5" path="res://scr/assets/audio/enemies/enemy_clout_death.wav" id="5_t5di6"]
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="6_t5di6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s8pp"]
 atlas = ExtResource("2_33vyj")
@@ -212,8 +213,12 @@ stream = ExtResource("4_t6yna")
 stream = ExtResource("5_t5di6")
 
 [node name="LabelName" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -19.0
+offset_top = -45.0
+offset_right = 21.0
+offset_bottom = -22.0
+theme_override_colors/font_color = Color(0.5019608, 0, 0.5019608, 1)
+theme_override_fonts/font = ExtResource("6_t5di6")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var audio_stream_player: AudioStreamPlayer = $EngageAmmo_Pickup
+@onready var audio_stream_player: AudioStreamPlayer2D = $EngageAmmo_Pickup
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 

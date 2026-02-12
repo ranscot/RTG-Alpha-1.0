@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://bndiovnyys753"]
+[gd_scene load_steps=28 format=3 uid="uid://bndiovnyys753"]
 
 [ext_resource type="Script" uid="uid://ci3ic3sbspfmg" path="res://scr/scenes/enemy_engage/enemy_engage.gd" id="1_nhble"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_qnexi"]
 [ext_resource type="PackedScene" uid="uid://cuaga1ifc0i4o" path="res://scr/scenes/pickups/pickup_TomCoin/tom_coin_pickup.tscn" id="2_vehos"]
 [ext_resource type="AudioStream" uid="uid://bmtsm730d1yw4" path="res://scr/assets/audio/enemies/enemy_engage_hurt.wav" id="4_6g6qy"]
 [ext_resource type="AudioStream" uid="uid://cclv00iduj0in" path="res://scr/assets/audio/enemies/enemy_engage_death.wav" id="5_4ldqf"]
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="6_4ldqf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeqa4"]
 atlas = ExtResource("2_qnexi")
@@ -214,8 +215,12 @@ stream = ExtResource("4_6g6qy")
 stream = ExtResource("5_4ldqf")
 
 [node name="LabelName" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -20.0
+offset_top = -46.0
+offset_right = 20.0
+offset_bottom = -23.0
+theme_override_colors/font_color = Color(1, 0.5019608, 0, 1)
+theme_override_fonts/font = ExtResource("6_4ldqf")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

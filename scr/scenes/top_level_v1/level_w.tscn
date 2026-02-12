@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cttgslglkcp25"]
+[gd_scene load_steps=22 format=4 uid="uid://cttgslglkcp25"]
 
 [ext_resource type="Script" uid="uid://de5p4i3r376da" path="res://scr/scenes/top_level_v1/level_w.gd" id="1_pa67k"]
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="2_esluy"]
@@ -11,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://c28ermyvl6gq" path="res://scr/scenes/NPCs/Act1/BurritoDealer/npc_burrito_dealer.tscn" id="6_kb0co"]
 [ext_resource type="PackedScene" uid="uid://b1alpuuq2k8hv" path="res://scr/scenes/NPCs/Act1/Fart_Blockers/fart_blockers_1.tscn" id="7_kb0co"]
 [ext_resource type="PackedScene" uid="uid://byb8jv0tu8ra7" path="res://scr/scenes/NPCs/Act1/Killer_Moon_Quests/killer_moon_quest_giver.tscn" id="7_polph"]
+[ext_resource type="Script" uid="uid://bxixkvgaagfkv" path="res://scr/scripts/enemy_group_spawner.gd" id="12_366fu"]
+[ext_resource type="Resource" uid="uid://ca4cquwu7e75j" path="res://scr/scripts/resources/names_fart.tres" id="13_jpy4l"]
+[ext_resource type="Resource" uid="uid://cuohk3txj8h04" path="res://scr/scripts/resources/names_clout.tres" id="14_02kiv"]
+[ext_resource type="PackedScene" uid="uid://bndiovnyys753" path="res://scr/scenes/enemy_engage/enemy_engage.tscn" id="15_tsa3e"]
+[ext_resource type="Resource" uid="uid://gmemkfsskfia" path="res://scr/scripts/resources/names_engagement.tres" id="16_0r41x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw4ei"]
 size = Vector2(1071, 125)
@@ -147,7 +152,7 @@ y_sort_enabled = true
 position = Vector2(460, 2224)
 
 [node name="Player" parent="." instance=ExtResource("3_6hknt")]
-position = Vector2(105, 1847)
+position = Vector2(1116, 1844)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -171,6 +176,7 @@ position = Vector2(-225, 1331)
 navigation_polygon = SubResource("NavigationPolygon_28x8u")
 
 [node name="enemies" type="Node2D" parent="."]
+visible = false
 position = Vector2(-225, 1331)
 
 [node name="Enemy_clout" parent="enemies" instance=ExtResource("5_polph")]
@@ -217,3 +223,38 @@ navigation_polygon = SubResource("NavigationPolygon_366fu")
 
 [node name="NavRegion_FartStreet" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
 navigation_polygon = SubResource("NavigationPolygon_jpy4l")
+
+[node name="EnemyManager" type="Node2D" parent="."]
+
+[node name="Spawner_2row_farts" type="Node2D" parent="EnemyManager"]
+script = ExtResource("12_366fu")
+enemy_scene = ExtResource("6_366fu")
+count_per_node = 15
+name_database = ExtResource("13_jpy4l")
+
+[node name="Park" type="Marker2D" parent="EnemyManager/Spawner_2row_farts"]
+position = Vector2(306, 1917)
+
+[node name="ParkRect" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 18.0
+offset_top = 805.0
+offset_right = 848.0
+offset_bottom = 2103.0
+
+[node name="Spawner_2row_clouts" type="Node2D" parent="EnemyManager"]
+script = ExtResource("12_366fu")
+enemy_scene = ExtResource("5_polph")
+count_per_node = 10
+name_database = ExtResource("14_02kiv")
+
+[node name="Marker2D" type="Marker2D" parent="EnemyManager/Spawner_2row_clouts"]
+position = Vector2(324, 1789)
+
+[node name="Spawner_2row_engages" type="Node2D" parent="EnemyManager"]
+script = ExtResource("12_366fu")
+enemy_scene = ExtResource("15_tsa3e")
+count_per_node = 5
+name_database = ExtResource("16_0r41x")
+
+[node name="Marker2D" type="Marker2D" parent="EnemyManager/Spawner_2row_engages"]
+position = Vector2(106, 2213)

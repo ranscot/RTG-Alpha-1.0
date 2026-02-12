@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnemyNameData" load_steps=2 format=3 uid="uid://ca4cquwu7e75j"]
+
+[ext_resource type="Script" uid="uid://cu8gxtwpiuydv" path="res://scr/scripts/resources/EnemyNameData.gd" id="1_t7qe6"]
+
+[resource]
+script = ExtResource("1_t7qe6")
+names = Array[String](["Tikanjiah", "Lassus", "Indianajason", "Antendo64", "Skykomish", "cheetos", "Joetronix"])
+metadata/_custom_type_script = "uid://cu8gxtwpiuydv"

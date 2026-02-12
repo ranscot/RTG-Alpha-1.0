@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyc1p0g37g4a5"]
+[gd_scene load_steps=32 format=3 uid="uid://dyc1p0g37g4a5"]
 
 [ext_resource type="Script" uid="uid://bbb17b2yj1t23" path="res://scr/scenes/enemy_fart/enemy_fart.gd" id="1_dnnsq"]
 [ext_resource type="PackedScene" uid="uid://cv78t42cuntyd" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.tscn" id="2_7ekxg"]
 [ext_resource type="Texture2D" uid="uid://drancbri1vg3h" path="res://scr/assets/RGTom.png" id="2_ylcfb"]
 [ext_resource type="AudioStream" uid="uid://gp8bco3phtj5" path="res://scr/assets/audio/enemies/enemie_fart_death.wav" id="5_hxnro"]
 [ext_resource type="AudioStream" uid="uid://c0eo1p30xb2y0" path="res://scr/assets/audio/enemies/enemy_fart_hit.wav" id="5_lkoul"]
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="6_lkoul"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2nkn"]
 atlas = ExtResource("2_ylcfb")
@@ -215,7 +216,7 @@ drop_scene = ExtResource("2_7ekxg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hxnro")
-animation = &"idle"
+animation = &"death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9)
@@ -264,8 +265,12 @@ stream = ExtResource("5_lkoul")
 avoidance_enabled = true
 
 [node name="LabelName" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -19.0
+offset_top = -47.0
+offset_right = 21.0
+offset_bottom = -24.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_lkoul")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

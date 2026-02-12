@@ -27,7 +27,7 @@ var player = null
 ## 3. Node references
 @onready var detection_area = $DetectionArea
 @onready var attack_area = $AttackArea
-@onready var animated_sprite: AnimatableBody2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var patrol_timer = $PatrolTimer # <-- CHANGED
 
