@@ -22,7 +22,7 @@ var _session_name_pool: Array[String] = []
 
 func _ready():
 	# Wait one physics frame so the Navigation Server is ready
-	await get_tree().physics_frame
+	await NavigationServer2D.map_changed
 	spawn_all()
 
 func spawn_all():

@@ -41,7 +41,7 @@ func _ready():
 	
 	# Await Critical Connections
 	# makes sure the defined avoidance function is connected 
-	navigation_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
+	# navigation_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
 	
 	# set home if not set externally
 	if home_position == Vector2.ZERO:
