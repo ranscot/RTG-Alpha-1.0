@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyVariant" load_steps=3 format=3 uid="uid://ccea8jy0778n"]
+
+[ext_resource type="SpriteFrames" uid="uid://bjwchdpqogewk" path="res://scr/scripts/resources/enemySprites/Clouts/Frames_Gothboi.tres" id="1_6b1mu"]
+[ext_resource type="Script" uid="uid://d3s8yilywihnt" path="res://scr/scripts/resources/EnemyVariant.gd" id="1_uvmjl"]
+
+[resource]
+script = ExtResource("1_uvmjl")
+animation_set = ExtResource("1_6b1mu")
+metadata/_custom_type_script = "uid://d3s8yilywihnt"

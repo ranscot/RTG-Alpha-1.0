@@ -35,3 +35,5 @@ shape = SubResource("CircleShape2D_2ds30")
 
 [node name="On_pickup_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_i0xs4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -22,6 +22,7 @@ var patrol_radius: float = 300.0 # How far to wander
 
 var current_state = State.PATROL
 var player = null
+var is_dying: bool = false
 
 ## 3. Node references
 @onready var detection_area = $DetectionArea
@@ -41,7 +42,7 @@ func _ready():
 	# We no longer connect navigation_finished
 	# We no longer call _go_to_next_patrol_point()
 	_pick_new_patrol_target()
-	animated_sprite.animation_finished.connect(_on_animation_finished)
+	# animated_sprite.animation_finished.connect(_on_animation_finished) - can be used for Attack Animations
 	
 ## The "State Machine"
 func _physics_process(delta):
@@ -137,21 +138,44 @@ func attack_state(_delta):
 	print("ATTACKING PLAYER!")
 	
 	
-func death_state(delta):
-	# This function is called every frame, but we only need to run our "die:
-	# logic once. We check the animation to see if its already playing
-	if animated_sprite.animation == "death":
-		return # We're already playing, just wait
-	# -- Stopping logic
+func death_state(_delta):
+	# 1. THE LOCK: If we are already dying, ignore all future frames
+	if is_dying:
+		return 
+		
+	is_dying = true # Lock the door!
+	
+	# 2. Stopping logic
+	velocity = Vector2.ZERO
 	patrol_timer.stop()
-	# disable collisions so enemy cannot be hit or block
-	$CollisionShape2D.disabled = true
-	$DetectionArea.monitoring = false
-	$AttackArea.monitoring = false
-	 
-	# Play the death animation 
-	on_death_sound.play()
-	animated_sprite.play("death")
+	
+	# Disable collisions and areas safely
+	$CollisionShape2D.set_deferred("disabled", true)
+	$DetectionArea.set_deferred("monitoring", false)
+	$AttackArea.set_deferred("monitoring", false)
+	
+	# Play sound
+	if on_death_sound:
+		on_death_sound.play()
+	
+	# 3. SAFETY CHECK & ANIMATION
+	if animated_sprite.sprite_frames.has_animation("death"):
+		animated_sprite.play("death")
+		await animated_sprite.animation_finished
+	else:
+		print("Warning: No 'death' animation found for ", name)
+		# Wait half a second so the death sound can finish playing
+		await get_tree().create_timer(0.5).timeout
+		
+	# 4. SPAWN LOOT
+	if drop_scene:
+		var drop = drop_scene.instantiate()
+		# current_scene is generally safer than root for pausing/scene changes
+		get_tree().current_scene.add_child(drop)
+		drop.global_position = global_position
+		
+	# 5. GOODBYE
+	queue_free()
 
 
 

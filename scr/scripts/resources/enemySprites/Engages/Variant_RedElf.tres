@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyVariant" load_steps=3 format=3 uid="uid://dmk6uhp37srie"]
+
+[ext_resource type="SpriteFrames" uid="uid://ccwhnmbyx6hhn" path="res://scr/scripts/resources/enemySprites/Engages/Frames_RedElf.tres" id="1_jebpn"]
+[ext_resource type="Script" uid="uid://d3s8yilywihnt" path="res://scr/scripts/resources/EnemyVariant.gd" id="1_xhqfq"]
+
+[resource]
+script = ExtResource("1_xhqfq")
+animation_set = ExtResource("1_jebpn")
+metadata/_custom_type_script = "uid://d3s8yilywihnt"

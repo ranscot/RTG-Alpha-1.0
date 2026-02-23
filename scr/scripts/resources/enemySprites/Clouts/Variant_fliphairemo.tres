@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyVariant" load_steps=3 format=3 uid="uid://cetslxvn2ypwd"]
+
+[ext_resource type="Script" uid="uid://d3s8yilywihnt" path="res://scr/scripts/resources/EnemyVariant.gd" id="1_4cmof"]
+[ext_resource type="SpriteFrames" uid="uid://blob2avo8vgdt" path="res://scr/scripts/resources/enemySprites/Clouts/Frames_fliphairemo.tres" id="1_wrm8i"]
+
+[resource]
+script = ExtResource("1_4cmof")
+name_text = ""
+animation_set = ExtResource("1_wrm8i")
+metadata/_custom_type_script = "uid://d3s8yilywihnt"

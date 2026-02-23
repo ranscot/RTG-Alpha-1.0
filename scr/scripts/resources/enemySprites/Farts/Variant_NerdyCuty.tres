@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyVariant" load_steps=3 format=3 uid="uid://ur3wqho0gaao"]
+
+[ext_resource type="Script" uid="uid://d3s8yilywihnt" path="res://scr/scripts/resources/EnemyVariant.gd" id="1_arw43"]
+[ext_resource type="SpriteFrames" uid="uid://mh5kig0ygvml" path="res://scr/scripts/resources/enemySprites/Farts/Frames_NerdyCuty.tres" id="1_xl35i"]
+
+[resource]
+script = ExtResource("1_arw43")
+animation_set = ExtResource("1_xl35i")
+metadata/_custom_type_script = "uid://d3s8yilywihnt"

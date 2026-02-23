@@ -10,19 +10,22 @@ var is_collected: bool = false
 
 	
 func _on_body_entered(body):
+	
+	print("im in the engage")
 	# Check the gate
 	if is_collected:
 		return
 	
 	# 1. Give the ammo
 	if body.is_in_group("player"): # <-- ASSUMING YOUR PLAYER IS IN THE "player" GROUP
+		
 		is_collected = true
 		
 		# Disable physics
 		collision_shape_2d.set_deferred("disabled", true)
 		
 		# Add 10 coin
-		AmmoManager.add_ammo("bullet_clout", 10)
+		AmmoManager.add_ammo("bullet_engage", 10)
 
 		# 2. PLay the sound
 		audio_stream_player.play()

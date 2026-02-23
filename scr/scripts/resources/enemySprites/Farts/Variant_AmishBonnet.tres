@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyVariant" load_steps=3 format=3 uid="uid://k50ufuar5qk2"]
+
+[ext_resource type="Script" uid="uid://d3s8yilywihnt" path="res://scr/scripts/resources/EnemyVariant.gd" id="1_cfqeu"]
+[ext_resource type="SpriteFrames" uid="uid://c47vwtb4jy12f" path="res://scr/scripts/resources/enemySprites/Farts/Frames_AmishBonnet.tres" id="1_itadx"]
+
+[resource]
+script = ExtResource("1_cfqeu")
+animation_set = ExtResource("1_itadx")
+metadata/_custom_type_script = "uid://d3s8yilywihnt"

@@ -20,6 +20,7 @@ enum State {
 
 var current_state = State.PATROL
 var player = null
+var is_dying: bool = false
 # Optional: Keep track of where we spawned so we don't wander off the map
 @onready var home_position: Vector2 = global_position 
 
@@ -49,7 +50,7 @@ func _ready():
 	
 	# Connect the timer
 	patrol_timer.timeout.connect(_on_patrol_timer_timeout)
-	animated_sprite.animation_finished.connect(_on_animation_finished)
+	# animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	# Start patrolling immediately
 	_pick_new_patrol_target()
@@ -144,21 +145,43 @@ func attack_state(_delta):
 	# print("ATTACKING PLAYER!")
 
 func death_state(_delta):
-	# If animation is already death, we don't need to do anything
-	if animated_sprite.animation == "death":
+	# 1. THE LOCK: If we are already dying, ignore all future frames
+	if is_dying:
 		return 
-
-	# -- Stopping logic
+		
+	is_dying = true # Lock the door! 
+	
+	# 2. Stopping logic
+	velocity = Vector2.ZERO
 	patrol_timer.stop()
 	
-	# Disable collisions and areas
+	# Disable collisions and areas safely
 	$CollisionShape2D.set_deferred("disabled", true)
-	$DetectionArea.monitoring = false
-	$AttackArea.monitoring = false
+	$DetectionArea.set_deferred("monitoring", false)
+	$AttackArea.set_deferred("monitoring", false)
 	
-	# Play animation and sound
-	animated_sprite.play("death")
-	death_sound_player.play()
+	# Play sound
+	if death_sound_player:
+		death_sound_player.play()
+	
+	# 3. SAFETY CHECK & ANIMATION
+	if animated_sprite.sprite_frames.has_animation("death"):
+		animated_sprite.play("death")
+		await animated_sprite.animation_finished
+	else:
+		print("Warning: No 'death' animation found for ", name)
+		# Wait half a second so the death sound can finish playing
+		await get_tree().create_timer(0.5).timeout
+		
+	# 4. SPAWN LOOT
+	if drop_scene:
+		var drop = drop_scene.instantiate()
+		# current_scene is generally safer than root for pausing/scene changes
+		get_tree().current_scene.add_child(drop)
+		drop.global_position = global_position
+		
+	# 5. GOODBYE
+	queue_free()
 
 ## --- Helper Functions ---
 
@@ -215,13 +238,7 @@ func _on_attack_area_body_exited(body):
 			patrol_timer.stop()
 
 func _on_animation_finished():
-	if animated_sprite.animation == "death":
-		if drop_scene:
-			var drop = drop_scene.instantiate()
-			# Add child to the Level (root), not the Enemy (which is about to delete)
-			get_tree().root.add_child(drop)
-			drop.global_position = global_position
-		queue_free()
+	pass
 
 func _on_patrol_timer_timeout():
 	if current_state == State.DEATH: return
