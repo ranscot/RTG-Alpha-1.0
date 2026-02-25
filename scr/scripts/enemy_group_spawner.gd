@@ -21,8 +21,10 @@ extends Node2D
 var _session_name_pool: Array[String] = []
 
 func _ready():
-	# Wait one physics frame so the Navigation Server is ready
-	await NavigationServer2D.map_changed
+	# The pragmatic, bulletproof buffer. 
+	# Gives the NavigationServer 0.2 seconds to stitch the map together.
+	await get_tree().create_timer(0.2).timeout
+	
 	spawn_all()
 
 func spawn_all():
@@ -63,6 +65,8 @@ func _spawn_scatter(rect: ReferenceRect):
 	# Get the World ID so we can ask the Server for help
 	var map = get_world_2d().get_navigation_map()
 	
+	print("--- Attempting to spawn enemies in: ", rect.name, " ---") # <--- ADD THIS
+	
 	for i in range(count_per_node):
 		# 1. Blind Guess inside the box
 		var random_x = randf_range(0, rect.size.x)
@@ -72,6 +76,9 @@ func _spawn_scatter(rect: ReferenceRect):
 		# 2. SAFETY SNAP (The Pro Move)
 		# Snaps the point to the nearest valid floor. 
 		var safe_pos = NavigationServer2D.map_get_closest_point(map, guess_pos)
+		
+		# THE SMOKING GUN
+		print(rect.name, " Guessed: ", guess_pos, " | Snapped to: ", safe_pos)
 		
 		# Home Base is just where they spawned (they wander from there)
 		# Note: We pass 'safe_pos' twice because for scattered enemies, 

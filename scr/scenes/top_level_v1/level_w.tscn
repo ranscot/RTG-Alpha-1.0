@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cttgslglkcp25"]
+[gd_scene load_steps=44 format=4 uid="uid://cttgslglkcp25"]
 
 [ext_resource type="Script" uid="uid://de5p4i3r376da" path="res://scr/scenes/top_level_v1/level_w.gd" id="1_pa67k"]
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="2_esluy"]
@@ -36,15 +36,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw4ei"]
 size = Vector2(1071, 125)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_28x8u"]
-vertices = PackedVector2Array(1058.9609, 1535.0625, 248.02344, 1539.9297, 251, 195.95313, 1052.0313, -298.03125, 246.86719, -300.96094, 247, -125.11719, 246, -232.86719)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(1069, 1545, 1062, -308, 237, -311, 236, -233, 237, -125, 241, 196, 238, 1550)])
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_polph"]
-vertices = PackedVector2Array(837.02344, 817.8672, 841.96875, 2892.789, 23.960938, 2876.1875, 17.03125, 807.1328)
+vertices = PackedVector2Array(841.96875, 2892.8203, 34.007813, 2879.1563, 36.976563, 823.9219, 837.02344, 818.0703)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(7, 797, 847, 808, 852, 2903, 24, 2889)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(27, 814, 847, 808, 852, 2903, 24, 2889)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_366fu"]
 vertices = PackedVector2Array(1386.9688, 22.921875, 1386.0234, 362.96875, 12.0234375, 360.02344, 12.96875, 12.0703125)
@@ -52,9 +47,44 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1396, 373, 2, 370, 3, 2, 1397, 13)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jpy4l"]
-vertices = PackedVector2Array(1787, 2156.3906, 1807.2188, 2425.1016, 22.953125, 2441.8984, 13.0390625, 19, 1784.9922, 1126.9766, 1808.0313, 19, 1810.9766, 1099.9688)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3), PackedInt32Array(4, 3, 5, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(3, 9, 1818, 9, 1821, 1104, 1795, 1131, 1797, 2156, 1818, 2435, 13, 2452)])
+vertices = PackedVector2Array(1818.0469, 17.976563, 1823.9375, 1159.4766, 1803.9531, 1158.4922, 6.0078125, 15.0078125, 1809, 2225.211, 1817.6094, 2451.9922, 8.9765625, 2451)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 3), PackedInt32Array(2, 4, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4, 5, 1828, 8, 1834, 1170, 1814, 1169, 1819, 2225, 1828, 2462, -1, 2461)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jbl4j"]
+vertices = PackedVector2Array(3096.5781, 1664.3906, 3048.0234, 1667.3594, 3050.9688, 541.02344, 3828.2266, 542.96875, 3829.25, 584.46094, 4308.0234, 1048.5391, 4309.961, 1671.6328, 4255.1094, 1669.6328, 4265.1016, 1046.5469, 3099.75, 2115.6875, 3067.9688, 2116.6719, 3067.0313, 1785, 3101.4063, 1785, 4006.211, 541.9219, 4306.0938, 539.09375, 4309.8984, 931, 4263.8984, 931, 3999.2734, 576.6328, 4309.9688, 2613.0078, 3065, 2614.9766, 3065, 2218.4688, 3102.2422, 2216.461, 4253.8984, 1779.9375, 4308.0234, 1785.9531)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 23, 18, 21, 9, 12), PackedInt32Array(7, 22, 12, 0, 4), PackedInt32Array(16, 8, 7, 4, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(3839, 574, 3991, 567, 3998, 532, 4316, 529, 4320, 941, 4274, 941, 4275, 1037, 4318, 1039, 4320, 1682, 4265, 1680, 4264, 1771, 4318, 1777, 4320, 2623, 3055, 2625, 3055, 2209, 3092, 2207, 3090, 2126, 3058, 2127, 3057, 1775, 3091, 1775, 3087, 1675, 3038, 1678, 3041, 531, 3838, 533)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bfeeq"]
+vertices = PackedVector2Array(5287.992, 1672.9609, 4481.9766, 1670.0313, 4480.008, 545.97656, 5287, 545.0078)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4470, 536, 5297, 535, 5298, 1683, 4472, 1680)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vq1f8"]
+vertices = PackedVector2Array(5286.9688, 1789.9766, 5285.0234, 2605.0234, 4470.039, 2606.9688, 4473.953, 1789)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4464, 1780, 4467, 1779, 5297, 1780, 5295, 2615, 4460, 2617)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_tcvjb"]
+vertices = PackedVector2Array(6955.047, 543.9531, 6960.9375, 1665.9922, 5451.961, 1665, 5448.0313, 537.03906)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(6965, 534, 6971, 1676, 5442, 1675, 5438, 527)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bl0nr"]
+vertices = PackedVector2Array(6964, 2608, 5456, 2608.9922, 5456, 1791, 6964, 1791)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(5446, 1781, 6974, 1781, 6974, 2618, 5446, 2619)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0icar"]
+vertices = PackedVector2Array(7180, 1660.8438, 7118, 1661.8281, 7118, 548.9219, 8018.0234, 542.0703, 8020.9688, 1669.2813, 7953, 1671.2891, 7180, 1782.5078, 7953, 1785.1094, 8019.961, 2609.0469, 7117.0313, 2613.9375, 7119.961, 1785.5078, 8017.0313, 1791.1094)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(6, 0, 5, 7), PackedInt32Array(8, 9, 10, 6, 7, 11)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7108, 539, 8028, 532, 8031, 1679, 7963, 1681, 7963, 1776, 8027, 1782, 8030, 2619, 7107, 2624, 7110, 1776, 7170, 1773, 7170, 1671, 7108, 1672)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_myn1j"]
+vertices = PackedVector2Array(8308.289, 1652.1563, 8194.094, 1661.1719, 8203.906, 545, 8980.0625, 545, 8992.93, 2606.0313, 8304.742, 1785, 8198.07, 2608.961, 8203.93, 1785)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(8194, 535, 8990, 535, 9003, 2616, 8188, 2619, 8194, 1775, 8295, 1775, 8298, 1663, 8184, 1672)])
 
 [node name="level_one" type="Node2D"]
 y_sort_enabled = true
@@ -186,30 +216,49 @@ position = Vector2(6, -2)
 position = Vector2(535.5, 455.5)
 shape = SubResource("RectangleShape2D_rw4ei")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(-225, 1331)
-navigation_polygon = SubResource("NavigationPolygon_28x8u")
-
 [node name="WorldNavigation_Regions" type="Node2D" parent="."]
 
-[node name="NavRegion_Park" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
+[node name="Middle_Row" type="Node2D" parent="WorldNavigation_Regions"]
+
+[node name="NavRegion_Park" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
 navigation_polygon = SubResource("NavigationPolygon_polph")
 
-[node name="NavRegion_TopOpeningArea" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
+[node name="NavRegion_TopOpeningArea" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
 position = Vector2(857, 3)
 navigation_polygon = SubResource("NavigationPolygon_366fu")
 
-[node name="NavRegion_FartStreet" type="NavigationRegion2D" parent="WorldNavigation_Regions"]
+[node name="NavRegion_FartStreet" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
 position = Vector2(1063, 527)
 navigation_polygon = SubResource("NavigationPolygon_jpy4l")
+
+[node name="NavRegion_TondaLandia" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+position = Vector2(9, -5)
+navigation_polygon = SubResource("NavigationPolygon_jbl4j")
+
+[node name="NavRegion_Top1" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+navigation_polygon = SubResource("NavigationPolygon_bfeeq")
+
+[node name="NavRegion_Bottom1" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+navigation_polygon = SubResource("NavigationPolygon_vq1f8")
+
+[node name="NavRegion_Top2" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+navigation_polygon = SubResource("NavigationPolygon_tcvjb")
+
+[node name="NavRegion_Bottom2" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+navigation_polygon = SubResource("NavigationPolygon_bl0nr")
+
+[node name="NavRegion_TallLeft" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+navigation_polygon = SubResource("NavigationPolygon_0icar")
+
+[node name="NavRegion_Tallright" type="NavigationRegion2D" parent="WorldNavigation_Regions/Middle_Row"]
+navigation_polygon = SubResource("NavigationPolygon_myn1j")
 
 [node name="EnemyManager" type="Node2D" parent="."]
 
 [node name="Spawner_2row_farts" type="Node2D" parent="EnemyManager"]
 script = ExtResource("12_366fu")
 enemy_scene = ExtResource("6_366fu")
-count_per_node = 15
+count_per_node = 50
 name_database = ExtResource("13_jpy4l")
 possible_variants = Array[ExtResource("14_7rrud")]([ExtResource("15_o05p3"), ExtResource("16_wsit3"), ExtResource("17_18s43"), ExtResource("18_uijew"), ExtResource("19_ydq0p")])
 
@@ -221,6 +270,48 @@ offset_left = 22.0
 offset_top = 1039.0
 offset_right = 852.0
 offset_bottom = 2337.0
+
+[node name="FartStreet" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 1096.0
+offset_top = 561.0
+offset_right = 2832.0
+offset_bottom = 2946.0
+
+[node name="TondaLandia" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 3123.0
+offset_top = 598.0
+offset_right = 4248.0
+offset_bottom = 2601.0
+
+[node name="Top1" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 4507.0
+offset_top = 562.0
+offset_right = 5273.0
+offset_bottom = 1661.0
+
+[node name="Bottom1" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 5459.0
+offset_top = 556.0
+offset_right = 6950.0
+offset_bottom = 1654.0
+
+[node name="TallLeft" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 7190.0
+offset_top = 581.0
+offset_right = 7946.0
+offset_bottom = 2591.0
+
+[node name="TallRight" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 8321.0
+offset_top = 552.0
+offset_right = 8966.0
+offset_bottom = 2589.0
+
+[node name="Bottom2" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 5477.0
+offset_top = 1808.0
+offset_right = 6953.0
+offset_bottom = 2595.0
 
 [node name="Spawner_2row_clouts" type="Node2D" parent="EnemyManager"]
 script = ExtResource("12_366fu")
