@@ -14,7 +14,7 @@ config/name="RTG 1.1.5"
 config/description="1.1
 Navigation Agent Added
 Navigation Server engaged"
-run/main_scene="uid://cttgslglkcp25"
+run/main_scene="uid://b0v5cdpv5e7xj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 AmmoManager="*res://scr/scripts/singletons/AmmoManager.gd"
 QuestManager="*res://scr/scripts/singletons/QuestManager.gd"
+GameManager="*res://scr/scripts/singletons/GameManager.gd"
 
 [display]
 
