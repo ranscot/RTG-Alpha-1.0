@@ -23,6 +23,7 @@ config/icon="res://icon.svg"
 AmmoManager="*res://scr/scripts/singletons/AmmoManager.gd"
 QuestManager="*res://scr/scripts/singletons/QuestManager.gd"
 GameManager="*res://scr/scripts/singletons/GameManager.gd"
+PauseMenu="*res://scr/ui/pause_screen/canvas_layer.tscn"
 
 [display]
 
