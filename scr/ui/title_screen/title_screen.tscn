@@ -46,5 +46,23 @@ offset_bottom = 1080.0
 scale = Vector2(0.7, 0.7)
 stream = ExtResource("5_1q6ar")
 
+[node name="LoadingBackground" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 662.0
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 413.0
+offset_top = 318.0
+offset_right = 718.0
+offset_bottom = 397.0
+theme_override_fonts/font = ExtResource("3_0hoie")
+theme_override_font_sizes/font_size = 78
+text = "LOADING"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
