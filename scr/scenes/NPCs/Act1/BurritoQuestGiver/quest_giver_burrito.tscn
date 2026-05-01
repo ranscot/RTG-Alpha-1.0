@@ -45,6 +45,7 @@ radius = 65.03076
 
 [node name="QuestGiver_Burrito" instance=ExtResource("1_tf4b8")]
 script = ExtResource("2_qtufr")
+chatter_id = "NuclearLandlord"
 opening_cutscene = ExtResource("3_uqqiy")
 waiting_cutscene = ExtResource("4_i0maw")
 closing_cutscene = ExtResource("5_ig06r")

@@ -23,7 +23,11 @@ config/icon="res://icon.svg"
 AmmoManager="*res://scr/scripts/singletons/AmmoManager.gd"
 QuestManager="*res://scr/scripts/singletons/QuestManager.gd"
 GameManager="*res://scr/scripts/singletons/GameManager.gd"
-PauseMenu="*res://scr/ui/pause_screen/canvas_layer.tscn"
+PauseMenu="*res://scr/ui/pause_screen/pause_menu.tscn"
+SettingsManager="*res://scr/scripts/singletons/SettingsManager.gd"
+CrtFilter="*res://scr/ui/crt_filter/crt_filter.tscn"
+ChatiaryManager="*res://scr/scripts/singletons/ChatterManager.gd"
+DeathManager="*res://scr/scenes/death_manager/death_manager.tscn"
 
 [display]
 
@@ -33,6 +37,7 @@ window/stretch/mode="viewport"
 
 player=""
 overworld_enemies=""
+PlayerHUB=""
 
 [input]
 

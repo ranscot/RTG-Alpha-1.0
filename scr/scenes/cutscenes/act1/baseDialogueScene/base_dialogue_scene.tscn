@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://62y0m8rwf8qj"]
+[gd_scene load_steps=8 format=3 uid="uid://62y0m8rwf8qj"]
 
 [ext_resource type="Script" uid="uid://bsqvxy1ybpqq8" path="res://scr/scenes/cutscenes/act1/baseDialogueScene/base_dialogue_scene.gd" id="1_cu5b7"]
 [ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="2_cw27t"]
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="2_ogqlu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cw27t"]
 content_margin_left = 20.0
@@ -66,32 +67,76 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ogqlu")
 [node name="PlayerGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl/Panel"]
 visible = false
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="PlayerPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup"]
 layout_mode = 2
+size_flags_vertical = 4
+stretch_mode = 4
 
-[node name="PlayerText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup"]
+[node name="PlayerTextPadding" type="MarginContainer" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 1
+
+[node name="PlayerTextColumn" type="VBoxContainer" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerTextPadding"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PlayerName" type="Label" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerTextPadding/PlayerTextColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ogqlu")
+theme_override_font_sizes/font_size = 48
+text = "RetroGradeTom"
+
+[node name="PlayerText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerTextPadding/PlayerTextColumn"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("2_cw27t")
 theme_override_font_sizes/normal_font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cw27t")
 bbcode_enabled = true
+fit_content = true
 
 [node name="NPCGroup" type="HBoxContainer" parent="CanvasLayer/DialogueControl/Panel"]
 visible = false
 layout_mode = 2
 
-[node name="NPCText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
+[node name="NPCPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="NPCTextPadding" type="MarginContainer" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NPCTextColumn" type="VBoxContainer" parent="CanvasLayer/DialogueControl/Panel/NPCGroup/NPCTextPadding"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NPCNameLabel" type="Label" parent="CanvasLayer/DialogueControl/Panel/NPCGroup/NPCTextPadding/NPCTextColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ogqlu")
+theme_override_font_sizes/font_size = 36
+text = "NPC Name"
+
+[node name="NPCText" type="RichTextLabel" parent="CanvasLayer/DialogueControl/Panel/NPCGroup/NPCTextPadding/NPCTextColumn"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("2_cw27t")
 theme_override_font_sizes/normal_font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ogqlu")
 bbcode_enabled = true
-
-[node name="NPCPortrait" type="TextureRect" parent="CanvasLayer/DialogueControl/Panel/NPCGroup"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
+fit_content = true

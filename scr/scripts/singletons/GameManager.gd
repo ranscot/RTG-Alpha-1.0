@@ -11,6 +11,7 @@ enum GameState {
 # The game always boots up on the Title Screen
 var current_state: GameState = GameState.TITLE
 
+
 # The universal function that everything in your game will use to switch states
 func change_state(new_state: GameState):
 	current_state = new_state
@@ -19,3 +20,12 @@ func change_state(new_state: GameState):
 	print("State changed to: ", GameState.keys()[current_state])
 	
 	# (We will add the actual scene-swapping logic here in a minute!)
+# Death Manager
+var has_died_before: bool = false
+var current_spawn_location: Vector2
+
+func _ready() -> void:
+	# Set the default spawn to The Store's exact coordinates when the game boots!
+	current_spawn_location = Vector2(450,200)
+	 
+	

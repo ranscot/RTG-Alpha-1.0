@@ -9,50 +9,45 @@ extends BaseQuestGiver
 
 # --- 1. LOGIC MAPPING ---
 func get_quest_state() -> int:
-	var s = QuestManager.burritoQuest_current_state
+	var quest = QuestManager.get_quest_data("burrito_fart")
 	
-	# SCENARIO 1: Quest Not Started
-	# Just chatting. No rewards.
-	if s == QuestManager.BurritoQuestState.NOT_STARTED:
+	if quest.is_empty() or quest.status == QuestManager.QuestStatus.UNAVAILABLE:
+		# SCENARIO 1: Quest Not Started
+		# Just chatting. No rewards.
 		waiting_cutscene = scene_not_started
-		return 1 # Return 1 = Passive Mode (Just plays the scene)
-
-	# SCENARIO 2: Quest Accepted
-	# This is the "Transaction". We want to run code after the movie.
-	elif s == QuestManager.BurritoQuestState.ACCEPTED:
-		opening_cutscene = scene_accepted
-		return 0 # Return 0 = Action Mode (Plays scene -> Runs start_the_quest)
-
-	# SCENARIO 3: Burrito Eaten
-	# Player has the ammo/item. Just chatting.
-	elif s == QuestManager.BurritoQuestState.BURRITO_EATEN:
-		waiting_cutscene = scene_already_eaten
 		return 1 # Return 1 = Passive Mode
-
+		
+	elif quest.status == QuestManager.QuestStatus.ACTIVE:
+		# SCENARIO 2: Quest Accepted (Waiting for Tom to get the burrito)
+		if quest.current_step == 1:
+			opening_cutscene = scene_accepted
+			return 0 # Return 0 = Action Mode (Plays scene -> Runs start_the_quest)
+			
+		# SCENARIO 3: Burrito Eaten (Tom already got the ammo)
+		elif quest.current_step >= 2:
+			waiting_cutscene = scene_already_eaten
+			return 1 # Return 1 = Passive Mode
+			
 	# SCENARIO 4: Completed
-	# Quest is over. Just chatting.
-	else:
-		waiting_cutscene = scene_completed
-		return 1 # Return 1 = Passive Mode
+	waiting_cutscene = scene_completed
+	return 1 # Return 1 = Passive Mode
 
 # --- 2. THE ACTION (GIVING THE ITEM) ---
-# This runs automatically ONLY when we return 0 (State: ACCEPTED)
+# This runs automatically ONLY when we return 0 (State: ACTIVE, Step 1)
 func start_the_quest():
 	print("Dealer: Transaction complete. Burrito delivered.")
 	
-	# 1. Give the Ammo (Just like the Truck!)
+	# 1. Give the Ammo 
 	if AmmoManager:
 		AmmoManager.add_ammo("bullet_fart", 10)
 	
 	# 2. Advance the Quest State
-	# This moves the state from ACCEPTED -> BURRITO_EATEN
-	QuestManager.eat_burrito() 
+	# THE NEW WAY: This moves the state to Step 2!
+	QuestManager.advance_quest("burrito_fart") 
 
 # --- 3. UNUSED OVERRIDES ---
-# The dealer does not finish the quest (The Giver does that)
 func finish_the_quest():
 	pass
 
-# The dealer does not explode
 func trigger_special_ending():
 	pass

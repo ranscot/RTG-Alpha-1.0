@@ -39,3 +39,4 @@ metadata/_custom_type_script = "uid://ddnyulx4oal64"
 
 [node name="Cutscene_KillingMoon_NotStarted" instance=ExtResource("1_neco1")]
 dialogue_timeline = Array[ExtResource("2_l68xr")]([SubResource("Resource_702i8"), SubResource("Resource_21he5"), SubResource("Resource_lunpp"), SubResource("Resource_knnmn")])
+chatter_id = "killing_moon"

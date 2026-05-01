@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChatterData" load_steps=3 format=3 uid="uid://dct8qbg2hhlut"]
+
+[ext_resource type="Script" uid="uid://dgybpkpq3o0u2" path="res://scr/scripts/chatter/chatter_data.gd" id="1_5yiq1"]
+[ext_resource type="Texture2D" uid="uid://d3sc32eekbc6h" path="res://scr/assets/pictures/Actor1_4.png" id="1_l7ywk"]
+
+[resource]
+script = ExtResource("1_5yiq1")
+id = "NuclearLandlord"
+name = "Nuclear Land Lord"
+bio = "Street from the Streetz with a Z, Nuclear Land Lord will pop off in your hood to some how increase rent. "
+weakness = "BackStreetFarts"
+avatar = ExtResource("1_l7ywk")
+metadata/_custom_type_script = "uid://dgybpkpq3o0u2"

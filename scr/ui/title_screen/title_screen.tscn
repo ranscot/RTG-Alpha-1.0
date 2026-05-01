@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0v5cdpv5e7xj"]
+[gd_scene load_steps=7 format=3 uid="uid://b0v5cdpv5e7xj"]
 
 [ext_resource type="Script" uid="uid://h8jae238x27r" path="res://scr/ui/title_screen/title_screen.gd" id="1_pia8q"]
 [ext_resource type="Texture2D" uid="uid://dtg2y5ti5m4py" path="res://scr/assets/ui_art/RTG_Title.png" id="2_buthp"]
 [ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="3_0hoie"]
 [ext_resource type="AudioStream" uid="uid://cikh2kwn0i6df" path="res://scr/assets/audio/music/Scene1.ogg" id="4_dvwmq"]
 [ext_resource type="VideoStream" uid="uid://n7o512ivqgxa" path="res://scr/assets/video/death_scenes/tomsharks.ogv" id="5_1q6ar"]
+[ext_resource type="PackedScene" uid="uid://bb6inyutwnrga" path="res://scr/ui/settings_menu/settings_menu.tscn" id="6_buthp"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -24,19 +25,10 @@ offset_bottom = 1838.2858
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_buthp")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 508.0
-offset_top = 584.0
-offset_right = 672.0
-offset_bottom = 649.0
-theme_override_fonts/font = ExtResource("3_0hoie")
-theme_override_font_sizes/font_size = 56
-text = "Start"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dvwmq")
 autoplay = true
+bus = &"Music"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 visible = false
@@ -64,5 +56,57 @@ theme_override_fonts/font = ExtResource("3_0hoie")
 theme_override_font_sizes/font_size = 78
 text = "LOADING"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -386.0
+offset_top = -65.0
+offset_right = 386.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0hoie")
+theme_override_font_sizes/font_size = 56
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0hoie")
+theme_override_font_sizes/font_size = 56
+text = "Settings"
+
+[node name="StoryButton" type="Button" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0hoie")
+theme_override_font_sizes/font_size = 56
+text = "Story"
+
+[node name="QuitButton" type="Button" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0hoie")
+theme_override_font_sizes/font_size = 56
+text = "QUIT"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("6_buthp")]
+layout_mode = 1
+
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="hidden" from="SettingsMenu" to="." method="_on_settings_menu_hidden"]

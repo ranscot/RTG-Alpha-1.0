@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr7pboexhif16"]
+
+[ext_resource type="Script" uid="uid://bx3y3a1q6md5b" path="res://scr/ui/quest_log/quest_log.gd" id="1_f6hb6"]
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="2_wdutu"]
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="3_j6vxc"]
+
+[sub_resource type="Theme" id="Theme_qmu4e"]
+default_font = ExtResource("2_wdutu")
+
+[node name="QuestLog" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f6hb6")
+
+[node name="SplitScreen" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LeftColumn" type="ScrollContainer" parent="SplitScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestList" type="VBoxContainer" parent="SplitScreen/LeftColumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_qmu4e")
+
+[node name="RightColumn" type="VBoxContainer" parent="SplitScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TitleLabel" type="Label" parent="SplitScreen/RightColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j6vxc")
+theme_override_font_sizes/font_size = 48
+text = "Select a Quest"
+
+[node name="DescLabel" type="RichTextLabel" parent="SplitScreen/RightColumn"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="SplitScreen/RightColumn"]
+layout_mode = 2
+
+[node name="ObjectivesBox" type="VBoxContainer" parent="SplitScreen/RightColumn"]
+layout_mode = 2

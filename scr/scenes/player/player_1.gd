@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+signal health_changed(current_health: float, max_health: float)
+signal player_died
+
 # --- Signals and Exports ---
 # We don't need this signal, we will spawn the bullet directly.
 # signal shoot(bullet_scene, direction, location) 
@@ -81,6 +84,13 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = health
 	
+	# This runs exactly once when Tom enters the world.
+	# It fills the UI so it doesn't look empty before the first fight.
+	var hud = get_tree().get_first_node_in_group("PlayerHUD")
+	if hud:
+		hud.update_health(health, max_health)
+	
+	
 	# Add this check to make sure the Muzzle exists
 	if not fart_weapon_muzzle or clout_weapon_muzzle or engage_weapon_muzzle:
 		print("ERROR: Player script needs a Marker2D node named 'Muzzle'.")
@@ -121,8 +131,10 @@ func _physics_process(delta: float) -> void:
  	
 		
 func _input(event: InputEvent) -> void:
-	if is_cutscene_locked:
+	# Master Player Lock when playing cutscenes
+	if GameManager.current_state != GameManager.GameState.PLAYING:
 		return
+	
 	# Removed "var muzzle = $Muzzle" because it's an @onready var now
 	# Removed "var fire_direction = ..."
 	
@@ -133,14 +145,14 @@ func _input(event: InputEvent) -> void:
 
 		if bullet_fart and AmmoManager.use_ammo("bullet_fart"):
 			fart_weapon_shoot.play()
-			_spawn_bullet(bullet_fart, fart_weapon_muzzle) # <-- CHANGED
+			_spawn_bullet(bullet_fart, fart_weapon_muzzle) 
 
 	if event.is_action_pressed("fire_secondary"):
 
 		if bullet_clout and AmmoManager.use_ammo("bullet_clout"):
 			print("CLOUT FIRE")
 			clout_weapon_shoot.play()
-			_spawn_bullet(bullet_clout, clout_weapon_muzzle) # <-- CHANGED 
+			_spawn_bullet(bullet_clout, clout_weapon_muzzle)
   
 #	if event.is_action_pressed("fire_tertiary"):
 #		if bullet_engage and AmmoManager.use_ammo("bullet_engage"):
@@ -148,18 +160,19 @@ func _input(event: InputEvent) -> void:
 
 # --- Custom Functions ---
 func handle_engage_weapon(delta):
-	# 1. check if holding button AND has ammo
-	if Input.is_action_pressed("fire_tertiary") and AmmoManager.get_ammo_count("bullet_engage") > 0:
+	# 1. Check if we are PLAYING, AND holding the button, AND have ammo
+	if GameManager.current_state == GameManager.GameState.PLAYING and Input.is_action_pressed("fire_tertiary") and AmmoManager.get_ammo_count("bullet_engage") > 0:
 		# turn ON the weapon
 		
-		print("Engage Weapon Active!")
-
+		# (I added this quick check so it doesn't spam the print console every single frame!)
 		if not engage_cone.monitoring:
+			print("Engage Weapon Active!")
 			engage_cone.monitoring = true
 			cone_visuals.visible = true
 			engage_cone.visible = true
 			cone_damage_timer.start() # start the damage ticks on enemy
 			engage_weapon_shoot.play()
+			
 		# Drain ammo over time ( 1 ammo every .1 seconds)
 		ammo_drain_timer += delta
 		if ammo_drain_timer >= 0.1:
@@ -207,23 +220,50 @@ func _spawn_bullet(bullet_scene: PackedScene, which_muzzle: Marker2D):
 
 
 func take_damage(amount: float) -> void:
-	# (Your take_damage function is perfect, no changes needed)
 	if health <= 0:
 		return
 	
 	health -= amount
 	health = clamp(health, 0, max_health)
 
-	health_bar.value = health
-	
-	if health <= 0:
-		print("Player has died!")
-		state_machine.process_mode = PROCESS_MODE_DISABLED
-		$CollisionShape2D.set_deferred("disabled", true)
-		death_timer.start()
+	# Optional: Update a local floating health bar attached to Tom
+	if health_bar:
+		health_bar.value = health
+		
+	# 2. THE SIGNAL BROADCAST
+	# Tell the game Tom took damage, passing the new numbers
+	health_changed.emit(health, max_health)
 
-func _on_death_timer_timeout() -> void:
-	queue_free()
+	if health <= 0:
+		die()
+
+func die() -> void:
+	print("Player has died!")
+	player_died.emit() # Tell the game Tom died
+	
+	state_machine.process_mode = PROCESS_MODE_DISABLED
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+	# Tell the DeathManager Autoload to start the show, passing 'self' (the player) 
+	# so the manager knows who to teleport!
+	DeathManager.play_death_sequence(self)
+	
+func respawn() -> void:
+	# 1. Refill the math
+	health = max_health
+	
+	# 2. Update Tom's local floating health bar (if he has one)
+	if health_bar:
+		health_bar.value = health
+		
+	# 3. Tell the HUD to update!
+	health_changed.emit(health, max_health)
+	
+	# 4. Turn collisions back on
+	$CollisionShape2D.set_deferred("disabled", false)
+	
+	# 5. Wake the state machine back up
+	state_machine.process_mode = Node.PROCESS_MODE_INHERIT
 
 # this function is called every 1 second by the DamageTime
 func _on_damage_timer_timeout() -> void:

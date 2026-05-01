@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb6inyutwnrga"]
+
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="1_8ijc0"]
+[ext_resource type="Script" uid="uid://ncvhvithvkos" path="res://scr/ui/settings_menu/settings_menu.gd" id="1_epfwk"]
+[ext_resource type="FontFile" uid="uid://bjxbx237y5asx" path="res://scr/resources/fonts/white36.tres" id="2_epfwk"]
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="3_pytu1"]
+[ext_resource type="Theme" uid="uid://dpgerqy7gondg" path="res://scr/resources/fonts/SettingsFonts.tres" id="4_0g6ib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmaaw"]
+bg_color = Color(0, 0, 0, 0.7254902)
+
+[node name="SettingsMenu" type="Control"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_epfwk")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmaaw")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SettingsColumns" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="VideoColumn" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VideoLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8ijc0")
+theme_override_font_sizes/font_size = 56
+text = "-*- VIDEO -*-"
+
+[node name="FullScreenToggle" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_epfwk")
+theme_override_font_sizes/font_size = 36
+text = "Full Screen"
+
+[node name="VSyncToggle" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_epfwk")
+theme_override_font_sizes/font_size = 36
+text = "V-Sync"
+
+[node name="CRTToggle" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pytu1")
+theme_override_font_sizes/font_size = 36
+text = "Retro CRT Filter"
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="AudioColumn" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AudioLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8ijc0")
+theme_override_font_sizes/font_size = 56
+text = "*-* Audio *-*"
+
+[node name="MasterVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+layout_mode = 2
+theme = ExtResource("4_0g6ib")
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="MusicVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+layout_mode = 2
+theme = ExtResource("4_0g6ib")
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="EffectsVolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+layout_mode = 2
+theme = ExtResource("4_0g6ib")
+text = "Effects Volume"
+
+[node name="EffectsSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn"]
+layout_mode = 2
+
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn/FullScreenToggle" to="." method="_on_full_screen_toggle_toggled"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn/VSyncToggle" to="." method="_on_v_sync_toggle_toggled"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/VideoColumn/CRTToggle" to="." method="_on_crt_toggle_toggled"]
+[connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/SettingsColumns/AudioColumn/EffectsSlider" to="." method="_on_effects_volume_value_changed"]

@@ -9,17 +9,21 @@ signal finished
 const INPUT_ACTION = "interaction" 
 
 # --- UI NODES ---
-@onready var player_group = $CanvasLayer/DialogueControl/Panel/PlayerGroup
-@onready var player_portrait = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerPortrait
-@onready var player_label = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerText
 
-@onready var npc_group = $CanvasLayer/DialogueControl/Panel/NPCGroup
-@onready var npc_portrait = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCPortrait
-@onready var npc_label = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCText
+@onready var player_group: HBoxContainer = $CanvasLayer/DialogueControl/Panel/PlayerGroup
+@onready var player_portrait: TextureRect = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerPortrait
+@onready var player_name_label: Label = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerTextPadding/PlayerTextColumn/PlayerName
+@onready var player_text: RichTextLabel = $CanvasLayer/DialogueControl/Panel/PlayerGroup/PlayerTextPadding/PlayerTextColumn/PlayerText
+
+@onready var npc_group: HBoxContainer = $CanvasLayer/DialogueControl/Panel/NPCGroup
+@onready var npc_portrait: TextureRect = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCPortrait
+@onready var npc_text: RichTextLabel = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCTextPadding/NPCTextColumn/NPCText
+@onready var npc_name_label: Label = $CanvasLayer/DialogueControl/Panel/NPCGroup/NPCTextPadding/NPCTextColumn/NPCNameLabel
 
 # --- STATE ---
 #--- Replaced old Arry variable with an Export Resource Array 
 @export var dialogue_timeline: Array[DialogueItem]
+@export var chatter_id: String = ""
 
 var current_line_index: int = -1
 
@@ -27,7 +31,9 @@ func _ready() -> void:
 	# Ensure UI is hidden at start until data loads
 	player_group.visible = false
 	npc_group.visible = false
-	
+	# Check if this enemy actually has a Chatiary profile
+	if chatter_id != "":
+		ChatiaryManager.unlock_chatter(chatter_id)
 	# --- we dont need call_defferred because the data is loaded in Inspector 
 	start_dialogue()
 	
@@ -61,6 +67,7 @@ func display_line(item: DialogueItem) -> void:
 	var speaker = item.speaker
 	var text = item.text
 	var texture = item.portrait
+	var display_name = item.character_name
 	
 	# 1. Reset Visibility
 	player_group.visible = false
@@ -69,12 +76,14 @@ func display_line(item: DialogueItem) -> void:
 	# 2. Update the active speaker
 	if speaker == "player":
 		player_group.visible = true
-		player_label.text = text
+		player_text.text = text
+		player_name_label.text = display_name
 		if texture: player_portrait.texture = texture
 		
 	else: # NPC
 		npc_group.visible = true
-		npc_label.text = text
+		npc_text.text = text
+		npc_name_label.text = display_name
 		if texture: npc_portrait.texture = texture
 
 func end_cutscene() -> void:

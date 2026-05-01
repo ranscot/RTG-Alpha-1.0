@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdgx0i1gbl62b"]
+
+[ext_resource type="Script" uid="uid://bby702cwvufj5" path="res://scr/ui/pause_screen/pause_menu.gd" id="1_oimcw"]
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="2_68ffp"]
+[ext_resource type="PackedScene" uid="uid://bb6inyutwnrga" path="res://scr/ui/settings_menu/settings_menu.tscn" id="3_68ffp"]
+[ext_resource type="PackedScene" uid="uid://cr7pboexhif16" path="res://scr/ui/quest_log/quest_log.tscn" id="4_0yl8o"]
+[ext_resource type="PackedScene" uid="uid://jupteaq5et3b" path="res://scr/ui/Chatiary/chatiary_ui.tscn" id="5_dm7mk"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_oimcw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="NavBar" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+alignment = 1
+
+[node name="SystemTab" type="Button" parent="MainLayout/NavBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 56
+text = "System"
+
+[node name="QuestsTab" type="Button" parent="MainLayout/NavBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 56
+text = "Quests"
+
+[node name="BestiaryTab" type="Button" parent="MainLayout/NavBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 56
+text = "Chatiary"
+
+[node name="SettingsTab" type="Button" parent="MainLayout/NavBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 56
+text = "Settings"
+
+[node name="ContentArea" type="MarginContainer" parent="MainLayout"]
+layout_mode = 2
+
+[node name="SettingsMenu" parent="MainLayout/ContentArea" instance=ExtResource("3_68ffp")]
+layout_mode = 2
+
+[node name="SystemPane" type="Control" parent="MainLayout/ContentArea"]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainLayout/ContentArea/SystemPane"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.5
+offset_right = 3.0
+offset_bottom = 449.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainLayout/ContentArea/SystemPane/CenterContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="MainLayout/ContentArea/SystemPane/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 48
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="MainLayout/ContentArea/SystemPane/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="MainLayout/ContentArea/SystemPane/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_68ffp")
+theme_override_font_sizes/font_size = 48
+text = "QUIT"
+
+[node name="QuestLog" parent="MainLayout/ContentArea" instance=ExtResource("4_0yl8o")]
+layout_mode = 2
+
+[node name="ChatiaryUI" parent="MainLayout/ContentArea" instance=ExtResource("5_dm7mk")]
+layout_mode = 2
+
+[connection signal="pressed" from="MainLayout/NavBar/SystemTab" to="." method="_on_system_tab_pressed"]
+[connection signal="pressed" from="MainLayout/NavBar/QuestsTab" to="." method="_on_quests_tab_pressed"]
+[connection signal="pressed" from="MainLayout/NavBar/BestiaryTab" to="." method="_on_bestiary_tab_pressed"]
+[connection signal="pressed" from="MainLayout/NavBar/SettingsTab" to="." method="_on_settings_tab_pressed"]
+[connection signal="hidden" from="MainLayout/ContentArea/SettingsMenu" to="." method="_on_settings_menu_hidden"]
+[connection signal="pressed" from="MainLayout/ContentArea/SystemPane/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MainLayout/ContentArea/SystemPane/CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainLayout/ContentArea/SystemPane/CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

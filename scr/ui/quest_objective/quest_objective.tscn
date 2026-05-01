@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cunqccp2ls7g5"]
+
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="1_ak3v3"]
+
+[node name="QuestObjective" type="CheckBox"]
+offset_right = 44.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("1_ak3v3")
+theme_override_font_sizes/font_size = 28
+text = "TEST"

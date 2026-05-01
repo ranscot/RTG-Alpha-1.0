@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://jupteaq5et3b"]
+
+[ext_resource type="Script" uid="uid://5ny4e2kh8n1g" path="res://scr/ui/Chatiary/chatiary_ui.gd" id="1_8746p"]
+[ext_resource type="FontFile" uid="uid://b4pkq6ib5fc5r" path="res://scr/assets/fonts/LuckiestGuy-Regular.ttf" id="1_y43xu"]
+[ext_resource type="FontFile" uid="uid://bjxbx237y5asx" path="res://scr/resources/fonts/white36.tres" id="3_es6ov"]
+
+[node name="ChatiaryUI" type="MarginContainer"]
+clip_children = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8746p")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="LeftColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/LeftColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y43xu")
+theme_override_font_sizes/font_size = 58
+text = "The Chatiary"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/LeftColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ChatterList" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftColumn/ScrollContainer"]
+layout_mode = 2
+
+[node name="RightColumn" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+alignment = 1
+
+[node name="AvatarRect" type="TextureRect" parent="MarginContainer/HBoxContainer/RightColumn"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/RightColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y43xu")
+theme_override_font_sizes/font_size = 48
+
+[node name="WeaknessLabel" type="Label" parent="MarginContainer/HBoxContainer/RightColumn"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_es6ov")
+theme_override_font_sizes/font_size = 24
+
+[node name="BioLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/RightColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/mono_font_size = 18
+fit_content = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

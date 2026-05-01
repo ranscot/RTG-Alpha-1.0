@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ChatterData" load_steps=3 format=3 uid="uid://ckfs63fyrprbl"]
+
+[ext_resource type="Texture2D" uid="uid://bif77fr87iw21" path="res://scr/assets/pictures/Evil_5.png" id="1_3p2at"]
+[ext_resource type="Script" uid="uid://dgybpkpq3o0u2" path="res://scr/scripts/chatter/chatter_data.gd" id="1_idvla"]
+
+[resource]
+script = ExtResource("1_idvla")
+id = "killing_moon"
+name = "Killing Moon"
+bio = "Some say they transformed from the red pandas of Japan, Killer Moon at times is RetroGrade Tom's righthand man in meta. "
+weakness = "Clout"
+avatar = ExtResource("1_3p2at")
+metadata/_custom_type_script = "uid://dgybpkpq3o0u2"

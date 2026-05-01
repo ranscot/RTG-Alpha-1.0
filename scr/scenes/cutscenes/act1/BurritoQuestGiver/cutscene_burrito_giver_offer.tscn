@@ -8,12 +8,14 @@
 
 [sub_resource type="Resource" id="Resource_p60ug"]
 script = ExtResource("2_m77vt")
+character_name = "NuclearLandLord"
 text = "WOW! THE RetrogradeTom! What is going on!"
 portrait = ExtResource("3_4h0sl")
 metadata/_custom_type_script = "uid://ddnyulx4oal64"
 
 [sub_resource type="Resource" id="Resource_42xgv"]
 script = ExtResource("2_m77vt")
+character_name = "RetroGradeTom"
 speaker = "player"
 text = "On my way to the cheese cake factory, I think I am finally famous enough to get a table."
 portrait = ExtResource("4_dxrgu")
@@ -21,11 +23,13 @@ metadata/_custom_type_script = "uid://ddnyulx4oal64"
 
 [sub_resource type="Resource" id="Resource_5ukg2"]
 script = ExtResource("2_m77vt")
+character_name = "NuclearLandLord"
 text = "Cool! I wish I could visit such a valhalla."
 metadata/_custom_type_script = "uid://ddnyulx4oal64"
 
 [sub_resource type="Resource" id="Resource_id56i"]
 script = ExtResource("2_m77vt")
+character_name = "RetroGradeTom"
 speaker = "player"
 text = "Mind if I get by here?"
 portrait = ExtResource("5_y2ic6")
@@ -33,6 +37,7 @@ metadata/_custom_type_script = "uid://ddnyulx4oal64"
 
 [sub_resource type="Resource" id="Resource_8nx4o"]
 script = ExtResource("2_m77vt")
+character_name = "NuclearLandLord"
 text = "Actually, yes I do mind. I want to match the mind of the greatest PuzzWizz of all time, basically Mensa. I will not let you pass unless you do as well."
 portrait = ExtResource("3_4h0sl")
 metadata/_custom_type_script = "uid://ddnyulx4oal64"

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dpgerqy7gondg"]
+
+[ext_resource type="FontFile" uid="uid://dwubil4canrne" path="res://scr/assets/fonts/gemunu-libre-v8-latin-700.ttf" id="1_t1mqm"]
+
+[resource]
+default_font = ExtResource("1_t1mqm")
+default_font_size = 36

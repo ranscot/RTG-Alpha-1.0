@@ -52,13 +52,18 @@ func _refill_name_pool():
 
 # --- STRATEGY A: CLUSTER (Tight Squads) ---
 func _spawn_cluster(marker: Marker2D):
+	var map = get_world_2d().get_navigation_map()
+	
 	for i in range(count_per_node):
-		# Random offset so they don't stack perfectly on one pixel
+		# 1. Blind Guess with the offset
 		var offset = Vector2(randf_range(-40, 40), randf_range(-40, 40))
-		var pos = marker.global_position + offset
+		var guess_pos = marker.global_position + offset
+		
+		# 2. Safety Snap (Forces them onto the NavMesh)
+		var safe_pos = NavigationServer2D.map_get_closest_point(map, guess_pos)
 		
 		# Home Base is the Marker itself
-		_create_enemy(pos, marker.global_position)
+		_create_enemy(safe_pos, marker.global_position)
 
 # --- STRATEGY B: SCATTER (Wide Area with Safety Snap) ---
 func _spawn_scatter(rect: ReferenceRect):
