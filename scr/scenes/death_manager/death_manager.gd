@@ -31,6 +31,10 @@ func play_death_sequence(player: Node2D) -> void:
 	
 	# 4. THE RESPAWN (This happens while the screen is still black!)
 	print("DeathManager is trying to teleport Tom to: ", GameManager.current_spawn_location)
+	
+	# THE SWEEPER: Delete all leftover items on the ground
+	get_tree().call_group("dropped_items", "queue_free")
+	
 	# Teleport Tom to the stored coordinates
 	player.global_position = GameManager.current_spawn_location
 	

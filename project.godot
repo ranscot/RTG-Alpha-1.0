@@ -38,6 +38,7 @@ window/stretch/mode="viewport"
 player=""
 overworld_enemies=""
 PlayerHUB=""
+dropped_items=""
 
 [input]
 

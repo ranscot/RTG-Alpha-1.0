@@ -7,7 +7,7 @@ var direction: Vector2 = Vector2.UP
 
 func _process(delta: float) -> void:
 	# Move the bullet every frame
-	var direction = Vector2.RIGHT.rotated(rotation)
+	direction = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * speed * delta
 
 # This function is called when the bullet hits another physics body

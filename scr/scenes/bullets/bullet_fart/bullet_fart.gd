@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Move the bullet every frame
-	var direction = Vector2.RIGHT.rotated(rotation)
+	direction = Vector2.RIGHT.rotated(rotation)
 	global_position += direction * speed * delta
 
 # This function is called when the bullet hits another physics body
@@ -29,5 +29,5 @@ func _on_body_entered(body: Node) -> void:
 	
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()

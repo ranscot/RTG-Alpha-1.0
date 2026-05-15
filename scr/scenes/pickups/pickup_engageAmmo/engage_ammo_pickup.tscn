@@ -33,7 +33,7 @@ sprite_frames = SubResource("SpriteFrames_i0xs4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2ds30")
 
-[node name="EngageAmmo_Pickup" type="AudioStreamPlayer2D" parent="."]
+[node name="EngageAmmo_Pickup" type="AudioStreamPlayer2D" parent="." groups=["dropped_items"]]
 stream = ExtResource("3_vhaey")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

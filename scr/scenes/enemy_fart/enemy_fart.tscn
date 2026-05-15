@@ -262,7 +262,6 @@ stream = ExtResource("5_hxnro")
 stream = ExtResource("5_lkoul")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
 
 [node name="LabelName" type="Label" parent="."]
 offset_left = -19.0

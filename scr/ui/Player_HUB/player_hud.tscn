@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ydgmsjk6wgej"]
+[gd_scene load_steps=9 format=3 uid="uid://ydgmsjk6wgej"]
 
 [ext_resource type="Script" uid="uid://hg6bvn7w0hse" path="res://scr/ui/Player_HUB/player_hud.gd" id="1_4q8n3"]
 [ext_resource type="Texture2D" uid="uid://d2prf58rlycgd" path="res://scr/assets/ui_art/fame_icon.png" id="2_wp7kr"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dseyka8bb486m" path="res://scr/assets/items/bullet1.png" id="4_y0j30"]
 [ext_resource type="Texture2D" uid="uid://cl1ie81udjkem" path="res://scr/assets/items/Engagement_cone.png" id="5_1hk8b"]
 [ext_resource type="Texture2D" uid="uid://bw60gexefihw5" path="res://scr/assets/items/TomCoin.png" id="6_uwrxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q8n3"]
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp7kr"]
+bg_color = Color(0, 1, 1, 1)
 
 [node name="PlayerHUD" type="CanvasLayer" groups=["PlayerHub"]]
 script = ExtResource("1_4q8n3")
@@ -33,6 +39,8 @@ expand_mode = 1
 custom_minimum_size = Vector2(200, 25)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4q8n3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wp7kr")
 show_percentage = false
 
 [node name="Arsenal_HBox" type="HBoxContainer" parent="HUD_Margins/Master_VBox"]

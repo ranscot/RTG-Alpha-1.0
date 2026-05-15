@@ -198,7 +198,6 @@ shape = SubResource("CircleShape2D_dnnsq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 50.0
-avoidance_enabled = true
 radius = 25.0
 neighbor_distance = 100.0
 

@@ -250,6 +250,7 @@ show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1, -24)
+zoom = Vector2(1.25, 1.25)
 
 [node name="DamageArea" type="Area2D" parent="." groups=["player"]]
 position = Vector2(1, -24)

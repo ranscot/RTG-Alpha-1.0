@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dedg62c01s8ws" path="res://scr/scenes/pickups/base_pickup/pickup.gd" id="1_ngsff"]
 
-[node name="Pickup" type="Area2D"]
+[node name="Pickup" type="Area2D" groups=["PlayerHUB", "dropped_items"]]
 collision_layer = 64
 collision_mask = 2
 script = ExtResource("1_ngsff")

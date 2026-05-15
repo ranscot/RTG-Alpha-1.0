@@ -7,6 +7,7 @@ shader = ExtResource("1_wwu68")
 
 [node name="CrtFilter" type="CanvasLayer"]
 layer = 100
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_463ql")
