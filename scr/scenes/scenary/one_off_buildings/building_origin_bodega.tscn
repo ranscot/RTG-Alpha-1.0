@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp23e012uknes"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_ghr61"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghr61"]
+size = Vector2(271.5, 91)
+
+[node name="Building_OriginBodega" type="StaticBody2D"]
+
+[node name="BuildingArt" type="TileMapLayer" parent="."]
+position = Vector2(73, 41)
+tile_map_data = PackedByteArray(0, 0, 251, 255, 247, 255, 1, 0, 0, 0, 2, 0, 0, 0)
+tile_set = ExtResource("1_ghr61")
+
+[node name="Foundation" type="CollisionShape2D" parent="."]
+position = Vector2(0, -45)
+shape = SubResource("RectangleShape2D_ghr61")
