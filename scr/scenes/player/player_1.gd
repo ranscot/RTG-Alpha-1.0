@@ -131,8 +131,10 @@ func _physics_process(delta: float) -> void:
  	
 		
 func _input(event: InputEvent) -> void:
+	
 	# Master Player Lock when playing cutscenes
 	if GameManager.current_state != GameManager.GameState.PLAYING:
+		print("_input failing")
 		return
 	
 	# Removed "var muzzle = $Muzzle" because it's an @onready var now
@@ -142,7 +144,7 @@ func _input(event: InputEvent) -> void:
 	# 1, Act is "fire_fart"
 	# 2. Ammo key is "bullet_fart"
 	if event.is_action_pressed("fire"):
-
+		print('Fart FIRED')
 		if bullet_fart and AmmoManager.use_ammo("bullet_fart"):
 			fart_weapon_shoot.play()
 			_spawn_bullet(bullet_fart, fart_weapon_muzzle) 

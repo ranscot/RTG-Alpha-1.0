@@ -8,6 +8,7 @@ size = Vector2(271.5, 91)
 [node name="Building_OriginBodega" type="StaticBody2D"]
 
 [node name="BuildingArt" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 position = Vector2(73, 41)
 tile_map_data = PackedByteArray(0, 0, 251, 255, 247, 255, 1, 0, 0, 0, 2, 0, 0, 0)
 tile_set = ExtResource("1_ghr61")

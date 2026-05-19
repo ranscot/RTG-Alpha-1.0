@@ -161,7 +161,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j721o"]
-radius = 6.0
+radius = 4.0
 height = 20.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j721o"]
@@ -215,12 +215,14 @@ wait_time = 0.2
 one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -24)
+y_sort_enabled = true
+position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_4uy5w")
 animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(0, -4)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_j721o")
 debug_color = Color(0.6160219, 0.38027975, 0.955833, 0.41960785)
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b355jk6tbv4ih"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_7dneu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlvd3"]
+size = Vector2(78.5, 76)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+position = Vector2(-5, -40)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 1, 0, 11, 0, 25, 0, 0, 0)
+tile_set = ExtResource("1_7dneu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -40)
+shape = SubResource("RectangleShape2D_hlvd3")

@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://6vo007i3knjp"]
+[gd_scene load_steps=7 format=3 uid="uid://6vo007i3knjp"]
 
 [ext_resource type="PackedScene" uid="uid://cp23e012uknes" path="res://scr/scenes/scenary/one_off_buildings/building_origin_bodega.tscn" id="1_4hfll"]
 [ext_resource type="Script" uid="uid://qdp2ocote1s5" path="res://scr/scenes/scenary/one_off_buildings/testysort.gd" id="1_jtu41"]
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="2_jtu41"]
+[ext_resource type="Texture2D" uid="uid://p2v6f36v3m02" path="res://icon.svg" id="4_4xwf1"]
+[ext_resource type="PackedScene" uid="uid://b355jk6tbv4ih" path="res://scr/scenes/scenary/stores_buildings/red_1story_store.tscn" id="5_hybbx"]
+
+[sub_resource type="GDScript" id="GDScript_4xwf1"]
+script/source = "extends CharacterBody2D
+"
 
 [node name="sortingoutY" type="Node2D" node_paths=PackedStringArray("tom", "bodega")]
 y_sort_enabled = true
@@ -11,7 +17,21 @@ tom = NodePath("Player")
 bodega = NodePath("Building_OriginBodega")
 
 [node name="Building_OriginBodega" parent="." instance=ExtResource("1_4hfll")]
-position = Vector2(194, 218)
+y_sort_enabled = true
+position = Vector2(166, -85)
 
 [node name="Player" parent="." instance=ExtResource("2_jtu41")]
-position = Vector2(143, 300)
+position = Vector2(172, -58)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(-132, 75)
+script = SubResource("GDScript_4xwf1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("4_4xwf1")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("5_hybbx")]
+y_sort_enabled = true
+position = Vector2(-153, -117)
