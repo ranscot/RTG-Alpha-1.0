@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxqwc6sy1yj5f"]
+
+[ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="1_h142h"]
+[ext_resource type="PackedScene" uid="uid://b5pqkmdo4s402" path="res://scr/scenes/scenary/apartment_buildings/sienna_3_story_big.tscn" id="2_nched"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_h142h")]
+position = Vector2(466, 386)
+
+[node name="sienna_3story_big" parent="." instance=ExtResource("2_nched")]
+y_sort_enabled = true
+position = Vector2(398, 314)

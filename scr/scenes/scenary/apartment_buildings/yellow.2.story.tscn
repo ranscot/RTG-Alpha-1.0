@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=4 uid="uid://bc2ob2ittt5lb"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_xcsqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7qb8"]
+size = Vector2(94, 80)
+
+[node name="Yellow2Story" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+position = Vector2(43, 24)
+tile_map_data = PackedByteArray("AAD9//7/BQAaAHsAAAD8//3/BQAZAHoAAAD8//7/BQAZAHsAAAD9//3/BQAaAHoAAAD6//T/BQAXAHEAAAD6//X/BQAXAHIAAAD6//b/BQAXAHMAAAD6//f/BQAXAHQAAAD6//j/BQAXAHUAAAD6//n/BQAXAHYAAAD6//r/BQAXAHcAAAD6//v/BQAXAHgAAAD6//z/BQAXAHkAAAD6//3/BQAXAHoAAAD6//7/BQAXAHsAAAD7//T/BQAYAHEAAAD7//X/BQAYAHIAAAD7//b/BQAYAHMAAAD7//f/BQAYAHQAAAD7//j/BQAYAHUAAAD7//n/BQAYAHYAAAD7//r/BQAYAHcAAAD7//v/BQAYAHgAAAD7//z/BQAYAHkAAAD7//3/BQAYAHoAAAD7//7/BQAYAHsAAAD8//T/BQAZAHEAAAD8//X/BQAZAHIAAAD8//b/BQAZAHMAAAD8//f/BQAZAHQAAAD8//j/BQAZAHUAAAD8//n/BQAZAHYAAAD8//r/BQAZAHcAAAD8//v/BQAZAHgAAAD8//z/BQAZAHkAAAD9//T/BQAaAHEAAAD9//X/BQAaAHIAAAD9//b/BQAaAHMAAAD9//f/BQAaAHQAAAD9//j/BQAaAHUAAAD9//n/BQAaAHYAAAD9//r/BQAaAHcAAAD9//v/BQAaAHgAAAD9//z/BQAaAHkAAAD+//T/BQAbAHEAAAD+//X/BQAbAHIAAAD+//b/BQAbAHMAAAD+//f/BQAbAHQAAAD+//j/BQAbAHUAAAD+//n/BQAbAHYAAAD+//r/BQAbAHcAAAD+//v/BQAbAHgAAAD+//z/BQAbAHkAAAD+//3/BQAbAHoAAAD+//7/BQAbAHsAAAD///T/BQAcAHEAAAD///X/BQAcAHIAAAD///b/BQAcAHMAAAD///f/BQAcAHQAAAD///j/BQAcAHUAAAD///n/BQAcAHYAAAD///r/BQAcAHcAAAD///v/BQAcAHgAAAD///z/BQAcAHkAAAD///3/BQAcAHoAAAD///7/BQAcAHsAAAA=")
+tile_set = ExtResource("1_xcsqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -40)
+shape = SubResource("RectangleShape2D_t7qb8")

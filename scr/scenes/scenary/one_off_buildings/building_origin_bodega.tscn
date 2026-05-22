@@ -6,6 +6,7 @@
 size = Vector2(271.5, 91)
 
 [node name="Building_OriginBodega" type="StaticBody2D"]
+y_sort_enabled = true
 
 [node name="BuildingArt" type="TileMapLayer" parent="."]
 y_sort_enabled = true

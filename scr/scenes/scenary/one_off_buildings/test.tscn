@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://6vo007i3knjp"]
+[gd_scene load_steps=13 format=3 uid="uid://6vo007i3knjp"]
 
 [ext_resource type="PackedScene" uid="uid://cp23e012uknes" path="res://scr/scenes/scenary/one_off_buildings/building_origin_bodega.tscn" id="1_4hfll"]
 [ext_resource type="Script" uid="uid://qdp2ocote1s5" path="res://scr/scenes/scenary/one_off_buildings/testysort.gd" id="1_jtu41"]
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="2_jtu41"]
 [ext_resource type="Texture2D" uid="uid://p2v6f36v3m02" path="res://icon.svg" id="4_4xwf1"]
 [ext_resource type="PackedScene" uid="uid://b355jk6tbv4ih" path="res://scr/scenes/scenary/stores_buildings/red_1story_store.tscn" id="5_hybbx"]
+[ext_resource type="PackedScene" uid="uid://b5pqkmdo4s402" path="res://scr/scenes/scenary/apartment_buildings/sienna_3_story_big.tscn" id="6_yr52p"]
+[ext_resource type="PackedScene" uid="uid://bc2ob2ittt5lb" path="res://scr/scenes/scenary/apartment_buildings/yellow.2.story.tscn" id="7_b510l"]
+[ext_resource type="PackedScene" uid="uid://dctqroidyl6lf" path="res://scr/scenes/scenary/apartment_buildings/yellow_3_story.tscn" id="8_dc05b"]
+[ext_resource type="PackedScene" uid="uid://bg858aopuhbpm" path="res://scr/scenes/scenary/apartment_buildings/testbuilding.tscn" id="9_6422c"]
+[ext_resource type="PackedScene" uid="uid://c6dw55gfntpus" path="res://scr/scenes/scenary/apartment_buildings/old_yeller.tscn" id="10_xl1p2"]
+[ext_resource type="PackedScene" uid="uid://oi3du4e5s7wn" path="res://scr/scenes/scenary/apartment_buildings/testies_2.tscn" id="11_jpdew"]
 
 [sub_resource type="GDScript" id="GDScript_4xwf1"]
 script/source = "extends CharacterBody2D
@@ -14,14 +20,13 @@ script/source = "extends CharacterBody2D
 y_sort_enabled = true
 script = ExtResource("1_jtu41")
 tom = NodePath("Player")
-bodega = NodePath("Building_OriginBodega")
-
-[node name="Building_OriginBodega" parent="." instance=ExtResource("1_4hfll")]
-y_sort_enabled = true
-position = Vector2(166, -85)
+bodega = NodePath("old_yeller")
 
 [node name="Player" parent="." instance=ExtResource("2_jtu41")]
-position = Vector2(172, -58)
+position = Vector2(764, -316)
+
+[node name="Building_OriginBodega" parent="." instance=ExtResource("1_4hfll")]
+position = Vector2(166, -85)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(-132, 75)
@@ -35,3 +40,23 @@ texture = ExtResource("4_4xwf1")
 [node name="StaticBody2D" parent="." instance=ExtResource("5_hybbx")]
 y_sort_enabled = true
 position = Vector2(-153, -117)
+
+[node name="sienna_3story_big" parent="." instance=ExtResource("6_yr52p")]
+position = Vector2(579, -98)
+
+[node name="Yellow2Story" parent="." instance=ExtResource("7_b510l")]
+position = Vector2(812, -120)
+
+[node name="Yellow3story" parent="." instance=ExtResource("8_dc05b")]
+y_sort_enabled = true
+position = Vector2(996, -196)
+
+[node name="testbuilding" parent="." instance=ExtResource("9_6422c")]
+y_sort_enabled = false
+position = Vector2(1037, 148)
+
+[node name="old_yeller" parent="." instance=ExtResource("10_xl1p2")]
+position = Vector2(918, -483)
+
+[node name="testies2" parent="." instance=ExtResource("11_jpdew")]
+position = Vector2(744, -495)

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3dcb2kw63q6o"]
+
+[ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="1_13777"]
+[ext_resource type="PackedScene" uid="uid://nic7wt0sslnr" path="res://scr/scenes/scenary/one_off_buildings/nuclears_rental_property.tscn" id="3_oxohn"]
+[ext_resource type="PackedScene" uid="uid://c6dw55gfntpus" path="res://scr/scenes/scenary/apartment_buildings/old_yeller.tscn" id="4_3vivn"]
+[ext_resource type="PackedScene" uid="uid://20t50k3o5svc" path="res://scr/scenes/scenary/apartment_buildings/blue_3_story_asianflare.tscn" id="4_ox26a"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-36, -26)
+
+[node name="Player" parent="." instance=ExtResource("1_13777")]
+position = Vector2(536, 306)
+
+[node name="NuclearsRentalProperty" parent="." instance=ExtResource("3_oxohn")]
+
+[node name="blue_3story_asianflare" parent="." instance=ExtResource("4_ox26a")]
+position = Vector2(810, 158)
+
+[node name="old_yeller" parent="." instance=ExtResource("4_3vivn")]
+position = Vector2(502, 122)
