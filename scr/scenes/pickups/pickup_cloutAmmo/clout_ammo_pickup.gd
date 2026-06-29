@@ -10,6 +10,7 @@ var is_collected: bool = false
 
 	
 func _on_body_entered(body):
+	print("Entered Cloat")
 	# Check the gate
 	if is_collected:
 		return
@@ -35,3 +36,21 @@ func _on_body_entered(body):
 	
 		# 5. Now delete the object
 		queue_free()
+		
+		
+func _ready():
+	# Wait one frame to let the level finish loading it
+	await get_tree().process_frame 
+	print("--- CLOUT SPAWNED ---")
+	print("Is Monitoring? ", monitoring)
+	print("Collision Layer: ", collision_layer)
+	print("Collision Mask: ", collision_mask)
+	print("Global Position: ", global_position)
+	print("Parent Node: ", get_parent().name)
+	print("---------------------")
+
+func _process(delta):
+	# Bypass the signal entirely and force the engine to check for overlaps every single frame
+	var bodies = get_overlapping_bodies()
+	if bodies.size() > 0:
+		print("MANUAL PHYSICS SCAN SEES: ", bodies)

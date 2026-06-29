@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=4 uid="uid://bg6l7icdg2t1h"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_71n8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08ymk"]
+size = Vector2(111, 83)
+
+[node name="grey_small_1story" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD8//3/BAAVANgAAAD8//7/BAAVANkAAAD8////BAAVANoAAAD9//3/BAAWANgAAAD9//7/BAAWANkAAAD9////BAAWANoAAAD+//3/BAAXANgAAAD+//7/BAAXANkAAAD+////BAAXANoAAAD///3/BAAYANgAAAD///7/BAAYANkAAAD/////BAAYANoAAAAAAP3/BAAZANgAAAAAAP7/BAAZANkAAAAAAP//BAAZANoAAAABAP3/BAAaANgAAAABAP7/BAAaANkAAAABAP//BAAaANoAAAACAP3/BAAbANgAAAACAP7/BAAbANkAAAACAP//BAAbANoAAAD8//v/BAAKAKwAAAD8//z/BAAKAK0AAAD9//v/BAALAKwAAAD9//z/BAALAK0AAAD+//v/BAAMAKwAAAD+//z/BAAMAK0AAAD///v/BAANAKwAAAD///z/BAANAK0AAAAAAPv/BAAOAKwAAAAAAPz/BAAOAK0AAAABAPv/BAAPAKwAAAABAPz/BAAPAK0AAAACAPv/BAAQAKwAAAACAPz/BAAQAK0AAAD8//n/BAAKAKcAAAD8//r/BAAKAKgAAAD9//n/BAALAKcAAAD9//r/BAALAKgAAAD+//n/BAAMAKcAAAD+//r/BAAMAKgAAAD///n/BAANAKcAAAD///r/BAANAKgAAAAAAPn/BAAOAKcAAAAAAPr/BAAOAKgAAAABAPn/BAAPAKcAAAABAPr/BAAPAKgAAAACAPn/BAAQAKcAAAACAPr/BAAQAKgAAAA=")
+tile_set = ExtResource("1_71n8v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, -42.5)
+shape = SubResource("RectangleShape2D_08ymk")

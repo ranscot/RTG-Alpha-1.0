@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=4 uid="uid://cf72n42yhh4b3"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_oke0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nd8a"]
+size = Vector2(106, 48)
+
+[node name="ice_cream_truck" type="StaticBody2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9//z/BgAIADsAAAD+//v/BgAJADoAAAD+//z/BgAJADsAAAD+//3/BgAJADwAAAD+//7/BgAJAD0AAAD+////BgAJAD4AAAD///v/BgAKADoAAAD///z/BgAKADsAAAD///3/BgAKADwAAAD///7/BgAKAD0AAAD/////BgAKAD4AAAAAAPv/BgALADoAAAAAAPz/BgALADsAAAAAAP3/BgALADwAAAAAAP7/BgALAD0AAAAAAP//BgALAD4AAAABAPv/BgAMADoAAAABAPz/BgAMADsAAAABAP3/BgAMADwAAAABAP7/BgAMAD0AAAABAP//BgAMAD4AAAACAP3/BgANAEMAAAACAP7/BgANAD0AAAACAP//BgANAD4AAAADAP3/BgAOADwAAAADAP7/BgAOAD0AAAADAP//BgAOAD4AAAD9//7/BgAIAD0AAAD9//3/BgAIADwAAAD9////BgAIAD4AAAACAPz/BgANAEIAAAA=")
+tile_set = ExtResource("1_oke0x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -26)
+shape = SubResource("RectangleShape2D_1nd8a")

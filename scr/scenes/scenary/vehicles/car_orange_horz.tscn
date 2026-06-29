@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=4 uid="uid://dot32eyluyn68"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_lc1l7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85pfj"]
+size = Vector2(61, 27)
+
+[node name="car_orange_horz_2" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///3/BgATAAUAAAD///7/BgATAAYAAAD/////BgATAAcAAAAAAP3/BgAUAAUAAAAAAP7/BgAUAAYAAAAAAP//BgAUAAcAAAD+//3/BgASAAUAAAD+//7/BgASAAYAAAD+////BgASAAcAAAABAP3/BgAVAAUAAAABAP7/BgAVAAYAAAABAP//BgAVAAcAAAA=")
+tile_set = ExtResource("1_lc1l7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -14.5)
+shape = SubResource("RectangleShape2D_85pfj")

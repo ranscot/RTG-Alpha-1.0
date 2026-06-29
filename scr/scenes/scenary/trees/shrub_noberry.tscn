@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://boei70upkvw4r"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_j7hbj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7hbj"]
+radius = 6.0
+height = 18.0
+
+[node name="Shrub_noberry" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 8, 0, 22, 0, 52, 0, 0, 0, 255, 255, 255, 255, 8, 0, 22, 0, 53, 0, 0, 0, 0, 0, 254, 255, 8, 0, 23, 0, 52, 0, 0, 0, 0, 0, 255, 255, 8, 0, 23, 0, 53, 0, 0, 0)
+tile_set = ExtResource("1_j7hbj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -10)
+shape = SubResource("CapsuleShape2D_j7hbj")

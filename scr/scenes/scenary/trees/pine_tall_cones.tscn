@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=4 uid="uid://c0q863en7u4c5"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_x7yja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mulb2"]
+radius = 15.0
+
+[node name="pine_tall_cones" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///z/CAAUAEIAAAD///3/CAAUAEMAAAD///7/CAAUAEQAAAD/////CAAUAEUAAAAAAPz/CAAVAEIAAAAAAP3/CAAVAEMAAAAAAP7/CAAVAEQAAAAAAP//CAAVAEUAAAA=")
+tile_set = ExtResource("1_x7yja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_mulb2")

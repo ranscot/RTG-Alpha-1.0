@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=4 uid="uid://cfpgo0hyey3o"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_4jp02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krl58"]
+size = Vector2(88, 35)
+
+[node name="RV_Yellow_NoCanopy_right" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(0, 3)
+tile_map_data = PackedByteArray("AAD9//z/BgAUAC8AAAD9//3/BgAUADAAAAD9//7/BgAUADEAAAD9////BgAUADIAAAD+//z/BgAVAC8AAAD+//3/BgAVADAAAAD+//7/BgAVADEAAAD+////BgAVADIAAAD///z/BgAWAC8AAAD///3/BgAWADAAAAD///7/BgAWADEAAAD/////BgAWADIAAAAAAPz/BgAXAC8AAAAAAP3/BgAXADAAAAAAAP7/BgAXADEAAAAAAP//BgAXADIAAAABAPz/BgAYAC8AAAABAP3/BgAYADAAAAABAP7/BgAYADEAAAABAP//BgAYADIAAAACAPz/BgAZAC8AAAACAP3/BgAZADAAAAACAP7/BgAZADEAAAACAP//BgAZADIAAAA=")
+tile_set = ExtResource("1_4jp02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17.5)
+shape = SubResource("RectangleShape2D_krl58")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(41, -36)
+polygon = PackedVector2Array(-8, -13, -85, -12, -86, 3, 0, 1)

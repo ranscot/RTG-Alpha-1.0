@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dctqroidyl6lf"]
+[gd_scene load_steps=3 format=4 uid="uid://dctqroidyl6lf"]
 
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_idxk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hh3od"]
-size = Vector2(89, 83)
+size = Vector2(89, 123.5)
 
 [node name="Yellow3story" type="StaticBody2D"]
+y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-y_sort_enabled = true
 position = Vector2(-8, -16)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 251, 255, 5, 0, 23, 0, 113, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAAAPv/BQAaAHYAAAD9//b/BQAXAHEAAAD9//f/BQAXAHIAAAD9//j/BQAXAHMAAAD9//n/BQAXAHQAAAD9//r/BQAXAHUAAAD9//v/BQAXAHYAAAD9//z/BQAXAHcAAAD9//3/BQAXAHgAAAD9//7/BQAXAHkAAAD9////BQAXAHoAAAD9/wAABQAXAHsAAAD+//b/BQAYAHEAAAD+//f/BQAYAHIAAAD+//j/BQAYAHMAAAD+//n/BQAYAHQAAAD+//r/BQAYAHUAAAD+//v/BQAYAHYAAAD+//z/BQAYAHcAAAD+//3/BQAYAHgAAAD+//7/BQAYAHkAAAD+////BQAYAHoAAAD+/wAABQAYAHsAAAD///b/BQAZAHEAAAD///f/BQAZAHIAAAD///j/BQAZAHMAAAD///n/BQAZAHQAAAD///r/BQAZAHUAAAD///v/BQAZAHYAAAD///z/BQAZAHcAAAD///3/BQAZAHgAAAD///7/BQAZAHkAAAD/////BQAZAHoAAAD//wAABQAZAHsAAAAAAPb/BQAaAHEAAAAAAPf/BQAaAHIAAAAAAPj/BQAaAHMAAAAAAPn/BQAaAHQAAAAAAPr/BQAaAHUAAAAAAPz/BQAaAHcAAAAAAP3/BQAaAHgAAAAAAP7/BQAaAHkAAAAAAP//BQAaAHoAAAAAAAAABQAaAHsAAAABAPb/BQAbAHEAAAABAPf/BQAbAHIAAAABAPj/BQAbAHMAAAABAPn/BQAbAHQAAAABAPr/BQAbAHUAAAABAPv/BQAbAHYAAAABAPz/BQAbAHcAAAABAP3/BQAbAHgAAAABAP7/BQAbAHkAAAABAP//BQAbAHoAAAABAAAABQAbAHsAAAACAPb/BQAcAHEAAAACAPf/BQAcAHIAAAACAPj/BQAcAHMAAAACAPn/BQAcAHQAAAACAPr/BQAcAHUAAAACAPv/BQAcAHYAAAACAPz/BQAcAHcAAAACAP3/BQAcAHgAAAACAP7/BQAcAHkAAAACAP//BQAcAHoAAAACAAAABQAcAHsAAAA=")
 tile_set = ExtResource("1_idxk6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(-7, -69.25)
 shape = SubResource("RectangleShape2D_hh3od")

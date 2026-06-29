@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://15c25gph0viy"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_himh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opadx"]
+size = Vector2(94, 100)
+
+[node name="grey_apartment_2story" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 254, 255, 5, 0, 26, 0, 21, 0, 0, 0, 255, 255, 251, 255, 5, 0, 26, 0, 18, 0, 0, 0, 255, 255, 248, 255, 5, 0, 26, 0, 14, 0, 0, 0)
+tile_set = ExtResource("1_himh8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -50)
+shape = SubResource("RectangleShape2D_opadx")

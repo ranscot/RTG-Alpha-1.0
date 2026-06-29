@@ -1,0 +1,565 @@
+[gd_scene load_steps=69 format=3 uid="uid://dxqbjvu8rfh1j"]
+
+[ext_resource type="PackedScene" uid="uid://bg08ufmoe08xw" path="res://scr/scenes/scenary/vehicles/cop_car_verticle.tscn" id="1_kub68"]
+[ext_resource type="PackedScene" uid="uid://cfpgo0hyey3o" path="res://scr/scenes/scenary/vehicles/rv_yellow_no_canopy_right.tscn" id="2_707ft"]
+[ext_resource type="PackedScene" uid="uid://ytat066h3ew8" path="res://scr/scenes/scenary/vehicles/rv_yellow_tile_canopy_right.tscn" id="3_y6uqx"]
+[ext_resource type="PackedScene" uid="uid://ccff8nsqopgha" path="res://scr/scenes/scenary/vehicles/rv_yellow_yellow_canopy_right.tscn" id="4_0p2ch"]
+[ext_resource type="PackedScene" uid="uid://bvp33cgq66yjt" path="res://scr/scenes/scenary/vehicles/rv_nocanopy_left.tscn" id="5_dkslo"]
+[ext_resource type="PackedScene" uid="uid://dx8hdo4v6ukf0" path="res://scr/scenes/scenary/vehicles/rv_tealcanopy_left.tscn" id="6_sko51"]
+[ext_resource type="PackedScene" uid="uid://2hwahir0cl6j" path="res://scr/scenes/scenary/vehicles/cop_car_horz.tscn" id="7_mhh6y"]
+[ext_resource type="PackedScene" uid="uid://cclnej5yyhyml" path="res://scr/scenes/scenary/vehicles/car_blue_verticle.tscn" id="8_sk1xf"]
+[ext_resource type="PackedScene" uid="uid://b0lrgmxx77koq" path="res://scr/scenes/scenary/vehicles/car_orange_vert.tscn" id="9_0h2x6"]
+[ext_resource type="PackedScene" uid="uid://cf1dgte2wbhoi" path="res://scr/scenes/scenary/vehicles/car_red_horz.tscn" id="10_0bnxo"]
+[ext_resource type="PackedScene" uid="uid://dot32eyluyn68" path="res://scr/scenes/scenary/vehicles/car_orange_horz.tscn" id="11_rj2jv"]
+[ext_resource type="PackedScene" uid="uid://bmmirro5ewq4c" path="res://scr/scenes/scenary/food_trucks/pizza_truck_a.tscn" id="12_2thi2"]
+[ext_resource type="PackedScene" uid="uid://dhy3q0lscg4lx" path="res://scr/scenes/scenary/vehicles/car_orange_vert_2.tscn" id="12_y6uqx"]
+[ext_resource type="PackedScene" uid="uid://ca05wov07d5id" path="res://scr/scenes/scenary/vehicles/car_blue_verticle_2.tscn" id="13_0p2ch"]
+[ext_resource type="PackedScene" uid="uid://bxb21uqy07o33" path="res://scr/scenes/scenary/food_trucks/baco_tell_truck_A.tscn" id="13_7otxh"]
+[ext_resource type="PackedScene" uid="uid://ep5qae3331dg" path="res://scr/scenes/scenary/vehicles/car_red_verticle_2.tscn" id="14_dkslo"]
+[ext_resource type="PackedScene" uid="uid://bkcllbvundipo" path="res://scr/scenes/scenary/food_trucks/baco_tell_truck_B.tscn" id="14_e2h1p"]
+[ext_resource type="PackedScene" uid="uid://cp23e012uknes" path="res://scr/scenes/scenary/one_off_buildings/building_origin_bodega.tscn" id="15_oluet"]
+[ext_resource type="PackedScene" uid="uid://b0didyt4k5vo7" path="res://scr/scenes/scenary/vehicles/car_blue_vert.tscn" id="15_sko51"]
+[ext_resource type="PackedScene" uid="uid://b2su4q4kprxw4" path="res://scr/scenes/scenary/stores_buildings/baitshop_yellow.tscn" id="16_5y3jn"]
+[ext_resource type="PackedScene" uid="uid://lb2vys01mtd2" path="res://scr/scenes/scenary/stores_buildings/bakery_blue.tscn" id="17_hvslw"]
+[ext_resource type="PackedScene" uid="uid://bpc4uijh454kw" path="res://scr/scenes/scenary/stores_buildings/icecream_redbrick.tscn" id="18_1jpkv"]
+[ext_resource type="PackedScene" uid="uid://inyphjm8fsi7" path="res://scr/scenes/scenary/stores_buildings/orange_onestory_3_up.tscn" id="19_qcap7"]
+[ext_resource type="PackedScene" uid="uid://buyspc6hso23o" path="res://scr/scenes/scenary/stores_buildings/fitness_music_store_redstair.tscn" id="20_nqt6c"]
+[ext_resource type="PackedScene" uid="uid://cx8rr41c3s73h" path="res://scr/scenes/scenary/stores_buildings/market_yellow_1_story_a.tscn" id="21_5y6dy"]
+[ext_resource type="PackedScene" uid="uid://c5mdei3ru0oa3" path="res://scr/scenes/scenary/stores_buildings/market_yellow_1_story_b.tscn" id="22_urgst"]
+[ext_resource type="PackedScene" uid="uid://klf18jwodfi0" path="res://scr/scenes/scenary/stores_buildings/market_yellow_slim.tscn" id="23_aktnu"]
+[ext_resource type="PackedScene" uid="uid://o1ywxuui2pd4" path="res://scr/scenes/scenary/stores_buildings/market_blue_2_story_a.tscn" id="24_nrnmg"]
+[ext_resource type="PackedScene" uid="uid://23s21iwnibs5" path="res://scr/scenes/scenary/stores_buildings/market_red_2_story.tscn" id="25_6gpay"]
+[ext_resource type="PackedScene" uid="uid://cmqwsxs731so4" path="res://scr/scenes/scenary/stores_buildings/market_blue_2_story_b.tscn" id="26_6vjvv"]
+[ext_resource type="PackedScene" uid="uid://7uf3ndsf1q3x" path="res://scr/scenes/scenary/apartment_buildings/sienna_3_story_big.tscn" id="27_vuyn1"]
+[ext_resource type="PackedScene" uid="uid://c6dw55gfntpus" path="res://scr/scenes/scenary/apartment_buildings/old_yeller.tscn" id="28_y1vp4"]
+[ext_resource type="PackedScene" uid="uid://cixl1yos0nh6d" path="res://scr/scenes/scenary/apartment_buildings/teal_blue_6_story_apartment.tscn" id="29_5u38l"]
+[ext_resource type="PackedScene" uid="uid://15c25gph0viy" path="res://scr/scenes/scenary/apartment_buildings/grey_apartment_2_story.tscn" id="30_jkoov"]
+[ext_resource type="PackedScene" uid="uid://dv8u6p6pbhsnv" path="res://scr/scenes/scenary/apartment_buildings/mudbrick_3_doors_1_story.tscn" id="31_kucpr"]
+[ext_resource type="PackedScene" uid="uid://db0sfxmve7ojq" path="res://scr/scenes/scenary/apartment_buildings/yellow_apartment_3_story_wide.tscn" id="32_xqi0m"]
+[ext_resource type="PackedScene" uid="uid://cny3074eoqled" path="res://scr/scenes/scenary/vehicles/cop_car_verticle_2.tscn" id="33_ywh0k"]
+[ext_resource type="PackedScene" uid="uid://6w0foc3fxl47" path="res://scr/scenes/scenary/utility_buildings/utility_back_grey_2_story.tscn" id="34_ybyfl"]
+[ext_resource type="PackedScene" uid="uid://c5xnabbigedb0" path="res://scr/scenes/scenary/apartment_buildings/red_really_large_park.tscn" id="35_qycv3"]
+[ext_resource type="PackedScene" uid="uid://bxcq4vr4wbacv" path="res://scr/scenes/scenary/apartment_buildings/grey_apartment_3_story.tscn" id="36_mbivu"]
+[ext_resource type="PackedScene" uid="uid://bc2ob2ittt5lb" path="res://scr/scenes/scenary/apartment_buildings/yellow.2.story.tscn" id="37_bt8qc"]
+[ext_resource type="PackedScene" uid="uid://fdxd1jcv1x5k" path="res://scr/scenes/scenary/apartment_buildings/apartment_mud_5_floor.tscn" id="38_l0d3t"]
+[ext_resource type="PackedScene" uid="uid://btg5ahcqbaebo" path="res://scr/scenes/scenary/apartment_buildings/apartment_mud_4_floor.tscn" id="39_ysrcx"]
+[ext_resource type="PackedScene" uid="uid://d3op8ia66bph5" path="res://scr/scenes/scenary/apartment_buildings/siena_5_story_verywide.tscn" id="40_hc5gw"]
+[ext_resource type="PackedScene" uid="uid://f2ijyme7nkdh" path="res://scr/scenes/scenary/apartment_buildings/siena_5_story_2_entry.tscn" id="41_6hyto"]
+[ext_resource type="PackedScene" uid="uid://blb3fatxvsnpb" path="res://scr/scenes/scenary/apartment_buildings/blue_3_rd_story_yellow.tscn" id="42_1inpg"]
+[ext_resource type="PackedScene" uid="uid://blauhevwp5ioc" path="res://scr/scenes/scenary/apartment_buildings/blue_4_story_yellow.tscn" id="43_m7scs"]
+[ext_resource type="PackedScene" uid="uid://bjux3p47c03cm" path="res://scr/scenes/scenary/trees/bush_square_feature.tscn" id="44_0kgdq"]
+[ext_resource type="PackedScene" uid="uid://bci5u5mmr6oxp" path="res://scr/scenes/scenary/trees/green_tree_browntrunk.tscn" id="45_uqm84"]
+[ext_resource type="PackedScene" uid="uid://dmste2xuiqqvb" path="res://scr/scenes/scenary/trees/green_tree_tantrunk.tscn" id="46_jbuf8"]
+[ext_resource type="PackedScene" uid="uid://ofxuws3hqkqt" path="res://scr/scenes/scenary/cementary/cementary_vaults_open.tscn" id="47_nl68l"]
+[ext_resource type="PackedScene" uid="uid://cdiaoahqkrjo7" path="res://scr/scenes/scenary/cementary/cementary_vaults_closed.tscn" id="48_c7ais"]
+[ext_resource type="PackedScene" uid="uid://jas3c4e2kmqn" path="res://scr/scenes/scenary/cementary/graveyard_unlit_404.tscn" id="49_bfctb"]
+[ext_resource type="PackedScene" uid="uid://cyr80f71t87tv" path="res://scr/scenes/scenary/one_off_buildings/camping_1_door.tscn" id="50_dy856"]
+[ext_resource type="PackedScene" uid="uid://ccgdqrk4o84u8" path="res://scr/scenes/scenary/one_off_buildings/camping_2_door.tscn" id="51_pfvke"]
+[ext_resource type="PackedScene" uid="uid://bdlxcbicggnap" path="res://scr/scenes/scenary/trees/pine_sm_nocones.tscn" id="52_feiot"]
+[ext_resource type="PackedScene" uid="uid://b573r17g4f0ao" path="res://scr/scenes/scenary/trees/pine_mid_nocones.tscn" id="53_w56h7"]
+[ext_resource type="PackedScene" uid="uid://4qhyi71pp2xa" path="res://scr/scenes/scenary/trees/pine_tall_nocones.tscn" id="54_7vc4m"]
+[ext_resource type="PackedScene" uid="uid://c0q863en7u4c5" path="res://scr/scenes/scenary/trees/pine_tall_cones.tscn" id="55_niqx7"]
+[ext_resource type="PackedScene" uid="uid://hthp37t6xni3" path="res://scr/scenes/scenary/trees/tree_wide_berry.tscn" id="56_b0mbh"]
+[ext_resource type="PackedScene" uid="uid://uf423huubqvb" path="res://scr/scenes/scenary/trees/oak_berry.tscn" id="57_jguxg"]
+[ext_resource type="PackedScene" uid="uid://c1lo5nq7mrk5i" path="res://scr/scenes/scenary/trees/tree_wide_noberry.tscn" id="58_dvawb"]
+[ext_resource type="PackedScene" uid="uid://diacjxkcxkbvd" path="res://scr/scenes/scenary/trees/oak_no_berry.tscn" id="59_swfnt"]
+[ext_resource type="PackedScene" uid="uid://pu1fq3vixljd" path="res://scr/scenes/scenary/trees/tree_wide_boi.tscn" id="60_criel"]
+[ext_resource type="PackedScene" uid="uid://cwlpmfmr38bvc" path="res://scr/scenes/scenary/trees/tree_big_boi.tscn" id="61_hp10x"]
+[ext_resource type="PackedScene" uid="uid://boei70upkvw4r" path="res://scr/scenes/scenary/trees/shrub_noberry.tscn" id="62_tk7jd"]
+[ext_resource type="PackedScene" uid="uid://ch1kiw6u72wfp" path="res://scr/scenes/scenary/trees/shrub_berry.tscn" id="63_trn2w"]
+[ext_resource type="PackedScene" uid="uid://clp3w1ho55onw" path="res://scr/scenes/top_level_v1/map_guide.tscn" id="64_707ft"]
+
+[node name="2A" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Level_Tiles" parent="." instance=ExtResource("64_707ft")]
+
+[node name="00vehicles" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="cop_car_verticle" parent="00vehicles" instance=ExtResource("1_kub68")]
+position = Vector2(31, 406)
+
+[node name="RV_Yellow_NoCanopy_right" parent="00vehicles" instance=ExtResource("2_707ft")]
+position = Vector2(258, 1292)
+
+[node name="RV_Yellow_tileCanopy_right" parent="00vehicles" instance=ExtResource("3_y6uqx")]
+position = Vector2(242, 1376)
+
+[node name="RV_Yellow_yellowCanopy_right" parent="00vehicles" instance=ExtResource("4_0p2ch")]
+position = Vector2(275, 1468)
+
+[node name="RV_Yellow_yellowCanopy_right2" parent="00vehicles" instance=ExtResource("4_0p2ch")]
+position = Vector2(376, 1173)
+
+[node name="rv_nocanopy_left" parent="00vehicles" instance=ExtResource("5_dkslo")]
+position = Vector2(563, 1243)
+
+[node name="rv_nocanopy_left2" parent="00vehicles" instance=ExtResource("5_dkslo")]
+position = Vector2(593, 1437)
+
+[node name="rv_tealcanopy_left" parent="00vehicles" instance=ExtResource("6_sko51")]
+position = Vector2(572, 1337)
+
+[node name="cop_car_horz" parent="00vehicles" instance=ExtResource("7_mhh6y")]
+position = Vector2(46, 435)
+
+[node name="cop_car_horz3" parent="00vehicles" instance=ExtResource("7_mhh6y")]
+position = Vector2(102, 420)
+
+[node name="cop_car_horz2" parent="00vehicles" instance=ExtResource("7_mhh6y")]
+position = Vector2(60, 475)
+
+[node name="car_blue_verticle" parent="00vehicles" instance=ExtResource("8_sk1xf")]
+position = Vector2(72, 301)
+
+[node name="car_blue_verticle3" parent="00vehicles" instance=ExtResource("8_sk1xf")]
+position = Vector2(2387, 2015)
+
+[node name="car_blue_verticle2" parent="00vehicles" instance=ExtResource("8_sk1xf")]
+position = Vector2(215, 300)
+
+[node name="car_orange_vert" parent="00vehicles" instance=ExtResource("9_0h2x6")]
+position = Vector2(165, 300)
+
+[node name="car_red_horz_2" parent="00vehicles" instance=ExtResource("10_0bnxo")]
+position = Vector2(464, 202)
+
+[node name="car_red_horz_3" parent="00vehicles" instance=ExtResource("10_0bnxo")]
+position = Vector2(2182, 2084)
+
+[node name="car_orange_horz_2" parent="00vehicles" instance=ExtResource("11_rj2jv")]
+position = Vector2(2185, 1892)
+
+[node name="car_orange_vert_2" parent="00vehicles" instance=ExtResource("12_y6uqx")]
+position = Vector2(2346, 1934)
+
+[node name="car_blue_verticle_2" parent="00vehicles" instance=ExtResource("13_0p2ch")]
+position = Vector2(2541, 1931)
+
+[node name="car_red_verticle_2" parent="00vehicles" instance=ExtResource("14_dkslo")]
+position = Vector2(2348, 2172)
+
+[node name="car_blue_vert" parent="00vehicles" instance=ExtResource("15_sko51")]
+position = Vector2(2535, 2178)
+
+[node name="car_blue_verticle4" parent="00vehicles" instance=ExtResource("8_sk1xf")]
+position = Vector2(2443, 1743)
+
+[node name="car_orange_vert2" parent="00vehicles" instance=ExtResource("9_0h2x6")]
+position = Vector2(2731, 1741)
+
+[node name="car_orange_vert_3" parent="00vehicles" instance=ExtResource("12_y6uqx")]
+position = Vector2(2731, 2174)
+
+[node name="01trucks" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, 0)
+
+[node name="pizza" type="Node2D" parent="01trucks"]
+y_sort_enabled = true
+
+[node name="Pizza_Truck_A" parent="01trucks/pizza" instance=ExtResource("12_2thi2")]
+position = Vector2(582, 126)
+
+[node name="baco_tell" type="Node2D" parent="01trucks"]
+y_sort_enabled = true
+
+[node name="Baco_Tell_Truck" parent="01trucks/baco_tell" instance=ExtResource("13_7otxh")]
+position = Vector2(768, 113)
+
+[node name="Baco_Tell_Truck3" parent="01trucks/baco_tell" instance=ExtResource("13_7otxh")]
+position = Vector2(254, 1640)
+
+[node name="Baco_Tell_Truck2" parent="01trucks/baco_tell" instance=ExtResource("14_e2h1p")]
+position = Vector2(1676, 2847)
+
+[node name="Baco_Tell_Truck5" parent="01trucks/baco_tell" instance=ExtResource("14_e2h1p")]
+position = Vector2(1775, 1857)
+
+[node name="Baco_Tell_Truck4" parent="01trucks/baco_tell" instance=ExtResource("14_e2h1p")]
+position = Vector2(2782, 2863)
+
+[node name="02OneOffBuildings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Building_OriginBodega" parent="02OneOffBuildings" instance=ExtResource("15_oluet")]
+position = Vector2(191, 218)
+
+[node name="03shops" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Baitshop_yellow" parent="03shops" instance=ExtResource("16_5y3jn")]
+position = Vector2(1152, 2911)
+
+[node name="bakery_blue" parent="03shops" instance=ExtResource("17_hvslw")]
+position = Vector2(1247, 2901)
+
+[node name="icecream_redbrick" parent="03shops" instance=ExtResource("18_1jpkv")]
+position = Vector2(1456, 2875)
+
+[node name="orange_onestory_3up" parent="03shops" instance=ExtResource("19_qcap7")]
+position = Vector2(1983, 2914)
+
+[node name="fitness_music_store_redstair" parent="03shops" instance=ExtResource("20_nqt6c")]
+position = Vector2(2501, 2881)
+
+[node name="market_yellow_1story_a" parent="03shops" instance=ExtResource("21_5y6dy")]
+position = Vector2(1263, 687)
+
+[node name="market_yellow_1story_b" parent="03shops" instance=ExtResource("22_urgst")]
+position = Vector2(1150, 687)
+
+[node name="market_yellow_slim" parent="03shops" instance=ExtResource("23_aktnu")]
+position = Vector2(1422, 667)
+
+[node name="market_blue_2story_b" parent="03shops" instance=ExtResource("24_nrnmg")]
+position = Vector2(1329, 1235)
+
+[node name="market_red_2story" parent="03shops" instance=ExtResource("25_6gpay")]
+position = Vector2(1153, 1252)
+
+[node name="market_blue_2story_b2" parent="03shops" instance=ExtResource("26_6vjvv")]
+position = Vector2(1438, 1237)
+
+[node name="04apartments" type="Node2D" parent="."]
+
+[node name="Sienna_3story_fixed" parent="04apartments" instance=ExtResource("27_vuyn1")]
+position = Vector2(1006, 289)
+
+[node name="old_yeller" parent="04apartments" instance=ExtResource("28_y1vp4")]
+position = Vector2(1312, 296)
+
+[node name="old_yeller3" parent="04apartments" instance=ExtResource("28_y1vp4")]
+position = Vector2(1417, 1599)
+
+[node name="old_yeller2" parent="04apartments" instance=ExtResource("28_y1vp4")]
+position = Vector2(2106, 313)
+
+[node name="tealBlue_6story_apartment" parent="04apartments" instance=ExtResource("29_5u38l")]
+position = Vector2(1407, 298)
+
+[node name="grey_apartment_2story" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(1557, 165)
+
+[node name="grey_apartment_2storyrow1" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(1775, 1120)
+
+[node name="grey_apartment_2storyrow5" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(1869, 1120)
+
+[node name="grey_apartment_2storyrow2" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(1967, 1120)
+
+[node name="grey_apartment_2storyrow3" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(2062, 1120)
+
+[node name="grey_apartment_2storyrow4" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(2157, 1120)
+
+[node name="mudbrick_3doors_1story" parent="04apartments" instance=ExtResource("31_kucpr")]
+position = Vector2(1711, 162)
+
+[node name="yellow_apartment_3story_wide" parent="04apartments" instance=ExtResource("32_xqi0m")]
+position = Vector2(1870, 214)
+
+[node name="cop_car_verticle2" parent="04apartments" instance=ExtResource("33_ywh0k")]
+position = Vector2(34, 557)
+
+[node name="Utility_back_grey_2story" parent="04apartments" instance=ExtResource("34_ybyfl")]
+position = Vector2(63, 663)
+
+[node name="Utility_back_grey_2story2" parent="04apartments" instance=ExtResource("34_ybyfl")]
+position = Vector2(179, 664)
+
+[node name="Utility_back_grey_2story3" parent="04apartments" instance=ExtResource("34_ybyfl")]
+position = Vector2(294, 663)
+
+[node name="red_really_large_park" parent="04apartments" instance=ExtResource("35_qycv3")]
+position = Vector2(714, 870)
+
+[node name="grey_apartment_2storyrow11" parent="04apartments" instance=ExtResource("30_jkoov")]
+position = Vector2(275, 802)
+
+[node name="grey_apartment_3_story" parent="04apartments" instance=ExtResource("36_mbivu")]
+position = Vector2(77, 801)
+
+[node name="grey_apartment_3_story2" parent="04apartments" instance=ExtResource("36_mbivu")]
+position = Vector2(171, 801)
+
+[node name="Yellow2Story" parent="04apartments" instance=ExtResource("37_bt8qc")]
+position = Vector2(1144, 1602)
+
+[node name="Yellow2Story2" parent="04apartments" instance=ExtResource("37_bt8qc")]
+position = Vector2(1329, 1558)
+
+[node name="apartment_mud_5floor" parent="04apartments" instance=ExtResource("38_l0d3t")]
+position = Vector2(1773, 1558)
+
+[node name="apartment_mud_5floor2" parent="04apartments" instance=ExtResource("38_l0d3t")]
+position = Vector2(2123, 1540)
+
+[node name="apartment_mud_4floor" parent="04apartments" instance=ExtResource("39_ysrcx")]
+position = Vector2(1881, 1556)
+
+[node name="siena_5story_verywide" parent="04apartments" instance=ExtResource("40_hc5gw")]
+position = Vector2(2946, 184)
+
+[node name="siena_5story_2entry" parent="04apartments" instance=ExtResource("41_6hyto")]
+position = Vector2(2371, 1556)
+
+[node name="blue_3rd_story_yellow" parent="04apartments" instance=ExtResource("42_1inpg")]
+position = Vector2(1744, 744)
+
+[node name="blue_4_story_yellow" parent="04apartments" instance=ExtResource("43_m7scs")]
+position = Vector2(1854, 780)
+
+[node name="blue_4_story_yellow2" parent="04apartments" instance=ExtResource("43_m7scs")]
+position = Vector2(1963, 780)
+
+[node name="blue_4_story_yellow3" parent="04apartments" instance=ExtResource("43_m7scs")]
+position = Vector2(2242, 807)
+
+[node name="blue_4_story_yellow4" parent="04apartments" instance=ExtResource("43_m7scs")]
+position = Vector2(2335, 806)
+
+[node name="Utility_back_grey_2story4" parent="04apartments" instance=ExtResource("34_ybyfl")]
+position = Vector2(1153, 1137)
+
+[node name="Utility_back_grey_2story5" parent="04apartments" instance=ExtResource("34_ybyfl")]
+position = Vector2(1328, 1133)
+
+[node name="Utility_back_grey_2story6" parent="04apartments" instance=ExtResource("34_ybyfl")]
+position = Vector2(1438, 1116)
+
+[node name="05trees" type="Node2D" parent="."]
+
+[node name="Bush_square_feature2" parent="05trees" instance=ExtResource("44_0kgdq")]
+position = Vector2(2009, 307)
+
+[node name="Bush_square_feature3" parent="05trees" instance=ExtResource("44_0kgdq")]
+position = Vector2(2006, 236)
+
+[node name="Bush_square_feature" parent="05trees" instance=ExtResource("44_0kgdq")]
+position = Vector2(1511, 304)
+
+[node name="Bush_square_feature4" parent="05trees" instance=ExtResource("44_0kgdq")]
+position = Vector2(1798, 264)
+
+[node name="Bush_square_feature5" parent="05trees" instance=ExtResource("44_0kgdq")]
+position = Vector2(2032, 344)
+
+[node name="green_tree_browntrunk" parent="05trees" instance=ExtResource("45_uqm84")]
+position = Vector2(631, 85)
+
+[node name="green_tree_tantrunk" parent="05trees" instance=ExtResource("46_jbuf8")]
+position = Vector2(687, 164)
+
+[node name="green_tree_tantrunk2" parent="05trees" instance=ExtResource("46_jbuf8")]
+position = Vector2(761, 313)
+
+[node name="cementary" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Cementary_Vaults_Open" parent="cementary" instance=ExtResource("47_nl68l")]
+position = Vector2(1439, 2097)
+
+[node name="Cementary_Vaults_Open4" parent="cementary" instance=ExtResource("47_nl68l")]
+position = Vector2(1298, 2531)
+
+[node name="Cementary_Vaults_Open2" parent="cementary" instance=ExtResource("47_nl68l")]
+position = Vector2(1903, 2593)
+
+[node name="Cementary_Vaults_Open3" parent="cementary" instance=ExtResource("47_nl68l")]
+position = Vector2(2335, 2366)
+
+[node name="Cementary_Vaults_Closed" parent="cementary" instance=ExtResource("48_c7ais")]
+position = Vector2(1343, 2097)
+
+[node name="Cementary_Vaults_Closed2" parent="cementary" instance=ExtResource("48_c7ais")]
+position = Vector2(1199, 2530)
+
+[node name="Cementary_Vaults_Closed3" parent="cementary" instance=ExtResource("48_c7ais")]
+position = Vector2(2175, 2366)
+
+[node name="Cementary_Vaults_Closed4" parent="cementary" instance=ExtResource("48_c7ais")]
+position = Vector2(2334, 2592)
+
+[node name="Cementary_Vaults_Closed5" parent="cementary" instance=ExtResource("48_c7ais")]
+position = Vector2(2255, 2592)
+
+[node name="Graveyard unlit 404" parent="cementary" instance=ExtResource("49_bfctb")]
+position = Vector2(2509, 2356)
+
+[node name="park" type="Node2D" parent="."]
+
+[node name="Camping_1door" parent="park" instance=ExtResource("50_dy856")]
+position = Vector2(483, 2053)
+
+[node name="Camping_2door" parent="park" instance=ExtResource("51_pfvke")]
+position = Vector2(574, 2059)
+
+[node name="trees" type="Node2D" parent="park"]
+y_sort_enabled = true
+
+[node name="pine_sm_nocones2" parent="park/trees" instance=ExtResource("52_feiot")]
+position = Vector2(62, 1599)
+
+[node name="pine_mid_nocones" parent="park/trees" instance=ExtResource("53_w56h7")]
+position = Vector2(94, 1095)
+
+[node name="pine_mid_nocones2" parent="park/trees" instance=ExtResource("53_w56h7")]
+position = Vector2(216, 1178)
+
+[node name="pine_mid_nocones3" parent="park/trees" instance=ExtResource("53_w56h7")]
+position = Vector2(263, 2329)
+
+[node name="pine_mid_nocones4" parent="park/trees" instance=ExtResource("53_w56h7")]
+position = Vector2(93, 1591)
+
+[node name="pine_tall_nocones" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(47, 1550)
+
+[node name="pine_tall_nocones2" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(81, 1629)
+
+[node name="pine_tall_nocones3" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(176, 1534)
+
+[node name="pine_tall_nocones4" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(222, 1115)
+
+[node name="pine_tall_nocones5" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(254, 1196)
+
+[node name="pine_tall_nocones6" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(256, 2234)
+
+[node name="pine_tall_nocones7" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(288, 2211)
+
+[node name="pine_tall_nocones8" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(302, 2351)
+
+[node name="pine_tall_nocones9" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(62, 2480)
+
+[node name="pine_tall_nocones10" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(158, 2721)
+
+[node name="pine_tall_nocones11" parent="park/trees" instance=ExtResource("54_7vc4m")]
+position = Vector2(798, 2833)
+
+[node name="pine_sm_nocones3" parent="park/trees" instance=ExtResource("52_feiot")]
+position = Vector2(450, 2860)
+
+[node name="pine_tall_cones" parent="park/trees" instance=ExtResource("55_niqx7")]
+position = Vector2(78, 1087)
+
+[node name="pine_tall_cones2" parent="park/trees" instance=ExtResource("55_niqx7")]
+position = Vector2(318, 2209)
+
+[node name="pine_sm_nocones" parent="park/trees" instance=ExtResource("52_feiot")]
+position = Vector2(62, 1120)
+
+[node name="pine_tall_cones3" parent="park/trees" instance=ExtResource("55_niqx7")]
+position = Vector2(767, 1145)
+
+[node name="tree_wide_berry" parent="park/trees" instance=ExtResource("56_b0mbh")]
+position = Vector2(679, 1255)
+
+[node name="tree_wide_berry2" parent="park/trees" instance=ExtResource("56_b0mbh")]
+position = Vector2(678, 1351)
+
+[node name="tree_wide_berry3" parent="park/trees" instance=ExtResource("56_b0mbh")]
+position = Vector2(791, 1432)
+
+[node name="oak_berry" parent="park/trees" instance=ExtResource("57_jguxg")]
+position = Vector2(795, 1354)
+
+[node name="oak_berry2" parent="park/trees" instance=ExtResource("57_jguxg")]
+position = Vector2(790, 1257)
+
+[node name="oak_berry3" parent="park/trees" instance=ExtResource("57_jguxg")]
+position = Vector2(685, 1441)
+
+[node name="tree_wide_noberry" parent="park/trees" instance=ExtResource("58_dvawb")]
+position = Vector2(579, 1129)
+
+[node name="tree_wide_noberry2" parent="park/trees" instance=ExtResource("58_dvawb")]
+position = Vector2(103, 1176)
+
+[node name="tree_wide_noberry3" parent="park/trees" instance=ExtResource("58_dvawb")]
+position = Vector2(104, 1544)
+
+[node name="tree_wide_noberry5" parent="park/trees" instance=ExtResource("58_dvawb")]
+position = Vector2(54, 2007)
+
+[node name="tree_wide_noberry6" parent="park/trees" instance=ExtResource("58_dvawb")]
+position = Vector2(54, 2343)
+
+[node name="tree_wide_noberry4" parent="park/trees" instance=ExtResource("58_dvawb")]
+position = Vector2(104, 1544)
+
+[node name="oak_no berry" parent="park/trees" instance=ExtResource("59_swfnt")]
+position = Vector2(184, 2581)
+
+[node name="oak_no berry2" parent="park/trees" instance=ExtResource("59_swfnt")]
+position = Vector2(89, 2776)
+
+[node name="oak_no berry3" parent="park/trees" instance=ExtResource("59_swfnt")]
+position = Vector2(265, 2838)
+
+[node name="oak_berry4" parent="park/trees" instance=ExtResource("57_jguxg")]
+position = Vector2(809, 2695)
+
+[node name="tree_wide_boi" parent="park/trees" instance=ExtResource("60_criel")]
+position = Vector2(607, 1582)
+
+[node name="tree_wide_boi2" parent="park/trees" instance=ExtResource("60_criel")]
+position = Vector2(543, 1648)
+
+[node name="tree_big_boi" parent="park/trees" instance=ExtResource("61_hp10x")]
+position = Vector2(406, 1335)
+
+[node name="tree_big_boi2" parent="park/trees" instance=ExtResource("61_hp10x")]
+position = Vector2(809, 2097)
+
+[node name="tree_wide_boi4" parent="park/trees" instance=ExtResource("60_criel")]
+position = Vector2(174, 2000)
+
+[node name="tree_wide_boi5" parent="park/trees" instance=ExtResource("60_criel")]
+position = Vector2(174, 2000)
+
+[node name="Shrub_noberry" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(417, 2079)
+
+[node name="Shrub_noberry2" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(400, 2141)
+
+[node name="Shrub_noberry3" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(432, 2432)
+
+[node name="Shrub_noberry4" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(478, 2512)
+
+[node name="Shrub_noberry5" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(748, 2574)
+
+[node name="Shrub_noberry6" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(799, 2192)
+
+[node name="Shrub_noberry7" parent="park/trees" instance=ExtResource("62_tk7jd")]
+position = Vector2(686, 2046)
+
+[node name="tree_wide_boi3" parent="park/trees" instance=ExtResource("60_criel")]
+position = Vector2(720, 1664)
+
+[node name="Shrub_berry" parent="park/trees" instance=ExtResource("63_trn2w")]
+position = Vector2(383, 2369)
+
+[node name="Shrub_berry2" parent="park/trees" instance=ExtResource("63_trn2w")]
+position = Vector2(764, 2497)
+
+[node name="Shrub_berry3" parent="park/trees" instance=ExtResource("63_trn2w")]
+position = Vector2(714, 2687)

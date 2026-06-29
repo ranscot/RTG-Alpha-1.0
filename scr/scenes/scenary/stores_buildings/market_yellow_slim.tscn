@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=4 uid="uid://klf18jwodfi0"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_uvo1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv3i7"]
+size = Vector2(80, 92)
+
+[node name="market_yellow_slim" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+//j/AQAQABkAAAD+//n/AQAQABoAAAD+//r/AQAQABsAAAD+//v/AQAQABwAAAD+//z/AQAQAB0AAAD+//3/AQAQAB4AAAD+//7/AQAQAB8AAAD+////AQAQACAAAAD///j/AQARABkAAAD///n/AQARABoAAAD///r/AQARABsAAAD///v/AQARABwAAAD///z/AQARAB0AAAD///3/AQARAB4AAAD///7/AQARAB8AAAD/////AQARACAAAAAAAPj/AQASABkAAAAAAPn/AQASABoAAAAAAPr/AQASABsAAAAAAPv/AQASABwAAAAAAPz/AQASAB0AAAAAAP3/AQASAB4AAAAAAP7/AQASAB8AAAAAAP//AQASACAAAAABAPj/AQATABkAAAABAPn/AQATABoAAAABAPr/AQATABsAAAABAPv/AQATABwAAAABAPz/AQATAB0AAAABAP3/AQATAB4AAAABAP7/AQATAB8AAAABAP//AQATACAAAAACAPj/AQAUABkAAAACAPn/AQAUABoAAAACAPr/AQAUABsAAAACAPv/AQAUABwAAAACAPz/AQAUAB0AAAACAP3/AQAUAB4AAAACAP7/AQAUAB8AAAACAP//AQAUACAAAAA=")
+tile_set = ExtResource("1_uvo1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -48)
+shape = SubResource("RectangleShape2D_dv3i7")

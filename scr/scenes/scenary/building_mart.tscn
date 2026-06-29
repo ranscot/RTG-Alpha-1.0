@@ -1,0 +1,75 @@
+[gd_scene load_steps=18 format=3 uid="uid://cb430k5h6i2ya"]
+
+[ext_resource type="PackedScene" uid="uid://20t50k3o5svc" path="res://scr/scenes/scenary/apartment_buildings/blue_3_story_asianflare.tscn" id="1_ic1my"]
+[ext_resource type="PackedScene" uid="uid://15c25gph0viy" path="res://scr/scenes/scenary/apartment_buildings/grey_apartment_2_story.tscn" id="2_70phq"]
+[ext_resource type="PackedScene" uid="uid://bxcq4vr4wbacv" path="res://scr/scenes/scenary/apartment_buildings/grey_apartment_3_story.tscn" id="3_r181j"]
+[ext_resource type="PackedScene" uid="uid://dv8u6p6pbhsnv" path="res://scr/scenes/scenary/apartment_buildings/mudbrick_3_doors_1_story.tscn" id="4_cps2h"]
+[ext_resource type="PackedScene" uid="uid://c6dw55gfntpus" path="res://scr/scenes/scenary/apartment_buildings/old_yeller.tscn" id="5_io50s"]
+[ext_resource type="PackedScene" uid="uid://b3sco5edbt7mh" path="res://scr/scenes/scenary/apartment_buildings/red_large_park.tscn" id="6_ckrhl"]
+[ext_resource type="PackedScene" uid="uid://c5xnabbigedb0" path="res://scr/scenes/scenary/apartment_buildings/red_really_large_park.tscn" id="7_q15i7"]
+[ext_resource type="PackedScene" uid="uid://7uf3ndsf1q3x" path="res://scr/scenes/scenary/apartment_buildings/sienna_3_story_big.tscn" id="8_b576o"]
+[ext_resource type="PackedScene" uid="uid://bc2ob2ittt5lb" path="res://scr/scenes/scenary/apartment_buildings/yellow.2.story.tscn" id="9_ufw8k"]
+[ext_resource type="PackedScene" uid="uid://dctqroidyl6lf" path="res://scr/scenes/scenary/apartment_buildings/yellow_3_story.tscn" id="10_qhvbu"]
+[ext_resource type="PackedScene" uid="uid://db0sfxmve7ojq" path="res://scr/scenes/scenary/apartment_buildings/yellow_apartment_3_story_wide.tscn" id="11_kwbsx"]
+[ext_resource type="PackedScene" uid="uid://cixl1yos0nh6d" path="res://scr/scenes/scenary/apartment_buildings/teal_blue_6_story_apartment.tscn" id="12_x3cbp"]
+[ext_resource type="PackedScene" uid="uid://cp23e012uknes" path="res://scr/scenes/scenary/one_off_buildings/building_origin_bodega.tscn" id="13_2sh6d"]
+[ext_resource type="PackedScene" uid="uid://nic7wt0sslnr" path="res://scr/scenes/scenary/one_off_buildings/nuclears_rental_property.tscn" id="14_bccc3"]
+[ext_resource type="PackedScene" uid="uid://b355jk6tbv4ih" path="res://scr/scenes/scenary/stores_buildings/red_1story_store.tscn" id="15_2qpxo"]
+[ext_resource type="PackedScene" uid="uid://6w0foc3fxl47" path="res://scr/scenes/scenary/utility_buildings/utility_back_grey_2_story.tscn" id="16_xy6no"]
+[ext_resource type="PackedScene" uid="uid://dobrhvmxm3b6p" path="res://scr/scenes/scenary/stores_buildings/yellow_1_story_store.tscn" id="17_onv80"]
+
+[node name="BuildingMart" type="Node2D"]
+
+[node name="blue_3story_asianflare" parent="." instance=ExtResource("1_ic1my")]
+position = Vector2(2517, -2)
+
+[node name="grey_apartment_2story" parent="." instance=ExtResource("2_70phq")]
+position = Vector2(-888, 0)
+
+[node name="grey_apartment_3_story" parent="." instance=ExtResource("3_r181j")]
+position = Vector2(-1046, 0)
+
+[node name="mudbrick_3doors_1story" parent="." instance=ExtResource("4_cps2h")]
+position = Vector2(-1224, 0)
+
+[node name="old_yeller" parent="." instance=ExtResource("5_io50s")]
+position = Vector2(1686, 0)
+
+[node name="red_really_large_park" parent="." instance=ExtResource("6_ckrhl")]
+position = Vector2(826, 0)
+
+[node name="red_really_large_park2" parent="." instance=ExtResource("7_q15i7")]
+position = Vector2(-350, 0)
+
+[node name="Sienna_3story_fixed" parent="." instance=ExtResource("8_b576o")]
+position = Vector2(36, -16)
+
+[node name="Yellow2Story" parent="." instance=ExtResource("9_ufw8k")]
+position = Vector2(1510, -6)
+
+[node name="Yellow3story" parent="." instance=ExtResource("10_qhvbu")]
+position = Vector2(1810, -14)
+
+[node name="yellow_apartment_3story_wide" parent="." instance=ExtResource("11_kwbsx")]
+position = Vector2(1978, 10)
+
+[node name="tealBlue_6story_apartment" parent="." instance=ExtResource("12_x3cbp")]
+position = Vector2(2294, 9)
+
+[node name="Building_OriginBodega" parent="." instance=ExtResource("13_2sh6d")]
+position = Vector2(1431, 808)
+
+[node name="NuclearsRentalProperty" parent="." instance=ExtResource("14_bccc3")]
+position = Vector2(1887, 820)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("15_2qpxo")]
+position = Vector2(-658, -677)
+
+[node name="Utility_back_grey_2story" parent="." instance=ExtResource("16_xy6no")]
+position = Vector2(-1225, 298)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("15_2qpxo")]
+position = Vector2(39, 264)
+
+[node name="yellow_1story_store" parent="." instance=ExtResource("17_onv80")]
+position = Vector2(166, 268)

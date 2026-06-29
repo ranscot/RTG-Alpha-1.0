@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=4 uid="uid://ccgdqrk4o84u8"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_6x0gi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05ppa"]
+size = Vector2(112, 63)
+
+[node name="Camping_2door" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD8//r/CAAKACkAAAD8//v/CAAKACoAAAD8//z/CAAKACsAAAD8//3/CAAKACwAAAD8//7/CAAKAC0AAAD8////CAAKAC4AAAD9//r/CAALACkAAAD9//v/CAALACoAAAD9//z/CAALACsAAAD9//3/CAALACwAAAD9//7/CAALAC0AAAD9////CAALAC4AAAD+//r/CAAMACkAAAD+//v/CAAMACoAAAD+//z/CAAMACsAAAD+//3/CAAMACwAAAD+//7/CAAMAC0AAAD+////CAAMAC4AAAD///r/CAANACkAAAD///v/CAANACoAAAD///z/CAANACsAAAD///3/CAANACwAAAD///7/CAANAC0AAAD/////CAANAC4AAAAAAPr/CAAOACkAAAAAAPv/CAAOACoAAAAAAPz/CAAOACsAAAAAAP3/CAAOACwAAAAAAP7/CAAOAC0AAAAAAP//CAAOAC4AAAABAPr/CAAPACkAAAABAPv/CAAPACoAAAABAPz/CAAPACsAAAABAP3/CAAPACwAAAABAP7/CAAPAC0AAAABAP//CAAPAC4AAAACAPr/CAAQACkAAAACAPv/CAAQACoAAAACAPz/CAAQACsAAAACAP3/CAAQACwAAAACAP7/CAAQAC0AAAACAP//CAAQAC4AAAA=")
+tile_set = ExtResource("1_6x0gi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -41.5)
+shape = SubResource("RectangleShape2D_05ppa")

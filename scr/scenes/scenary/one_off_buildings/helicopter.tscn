@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=4 uid="uid://dsbfall6xo631"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_yluhg"]
+
+[node name="Helicopter" type="StaticBody2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD6//z/CgAVACIAAAD6//3/CgAVACMAAAD6//7/CgAVACQAAAD7//v/CgAWACEAAAD7//z/CgAWACIAAAD7//3/CgAWACMAAAD7//7/CgAWACQAAAD7////CgAWACUAAAD8//v/CgAXACEAAAD8//z/CgAXACIAAAD8//3/CgAXACMAAAD8//7/CgAXACQAAAD8////CgAXACUAAAD9//z/CgAYACIAAAD9//3/CgAYACMAAAD9//7/CgAYACQAAAD9////CgAYACUAAAD+//z/CgAZACIAAAD+//3/CgAZACMAAAD+//7/CgAZACQAAAD+////CgAZACUAAAD///z/CgAaACIAAAD///3/CgAaACMAAAD///7/CgAaACQAAAD/////CgAaACUAAAAAAPn/CgAbAB8AAAAAAPr/CgAbACAAAAAAAPv/CgAbACEAAAAAAPz/CgAbACIAAAAAAP3/CgAbACMAAAAAAP7/CgAbACQAAAAAAP//CgAbACUAAAABAPz/CgAcACIAAAABAP3/CgAcACMAAAABAP7/CgAcACQAAAABAP//CgAcACUAAAACAPz/CgAdACIAAAACAP3/CgAdACMAAAACAP7/CgAdACQAAAACAP//CgAdACUAAAADAPz/CgAeACIAAAADAP3/CgAeACMAAAADAP7/CgAeACQAAAADAP//CgAeACUAAAA=")
+tile_set = ExtResource("1_yluhg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-90, -41, -63, -42, -63, -52, -55, -51, -55, -41, -40, -42, -15, -48, 38, -45, 52, -29, 49, -18, 42, -15, 31, -13, 27, -12, 27, -3, -17, -3, -19, -12, -33, -20, -42, -31, -53, -33, -54, -11, -63, -11, -65, -32, -90, -33)

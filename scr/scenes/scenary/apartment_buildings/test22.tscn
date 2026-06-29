@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3dcb2kw63q6o"]
+[gd_scene load_steps=13 format=3 uid="uid://b3dcb2kw63q6o"]
 
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="1_13777"]
 [ext_resource type="PackedScene" uid="uid://nic7wt0sslnr" path="res://scr/scenes/scenary/one_off_buildings/nuclears_rental_property.tscn" id="3_oxohn"]
 [ext_resource type="PackedScene" uid="uid://c6dw55gfntpus" path="res://scr/scenes/scenary/apartment_buildings/old_yeller.tscn" id="4_3vivn"]
 [ext_resource type="PackedScene" uid="uid://20t50k3o5svc" path="res://scr/scenes/scenary/apartment_buildings/blue_3_story_asianflare.tscn" id="4_ox26a"]
+[ext_resource type="PackedScene" uid="uid://15c25gph0viy" path="res://scr/scenes/scenary/apartment_buildings/grey_apartment_2_story.tscn" id="5_3vivn"]
+[ext_resource type="PackedScene" uid="uid://dv8u6p6pbhsnv" path="res://scr/scenes/scenary/apartment_buildings/mudbrick_3_doors_1_story.tscn" id="6_48iyw"]
+[ext_resource type="PackedScene" uid="uid://ccff8nsqopgha" path="res://scr/scenes/scenary/vehicles/rv_yellow_yellow_canopy_right.tscn" id="7_jqcsr"]
+[ext_resource type="PackedScene" uid="uid://bvp33cgq66yjt" path="res://scr/scenes/scenary/vehicles/rv_nocanopy_left.tscn" id="8_0s6s5"]
+[ext_resource type="PackedScene" uid="uid://dx8hdo4v6ukf0" path="res://scr/scenes/scenary/vehicles/rv_tealcanopy_left.tscn" id="9_phydd"]
+[ext_resource type="PackedScene" uid="uid://cfpgo0hyey3o" path="res://scr/scenes/scenary/vehicles/rv_yellow_no_canopy_right.tscn" id="10_wj5qc"]
+[ext_resource type="PackedScene" uid="uid://ytat066h3ew8" path="res://scr/scenes/scenary/vehicles/rv_yellow_tile_canopy_right.tscn" id="11_woghq"]
+[ext_resource type="PackedScene" uid="uid://cv78t42cuntyd" path="res://scr/scenes/pickups/pickup_cloutAmmo/clout_ammo_pickup.tscn" id="12_0s6s5"]
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(-36, -26)
 
 [node name="Player" parent="." instance=ExtResource("1_13777")]
-position = Vector2(536, 306)
+position = Vector2(-394, 80)
 
 [node name="NuclearsRentalProperty" parent="." instance=ExtResource("3_oxohn")]
 
@@ -19,3 +26,30 @@ position = Vector2(810, 158)
 
 [node name="old_yeller" parent="." instance=ExtResource("4_3vivn")]
 position = Vector2(502, 122)
+
+[node name="grey_apartment_2story" parent="." instance=ExtResource("5_3vivn")]
+position = Vector2(302, 214)
+
+[node name="mudbrick_3doors_1story" parent="." instance=ExtResource("6_48iyw")]
+position = Vector2(300, 422)
+
+[node name="RV_Yellow_yellowCanopy_right" parent="." instance=ExtResource("7_jqcsr")]
+position = Vector2(-852, 120)
+
+[node name="rv_nocanopy_left" parent="." instance=ExtResource("8_0s6s5")]
+position = Vector2(-664, 126)
+
+[node name="rv_tealcanopy_left" parent="." instance=ExtResource("9_phydd")]
+position = Vector2(-906, 240)
+
+[node name="RV_Yellow_NoCanopy_right" parent="." instance=ExtResource("10_wj5qc")]
+position = Vector2(-654, 266)
+
+[node name="RV_Yellow_tileCanopy_right" parent="." instance=ExtResource("11_woghq")]
+position = Vector2(-750, 450)
+
+[node name="RV_Yellow_yellowCanopy_right2" parent="." instance=ExtResource("7_jqcsr")]
+position = Vector2(-914, 372)
+
+[node name="cloutAmmoPickup" parent="." instance=ExtResource("12_0s6s5")]
+position = Vector2(-356, -27)
