@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://cttgslglkcp25"]
+[gd_scene load_steps=126 format=4 uid="uid://cttgslglkcp25"]
 
 [ext_resource type="Script" uid="uid://de5p4i3r376da" path="res://scr/scenes/top_level_v1/level_w.gd" id="1_pa67k"]
 [ext_resource type="PackedScene" uid="uid://ydgmsjk6wgej" path="res://scr/ui/Player_HUB/player_hud.tscn" id="2_bfeeq"]
@@ -114,6 +114,7 @@
 [ext_resource type="PackedScene" uid="uid://diacjxkcxkbvd" path="res://scr/scenes/scenary/trees/oak_no_berry.tscn" id="110_k20gh"]
 [ext_resource type="PackedScene" uid="uid://gbobbsctajvr" path="res://scr/scenes/scenary/city_props/cityprop_fountain_no_tanime.tscn" id="112_n3qyh"]
 [ext_resource type="PackedScene" uid="uid://ggrnntgekasr" path="res://scr/scenes/scenary/one_off_buildings/goati_hotel.tscn" id="113_n3qyh"]
+[ext_resource type="PackedScene" uid="uid://c5xnabbigedb0" path="res://scr/scenes/scenary/apartment_buildings/red_really_large_park.tscn" id="114_qrfwc"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_polph"]
 vertices = PackedVector2Array(827.9375, 2878.5781, 48.03125, 2865.3906, 50.960938, 837.8203, 823.0469, 832.1719)
@@ -1515,8 +1516,38 @@ y_sort_enabled = true
 [node name="004apartments" type="Node2D" parent="Scenary/3c"]
 y_sort_enabled = true
 
+[node name="cityprop_bench_vertR" parent="Scenary/3c/004apartments" instance=ExtResource("84_03ub5")]
+position = Vector2(5275, 3646)
+
+[node name="blue_3rd_story_yellow" parent="Scenary/3c/004apartments" instance=ExtResource("66_3joxx")]
+position = Vector2(6329, 3368)
+
+[node name="blue_3story_asianflare" parent="Scenary/3c/004apartments" instance=ExtResource("51_ykf4v")]
+position = Vector2(6423, 3460)
+
+[node name="blue_4_story_yellow" parent="Scenary/3c/004apartments" instance=ExtResource("58_7713h")]
+position = Vector2(6537, 3403)
+
+[node name="blue_3story_asianflare2" parent="Scenary/3c/004apartments" instance=ExtResource("51_ykf4v")]
+position = Vector2(6635, 3463)
+
+[node name="red_really_large_park" parent="Scenary/3c/004apartments" instance=ExtResource("114_qrfwc")]
+position = Vector2(7813, 3553)
+
+[node name="Yellow2Story" parent="Scenary/3c/004apartments" instance=ExtResource("67_m4pfn")]
+position = Vector2(6753, 3308)
+
+[node name="siena_5story_2entry" parent="Scenary/3c/004apartments" instance=ExtResource("63_dep18")]
+position = Vector2(6422, 4499)
+
+[node name="siena_5story_2entry2" parent="Scenary/3c/004apartments" instance=ExtResource("63_dep18")]
+position = Vector2(6349, 6150)
+
+[node name="blue_4_story_yellow2" parent="Scenary/3c/004apartments" instance=ExtResource("58_7713h")]
+position = Vector2(6867, 6004)
+
+[node name="blue_4_story_yellow3" parent="Scenary/3c/004apartments" instance=ExtResource("58_7713h")]
+position = Vector2(6770, 6004)
+
 [node name="cloutAmmoPickup" parent="." instance=ExtResource("52_yjr6h")]
 position = Vector2(1148, 366)
-
-[node name="cityprop_bench_vertR" parent="." instance=ExtResource("84_03ub5")]
-position = Vector2(5275, 3646)
