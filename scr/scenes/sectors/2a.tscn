@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dxqbjvu8rfh1j"]
+[gd_scene load_steps=68 format=3 uid="uid://dxqbjvu8rfh1j"]
 
 [ext_resource type="PackedScene" uid="uid://bg08ufmoe08xw" path="res://scr/scenes/scenary/vehicles/cop_car_verticle.tscn" id="1_kub68"]
 [ext_resource type="PackedScene" uid="uid://cfpgo0hyey3o" path="res://scr/scenes/scenary/vehicles/rv_yellow_no_canopy_right.tscn" id="2_707ft"]
@@ -43,7 +43,6 @@
 [ext_resource type="PackedScene" uid="uid://bc2ob2ittt5lb" path="res://scr/scenes/scenary/apartment_buildings/yellow.2.story.tscn" id="37_bt8qc"]
 [ext_resource type="PackedScene" uid="uid://fdxd1jcv1x5k" path="res://scr/scenes/scenary/apartment_buildings/apartment_mud_5_floor.tscn" id="38_l0d3t"]
 [ext_resource type="PackedScene" uid="uid://btg5ahcqbaebo" path="res://scr/scenes/scenary/apartment_buildings/apartment_mud_4_floor.tscn" id="39_ysrcx"]
-[ext_resource type="PackedScene" uid="uid://d3op8ia66bph5" path="res://scr/scenes/scenary/apartment_buildings/siena_5_story_verywide.tscn" id="40_hc5gw"]
 [ext_resource type="PackedScene" uid="uid://f2ijyme7nkdh" path="res://scr/scenes/scenary/apartment_buildings/siena_5_story_2_entry.tscn" id="41_6hyto"]
 [ext_resource type="PackedScene" uid="uid://blb3fatxvsnpb" path="res://scr/scenes/scenary/apartment_buildings/blue_3_rd_story_yellow.tscn" id="42_1inpg"]
 [ext_resource type="PackedScene" uid="uid://blauhevwp5ioc" path="res://scr/scenes/scenary/apartment_buildings/blue_4_story_yellow.tscn" id="43_m7scs"]
@@ -301,9 +300,6 @@ position = Vector2(2123, 1540)
 
 [node name="apartment_mud_4floor" parent="04apartments" instance=ExtResource("39_ysrcx")]
 position = Vector2(1881, 1556)
-
-[node name="siena_5story_verywide" parent="04apartments" instance=ExtResource("40_hc5gw")]
-position = Vector2(2946, 184)
 
 [node name="siena_5story_2entry" parent="04apartments" instance=ExtResource("41_6hyto")]
 position = Vector2(2371, 1556)

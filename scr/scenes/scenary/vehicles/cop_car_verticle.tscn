@@ -6,6 +6,7 @@
 size = Vector2(30, 70)
 
 [node name="cop_car_verticle" type="StaticBody2D"]
+y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD///v/CgAZAC0AAAD///z/CgAZAC4AAAD///3/CgAZAC8AAAD///7/CgAZADAAAAD/////CgAZADEAAAAAAPv/CgAaAC0AAAAAAPz/CgAaAC4AAAAAAP3/CgAaAC8AAAAAAP7/CgAaADAAAAAAAP//CgAaADEAAAA=")
