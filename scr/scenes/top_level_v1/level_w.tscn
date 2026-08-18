@@ -444,6 +444,27 @@ y_sort_enabled = true
 [node name="03shops" type="Node2D" parent="Scenary/1B"]
 y_sort_enabled = true
 
+[node name="shop_plume_store" parent="Scenary/1B/03shops" instance=ExtResource("117_jm0w8")]
+position = Vector2(5842, -2556)
+
+[node name="groove_shop" parent="Scenary/1B/03shops" instance=ExtResource("118_32qp0")]
+position = Vector2(5927, -2327)
+
+[node name="Coolies_shop" parent="Scenary/1B/03shops" instance=ExtResource("116_dfj50")]
+position = Vector2(5790, -2108)
+
+[node name="bimbum_story" parent="Scenary/1B/03shops" instance=ExtResource("119_fm6i8")]
+position = Vector2(5903, -1117)
+
+[node name="bakery_blue" parent="Scenary/1B/03shops" instance=ExtResource("55_xrd1j")]
+position = Vector2(5870, -1821)
+
+[node name="shop_plume_store2" parent="Scenary/1B/03shops" instance=ExtResource("117_jm0w8")]
+position = Vector2(5809, -719)
+
+[node name="icecream_redbrick" parent="Scenary/1B/03shops" instance=ExtResource("57_mg63l")]
+position = Vector2(5788, -1463)
+
 [node name="004apartments" type="Node2D" parent="Scenary/1B"]
 y_sort_enabled = true
 
