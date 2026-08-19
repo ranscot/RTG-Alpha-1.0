@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=4 uid="uid://v8f3fyfa10h4"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_hqmct"]
+
+[node name="gatehouse_closed" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///v/BwAEAEwAAAD///z/BwAEAE0AAAD///3/BwAEAE4AAAD///7/BwAEAE8AAAD/////BwAEAFAAAAAAAPv/BwAFAEwAAAAAAPz/BwAFAE0AAAAAAP3/BwAFAE4AAAAAAP7/BwAFAE8AAAAAAP//BwAFAFAAAAABAPv/BwAGAEwAAAABAPz/BwAGAE0AAAABAP3/BwAGAE4AAAABAP7/BwAGAE8AAAABAP//BwAGAFAAAAACAPv/BwAHAEwAAAACAPz/BwAHAE0AAAACAP3/BwAHAE4AAAACAP7/BwAHAE8AAAACAP//BwAHAFAAAAADAP7/BwAIAE8AAAADAP//BwAIAFAAAAD9//7/BwAHAFMAAAD9////BwAHAFQAAAD+//7/BwAIAFMAAAD+////BwAIAFQAAAD8//7/BwAGAFMAAAD7//7/BwAFAFMAAAD6////BwAEAFQAAAD7////BwAFAFQAAAD8////BwAGAFQAAAA=")
+tile_set = ExtResource("1_hqmct")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-15, -25, -15, -63, 48, -63, 48, -36, 62, -31, 63, 0, -87, 0, -93, -12, -92, -25)

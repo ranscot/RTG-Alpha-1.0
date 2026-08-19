@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=4 uid="uid://chip8exansevv"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_wyp2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2jqk"]
+size = Vector2(26, 37)
+
+[node name="cityprop_red_portapotty" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///z/CwAcAAAAAAD///3/CwAcAAEAAAD///7/CwAcAAIAAAD/////CwAcAAMAAAAAAPz/CwAdAAAAAAAAAP3/CwAdAAEAAAAAAP7/CwAdAAIAAAAAAP//CwAdAAMAAAA=")
+tile_set = ExtResource("1_wyp2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18.5)
+shape = SubResource("RectangleShape2D_f2jqk")
