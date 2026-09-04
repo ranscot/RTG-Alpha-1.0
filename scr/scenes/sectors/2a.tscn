@@ -72,6 +72,7 @@
 y_sort_enabled = true
 
 [node name="Level_Tiles" parent="." instance=ExtResource("64_707ft")]
+visible = false
 
 [node name="00vehicles" type="Node2D" parent="."]
 y_sort_enabled = true
