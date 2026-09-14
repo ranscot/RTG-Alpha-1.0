@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=4 uid="uid://cgyxdqk8ja4jh"]
+
+[ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_b50rq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bu1d"]
+size = Vector2(27, 33)
+
+[node name="pedistool_garden" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD///3/DAAQAB4AAAD///7/DAAQAB8AAAD/////DAAQACAAAAAAAP3/DAARAB4AAAAAAP7/DAARAB8AAAAAAP//DAARACAAAAA=")
+tile_set = ExtResource("1_b50rq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -16.5)
+shape = SubResource("RectangleShape2D_2bu1d")
