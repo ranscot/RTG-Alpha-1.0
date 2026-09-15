@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_ps54l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps54l"]
-size = Vector2(91, 176)
+size = Vector2(91, 184)
 
 [node name="tealBlue_6story_apartment" type="StaticBody2D"]
 y_sort_enabled = true
@@ -14,5 +14,5 @@ tile_set = ExtResource("1_ps54l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0.5, -96)
+position = Vector2(0.5, -92)
 shape = SubResource("RectangleShape2D_ps54l")
