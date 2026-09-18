@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://o3lbklxv6ryo" path="res://scr/scenes/scenary/apartment_buildings/static_body_2d.tscn" id="1_ca3wd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca3wd"]
-size = Vector2(907, 322)
+size = Vector2(907, 334)
 
 [node name="red_really_large_park" instance=ExtResource("1_ca3wd")]
+y_sort_enabled = true
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(56.5, -179)
+position = Vector2(56.5, -169)
 shape = SubResource("RectangleShape2D_ca3wd")
 
 [node name="TileMapLayer" parent="." index="1"]
