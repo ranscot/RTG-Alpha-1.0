@@ -36,6 +36,7 @@ DeathManager="*res://scr/scenes/death_manager/death_manager.tscn"
 [display]
 
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [global_group]
 

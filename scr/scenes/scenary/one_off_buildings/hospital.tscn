@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=4 uid="uid://sssp7k61se48"]
+[gd_scene load_steps=5 format=4 uid="uid://sssp7k61se48"]
 
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_qltrr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qltrr"]
+size = Vector2(141, 135.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrbfg"]
+size = Vector2(583, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1osjo"]
+size = Vector2(10, 20)
 
 [node name="Hospital" type="StaticBody2D"]
 y_sort_enabled = true
@@ -11,3 +20,19 @@ tile_set = ExtResource("1_qltrr")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-270, -352, -272, -19, -152, -18, -138, 27, 12, 26, 15, -31, 301, -34, 320, 14, 447, 12, 444.24838, -320.026, 444, -350, 174, -352)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(379, -49)
+shape = SubResource("RectangleShape2D_qltrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, -20)
+shape = SubResource("RectangleShape2D_wrbfg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-232, 5)
+shape = SubResource("RectangleShape2D_1osjo")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-184, 5)
+shape = SubResource("RectangleShape2D_1osjo")
