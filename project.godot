@@ -107,6 +107,8 @@ interaction={
 2d_physics/layer_11="damage_clout"
 2d_physics/layer_12="damage_engagement"
 2d_physics/layer_14="npcs"
+2d_physics/layer_20="ChunkLoading"
+2d_physics/layer_21="PlayerBubble"
 
 [rendering]
 

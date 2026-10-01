@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dj3kxh2wnllgh"]
+[gd_scene load_steps=36 format=3 uid="uid://dj3kxh2wnllgh"]
 
 [ext_resource type="Script" uid="uid://bqytilcnv12v0" path="res://scr/scenes/player/player_1.gd" id="1_qdj1w"]
 [ext_resource type="PackedScene" uid="uid://drv0dov3bvu6b" path="res://scr/scenes/bullets/bullet_fart/bullet_fart.tscn" id="2_j721o"]
@@ -173,6 +173,9 @@ bg_color = Color(0.465356, 0.674183, 0.201698, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_j721o"]
 radius = 50.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4i7w"]
+size = Vector2(1800, 1300)
+
 [node name="Player" type="CharacterBody2D" groups=["PlayerHub", "player"]]
 y_sort_enabled = true
 collision_layer = 34
@@ -275,5 +278,13 @@ stream = ExtResource("10_guipa")
 
 [node name="Engage_Weapon_Shoot" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("12_m4i7w")
+
+[node name="chunkloader" type="Area2D" parent="."]
+collision_layer = 1048576
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chunkloader"]
+shape = SubResource("RectangleShape2D_m4i7w")
+debug_color = Color(0.27402684, 0.6206085, 0.35721532, 0.41960785)
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

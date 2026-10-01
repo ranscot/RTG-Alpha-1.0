@@ -106,6 +106,8 @@ func _ready() -> void:
 	# Ensure engagement cone starts invisible and disabled
 	engage_cone.monitoring = false
 	cone_visuals.visible = false
+# Make sure DamageTimer is stopped initially
+	damage_timer.stop()	
 	
 	
 func _physics_process(delta: float) -> void:
@@ -277,22 +279,23 @@ func _on_damage_timer_timeout() -> void:
 		
 # Called by the DamageArea's 'body-entered" signal
 func _on_damage_area_body_entered(body):
-# This will print the exact name of *what* touched the player
-	
 	if body.is_in_group("overworld_enemies"):
 		if not enemies_in_area.has(body):
 			enemies_in_area.append(body)
-			# Use an array [] for multiple values
 			print("--- Added %s to list. List size: %s" % [body.name, enemies_in_area.size()])
+			
+			# Start the damage ticks if not already running
+			if damage_timer.is_stopped():
+				damage_timer.start()
 	else:
-		# This will tell us if it's the wrong group
+		# Useful check during development to catch un-grouped enemies
 		print("--- FAILURE: %s is NOT in the group." % body.name)
 			
 			
-# called by the DamageArea's 'body-entered" signal
+# Called by the DamageArea's 'body_exited' signal
 func _on_damage_area_body_exited(body):
-	# Check if its an enemy
 	if body.is_in_group("overworld_enemies"):
-		# remove from our list
-		if enemies_in_area.has(body):
-			enemies_in_area.erase(body)
+		enemies_in_area.erase(body)
+		# Stop the timer immediately when all enemies have left
+		if enemies_in_area.is_empty():
+			damage_timer.stop()

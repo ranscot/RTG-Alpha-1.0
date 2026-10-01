@@ -55,10 +55,11 @@ func _ready():
 	# Start patrolling immediately
 	_pick_new_patrol_target()
 	
+# Previous method of setting up patrol before we used Rectangles and Markers2D
 # Call this function immeditately after .instantiate() to assign a specific zone
-func setup_patrol(target_zone_center: Vector2, patrol_size: float):
-	home_position = target_zone_center
-	patrol_radius = patrol_size
+# func setup_patrol(target_zone_center: Vector2, patrol_size: float):
+#	home_position = target_zone_center
+#	patrol_radius = patrol_size
 	
 func _physics_process(delta):
 	# 1. Run State Logic

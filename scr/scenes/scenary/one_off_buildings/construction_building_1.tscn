@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=4 uid="uid://6gsf1p75avew"]
+[gd_scene load_steps=3 format=4 uid="uid://6gsf1p75avew"]
 
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="1_vs68j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs68j"]
+size = Vector2(91, 81)
 
 [node name="construction_building_1" type="StaticBody2D"]
 y_sort_enabled = true
@@ -11,3 +14,7 @@ tile_set = ExtResource("1_vs68j")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-189, -113, 91, -116, 96, -113, 96, -4, -93, -4, -96, -35, -190, -37, -191, -116)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-145.5, -72.5)
+shape = SubResource("RectangleShape2D_vs68j")
