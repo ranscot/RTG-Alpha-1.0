@@ -93,7 +93,7 @@ func _spawn_scatter(rect: ReferenceRect):
 # --- THE FACTORY ---
 func _create_enemy(spawn_pos: Vector2, home_pos: Vector2):
 	var enemy = enemy_scene.instantiate()
-	get_tree().current_scene.add_child.call_deferred(enemy)
+	add_child.call_deferred(enemy)
 	
 	enemy.global_position = spawn_pos
 	

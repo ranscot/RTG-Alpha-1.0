@@ -44,6 +44,8 @@ player=""
 overworld_enemies=""
 PlayerHUB=""
 dropped_items=""
+parkNavigation=""
+2A_nav_obstacles="All objects to be cut from navigation2d regions"
 
 [input]
 
