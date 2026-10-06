@@ -46,6 +46,9 @@ PlayerHUB=""
 dropped_items=""
 parkNavigation=""
 2A_nav_obstacles="All objects to be cut from navigation2d regions"
+2B_nav_obstacles=""
+1A_nav_obstacles=""
+1B_nav_obstacles=""
 
 [input]
 
