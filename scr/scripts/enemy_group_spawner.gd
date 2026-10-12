@@ -19,15 +19,28 @@ extends Node2D
 
 # Internal variable to track unused names (The "Deck of Cards")
 var _session_name_pool: Array[String] = []
+var _has_spawned: bool = false
 
 func _ready():
-	# The pragmatic, bulletproof buffer. 
+	# Removed the timer and spawn_all() from here.
+	# The chunk manager will tell us when to spawn. 
 	# Gives the NavigationServer 0.2 seconds to stitch the map together.
-	await get_tree().create_timer(0.2).timeout
+	# await get_tree().create_timer(0.2).timeout
+	# spawn_all()
+	pass
 	
-	spawn_all()
-
+	
 func spawn_all():
+	print("🚨 SPAWN ALL TRIGGERED FOR: ", name) # a check to see if any enemies spawn
+	# Only spawn the first time the chunk wakes up
+	if _has_spawned:
+		return
+	_has_spawned = true
+	
+	# Wait for the NavigationServer to sync the newly visible mesh
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	
 	if not enemy_scene:
 		print("Error: No Enemy Scene assigned to ", name)
 		return
@@ -93,29 +106,23 @@ func _spawn_scatter(rect: ReferenceRect):
 # --- THE FACTORY ---
 func _create_enemy(spawn_pos: Vector2, home_pos: Vector2):
 	var enemy = enemy_scene.instantiate()
-	add_child.call_deferred(enemy)
 	
+	add_child(enemy)
 	enemy.global_position = spawn_pos
 	
-	# --- UNIQUE NAME LOGIC ---
+	# ADD THIS EXACT LINE
+	print("Spawned an enemy at: ", enemy.global_position)
+	
 	var assigned_name = "Enemy"
 	
-	# Check if we have a database
 	if name_database:
-		# If we ran out of unique names, refill the bag!
 		if _session_name_pool.is_empty():
 			_refill_name_pool()
-		
-		# Take the last name off the list (Removes it so it can't be picked again)
 		assigned_name = _session_name_pool.pop_back()
 	
-	# INJECT ORDERS (Name, Logic, Layers)
-	# This requires your enemy script to have the 'setup_enemy' function!
 	if enemy.has_method("setup_enemy"):
-		enemy.call_deferred("setup_enemy", home_pos, patrol_radius, nav_layer_mask, assigned_name)
+		enemy.setup_enemy(home_pos, patrol_radius, nav_layer_mask, assigned_name)
 	
-	# INJECT VISUALS
-	# This requires your enemy script to have the 'apply_variant' function!
 	if possible_variants.size() > 0 and enemy.has_method("apply_variant"):
 		var random_pick = possible_variants.pick_random()
-		enemy.call_deferred("apply_variant", random_pick)
+		enemy.apply_variant(random_pick)

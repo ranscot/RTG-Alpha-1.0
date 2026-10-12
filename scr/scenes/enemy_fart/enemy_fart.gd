@@ -60,6 +60,9 @@ func _ready():
 # func setup_patrol(target_zone_center: Vector2, patrol_size: float):
 #	home_position = target_zone_center
 #	patrol_radius = patrol_size
+
+func _exit_tree():
+	print("💀 ENEMY DELETED AT: ", global_position)
 	
 func _physics_process(delta):
 	# 1. Run State Logic
