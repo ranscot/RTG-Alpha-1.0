@@ -1,7 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmyiukpspegjg"]
+[gd_scene load_steps=27 format=3 uid="uid://bmyiukpspegjg"]
 
 [ext_resource type="PackedScene" uid="uid://dj3kxh2wnllgh" path="res://scr/scenes/player/player.tscn" id="1_6ddxj"]
 [ext_resource type="PackedScene" uid="uid://f2ijyme7nkdh" path="res://scr/scenes/scenary/apartment_buildings/siena_5_story_2_entry.tscn" id="2_x0be4"]
+[ext_resource type="Script" uid="uid://bxixkvgaagfkv" path="res://scr/scripts/enemy_group_spawner.gd" id="3_nyktt"]
+[ext_resource type="PackedScene" uid="uid://dyc1p0g37g4a5" path="res://scr/scenes/enemy_fart/enemy_fart.tscn" id="4_14jy2"]
+[ext_resource type="Resource" uid="uid://ca4cquwu7e75j" path="res://scr/scripts/resources/names_fart.tres" id="5_2nqm6"]
+[ext_resource type="Script" uid="uid://d3s8yilywihnt" path="res://scr/scripts/resources/EnemyVariant.gd" id="6_gn6er"]
+[ext_resource type="Resource" uid="uid://ur3wqho0gaao" path="res://scr/scripts/resources/enemySprites/Farts/Variant_NerdyCuty.tres" id="7_c3bey"]
+[ext_resource type="Resource" uid="uid://k50ufuar5qk2" path="res://scr/scripts/resources/enemySprites/Farts/Variant_AmishBonnet.tres" id="8_4hrt7"]
+[ext_resource type="Resource" uid="uid://blmwni6vx7upu" path="res://scr/scripts/resources/enemySprites/Farts/Variant_greenNaruto.tres" id="9_grywi"]
+[ext_resource type="Resource" uid="uid://he8bpsqj7vef" path="res://scr/scripts/resources/enemySprites/Farts/Variant_GreenWizard.tres" id="10_114rk"]
+[ext_resource type="Resource" uid="uid://dn18ffnitm3rc" path="res://scr/scripts/resources/enemySprites/Farts/Variant_HipsterSplitHair.tres" id="11_67pf1"]
+[ext_resource type="PackedScene" uid="uid://dguslukrmem4t" path="res://scr/scenes/enemy_clout/enemy_clout.tscn" id="12_5607h"]
+[ext_resource type="Resource" uid="uid://cuohk3txj8h04" path="res://scr/scripts/resources/names_clout.tres" id="13_g3477"]
+[ext_resource type="Resource" uid="uid://cetslxvn2ypwd" path="res://scr/scripts/resources/enemySprites/Clouts/Variant_fliphairemo.tres" id="14_p7p1a"]
+[ext_resource type="Resource" uid="uid://ccea8jy0778n" path="res://scr/scripts/resources/enemySprites/Clouts/Variant_Gothbio.tres" id="15_hti88"]
+[ext_resource type="Resource" uid="uid://gs6orl0yuma8" path="res://scr/scripts/resources/enemySprites/Clouts/Variant_PurpleWizard.tres" id="16_ejrfm"]
+[ext_resource type="Resource" uid="uid://dcnlhujnfl3er" path="res://scr/scripts/resources/enemySprites/Clouts/Variant_raspberryBeret.tres" id="17_lra87"]
+[ext_resource type="Resource" uid="uid://c46r7dcmk2wt2" path="res://scr/scripts/resources/enemySprites/Clouts/Variant_YellowBow.tres" id="18_22oaa"]
+[ext_resource type="PackedScene" uid="uid://bndiovnyys753" path="res://scr/scenes/enemy_engage/enemy_engage.tscn" id="19_qydtf"]
+[ext_resource type="Resource" uid="uid://gmemkfsskfia" path="res://scr/scripts/resources/names_engagement.tres" id="20_dyhk0"]
+[ext_resource type="Resource" uid="uid://rosf6siix1ay" path="res://scr/scripts/resources/enemySprites/Engages/Variant_orangeWizard.tres" id="21_eq6m1"]
+[ext_resource type="Resource" uid="uid://cx11k0npijnes" path="res://scr/scripts/resources/enemySprites/Engages/Variant_redBreadHipster.tres" id="22_v0gh7"]
+[ext_resource type="Resource" uid="uid://b6tw62o6tthgy" path="res://scr/scripts/resources/enemySprites/Engages/Variant_RedBunny.tres" id="23_pksdo"]
+[ext_resource type="Resource" uid="uid://dmk6uhp37srie" path="res://scr/scripts/resources/enemySprites/Engages/Variant_RedElf.tres" id="24_v3m7u"]
+[ext_resource type="Resource" uid="uid://w4bxyc1sjn3q" path="res://scr/scripts/resources/enemySprites/Engages/Variant_RedSheRa.tres" id="25_612sx"]
+
+[sub_resource type="GDScript" id="GDScript_7fidy"]
+script/source = "extends \"res://scr/scripts/enemy_group_spawner.gd\"
+"
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -10,3 +37,115 @@ y_sort_enabled = true
 position = Vector2(68, 147)
 
 [node name="siena_5story_2entry" parent="." instance=ExtResource("2_x0be4")]
+
+[node name="EnemyManager" type="Node2D" parent="."]
+
+[node name="Spawner_2row_farts" type="Node2D" parent="EnemyManager"]
+script = ExtResource("3_nyktt")
+enemy_scene = ExtResource("4_14jy2")
+count_per_node = 10
+name_database = ExtResource("5_2nqm6")
+possible_variants = Array[ExtResource("6_gn6er")]([ExtResource("7_c3bey"), ExtResource("8_4hrt7"), ExtResource("9_grywi"), ExtResource("10_114rk"), ExtResource("11_67pf1")])
+
+[node name="Park" type="Marker2D" parent="EnemyManager/Spawner_2row_farts"]
+position = Vector2(383, 1903)
+
+[node name="ParkRect" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 22.0
+offset_top = 1039.0
+offset_right = 852.0
+offset_bottom = 2337.0
+
+[node name="FartStreet" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 1096.0
+offset_top = 561.0
+offset_right = 2832.0
+offset_bottom = 2946.0
+
+[node name="TondaLandia" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 3123.0
+offset_top = 598.0
+offset_right = 4248.0
+offset_bottom = 2601.0
+
+[node name="Top1" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 4507.0
+offset_top = 562.0
+offset_right = 5273.0
+offset_bottom = 1661.0
+
+[node name="Bottom1" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 5459.0
+offset_top = 556.0
+offset_right = 6950.0
+offset_bottom = 1654.0
+
+[node name="TallRight" type="ReferenceRect" parent="EnemyManager/Spawner_2row_farts"]
+offset_left = 8321.0
+offset_top = 552.0
+offset_right = 8966.0
+offset_bottom = 2589.0
+
+[node name="Spawner_2row_clouts" type="Node2D" parent="EnemyManager"]
+script = ExtResource("3_nyktt")
+enemy_scene = ExtResource("12_5607h")
+count_per_node = 10
+name_database = ExtResource("13_g3477")
+possible_variants = Array[ExtResource("6_gn6er")]([ExtResource("14_p7p1a"), ExtResource("15_hti88"), ExtResource("16_ejrfm"), ExtResource("17_lra87"), ExtResource("18_22oaa")])
+
+[node name="Marker2D" type="Marker2D" parent="EnemyManager/Spawner_2row_clouts"]
+position = Vector2(464, 1551)
+
+[node name="Spawner_2row_engages" type="Node2D" parent="EnemyManager"]
+script = ExtResource("3_nyktt")
+enemy_scene = ExtResource("19_qydtf")
+count_per_node = 5
+name_database = ExtResource("20_dyhk0")
+possible_variants = Array[ExtResource("6_gn6er")]([ExtResource("21_eq6m1"), ExtResource("22_v0gh7"), ExtResource("23_pksdo"), ExtResource("24_v3m7u"), ExtResource("25_612sx")])
+
+[node name="Marker2D" type="Marker2D" parent="EnemyManager/Spawner_2row_engages"]
+position = Vector2(120, 1836)
+
+[node name="Spawners_2A" type="Node2D" parent="."]
+z_index = 3
+y_sort_enabled = true
+script = SubResource("GDScript_7fidy")
+
+[node name="Park" type="Marker2D" parent="Spawners_2A"]
+position = Vector2(383, 1903)
+
+[node name="ParkRect" type="ReferenceRect" parent="Spawners_2A"]
+offset_left = 22.0
+offset_top = 1039.0
+offset_right = 852.0
+offset_bottom = 2836.0
+
+[node name="FartStreet" type="ReferenceRect" parent="Spawners_2A"]
+offset_left = 1096.0
+offset_top = 561.0
+offset_right = 2832.0
+offset_bottom = 2946.0
+
+[node name="TondaLandia" type="ReferenceRect" parent="Spawners_2A"]
+offset_left = 3123.0
+offset_top = 598.0
+offset_right = 4248.0
+offset_bottom = 2601.0
+
+[node name="Top1" type="ReferenceRect" parent="Spawners_2A"]
+offset_left = 4507.0
+offset_top = 562.0
+offset_right = 5273.0
+offset_bottom = 1661.0
+
+[node name="Bottom1" type="ReferenceRect" parent="Spawners_2A"]
+offset_left = 5459.0
+offset_top = 556.0
+offset_right = 6950.0
+offset_bottom = 1654.0
+
+[node name="TallRight" type="ReferenceRect" parent="Spawners_2A"]
+offset_left = 8321.0
+offset_top = 1823.0
+offset_right = 8966.0
+offset_bottom = 2584.0

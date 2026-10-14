@@ -65,6 +65,9 @@ func _exit_tree():
 	print("💀 ENEMY DELETED AT: ", global_position)
 	
 func _physics_process(delta):
+	# State tester - currently setting to see Chase
+	# $AnimatedSprite2D.modulate = Color.RED if current_state == State.CHASE else Color.WHITE
+	
 	# 1. Run State Logic
 	match current_state:
 		State.PATROL:
@@ -318,15 +321,15 @@ func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
 	# 1. Wake the brain back up
 	set_physics_process(true)
 	
-	# 2. Throw them back into the Avoidance calculations
-	if has_node("NavigationAgent2D"):
-		$NavigationAgent2D.avoidance_enabled = true
+	# 2. Now handled by world chunk pausing Throw them back into the Avoidance calculations
+	#if has_node("NavigationAgent2D"):
+	#	$NavigationAgent2D.avoidance_enabled = true
 		
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
 		# 1. Put the enemy's brain to sleep
 	set_physics_process(false)
 	
-	# 2. Pull them out of the Avoidance mosh pit (Saves massive CPU)
-	if has_node("NavigationAgent2D"):
-		$NavigationAgent2D.avoidance_enabled = false
+	# 2. Now handled by world chunk pausing Pull them out of the Avoidance mosh pit (Saves massive CPU)
+	#if has_node("NavigationAgent2D"):
+	# NavigationAgent2D.avoidance_enabled = false
