@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=4 uid="uid://cttgslglkcp25"]
+[gd_scene load_steps=157 format=4 uid="uid://cttgslglkcp25"]
 
 [ext_resource type="Script" uid="uid://de5p4i3r376da" path="res://scr/scenes/top_level_v1/level_w.gd" id="1_pa67k"]
 [ext_resource type="PackedScene" uid="uid://ydgmsjk6wgej" path="res://scr/ui/Player_HUB/player_hud.tscn" id="2_bfeeq"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://clp3w1ho55onw" path="res://scr/scenes/top_level_v1/map_guide.tscn" id="33_lg0th"]
 [ext_resource type="TileSet" uid="uid://b41af1nm4e6sa" path="res://scr/resources/RTG_level_1_tilemap.tres" id="35_672if"]
 [ext_resource type="PackedScene" uid="uid://c6ax7xn1hg5eo" path="res://scr/scenes/scenary/vehicles/truck_fire_2.tscn" id="35_gk6x4"]
-[ext_resource type="Script" uid="uid://0h0eq5t421aw" path="res://scr/scenes/top_level_v1/world_chunks.gd" id="36_ajggg"]
 [ext_resource type="PackedScene" uid="uid://cwlpmfmr38bvc" path="res://scr/scenes/scenary/trees/tree_big_boi.tscn" id="36_g4pqu"]
 [ext_resource type="PackedScene" uid="uid://50434w8lklrt" path="res://scr/scenes/scenary/vehicles/bus_blue_horz.tscn" id="36_w4eem"]
 [ext_resource type="PackedScene" uid="uid://bjux3p47c03cm" path="res://scr/scenes/scenary/trees/bush_square_feature.tscn" id="37_672if"]
@@ -108,9 +107,13 @@
 [ext_resource type="PackedScene" uid="uid://cp23e012uknes" path="res://scr/scenes/scenary/one_off_buildings/building_origin_bodega.tscn" id="99_6flcn"]
 [ext_resource type="PackedScene" uid="uid://b2su4q4kprxw4" path="res://scr/scenes/scenary/stores_buildings/baitshop_yellow.tscn" id="100_72d5t"]
 [ext_resource type="PackedScene" uid="uid://bhxgrfq5rt46q" path="res://scr/scenes/scenary/city_props/hospital_sign.tscn" id="108_3rrps"]
+[ext_resource type="PackedScene" uid="uid://dguslukrmem4t" path="res://scr/scenes/enemy_clout/enemy_clout.tscn" id="109_ltwgh"]
 [ext_resource type="PackedScene" uid="uid://ctc7csjmp46w5" path="res://scr/scenes/scenary/city_props/cityprop_carfence.tscn" id="110_7713h"]
 [ext_resource type="PackedScene" uid="uid://diacjxkcxkbvd" path="res://scr/scenes/scenary/trees/oak_no_berry.tscn" id="110_k20gh"]
+[ext_resource type="Resource" uid="uid://cuohk3txj8h04" path="res://scr/scripts/resources/names_clout.tres" id="110_n8hpi"]
+[ext_resource type="PackedScene" uid="uid://bndiovnyys753" path="res://scr/scenes/enemy_engage/enemy_engage.tscn" id="111_gk6x4"]
 [ext_resource type="PackedScene" uid="uid://gbobbsctajvr" path="res://scr/scenes/scenary/city_props/cityprop_fountain_no_tanime.tscn" id="112_n3qyh"]
+[ext_resource type="Resource" uid="uid://gmemkfsskfia" path="res://scr/scripts/resources/names_engagement.tres" id="112_t8ie5"]
 [ext_resource type="PackedScene" uid="uid://ggrnntgekasr" path="res://scr/scenes/scenary/one_off_buildings/goati_hotel.tscn" id="113_n3qyh"]
 [ext_resource type="PackedScene" uid="uid://c5xnabbigedb0" path="res://scr/scenes/scenary/apartment_buildings/red_really_large_park.tscn" id="114_qrfwc"]
 [ext_resource type="PackedScene" uid="uid://bdlxcbicggnap" path="res://scr/scenes/scenary/trees/pine_sm_nocones.tscn" id="115_5iop8"]
@@ -278,9 +281,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(8195, 2773, 8919, 2770, 8927, 2990, 8198, 2989)])
 source_geometry_mode = 1
 source_geometry_group_name = &"2B_nav_obstacles"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_353rh"]
-size = Vector2(3000, 3000)
 
 [sub_resource type="GDScript" id="GDScript_ajggg"]
 script/source = "extends \"res://scr/scripts/enemy_group_spawner.gd\"
@@ -546,20 +546,10 @@ position = Vector2(1148, 366)
 
 [node name="WorldChunks" type="Node2D" parent="."]
 y_sort_enabled = true
-script = ExtResource("36_ajggg")
 
 [node name="WorldChunk_1A" type="Node2D" parent="WorldChunks"]
 y_sort_enabled = true
 position = Vector2(0, -3000)
-
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_1A"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_1A/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
 
 [node name="Scenary_1A" type="Node2D" parent="WorldChunks/WorldChunk_1A" groups=["1A_nav_obstacles"]]
 y_sort_enabled = true
@@ -632,15 +622,6 @@ position = Vector2(2204, -16)
 [node name="WorldChunk_1B" type="Node2D" parent="WorldChunks"]
 y_sort_enabled = true
 position = Vector2(3000, -3000)
-
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_1B"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_1B/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
 
 [node name="Scenary_1B" type="Node2D" parent="WorldChunks/WorldChunk_1B" groups=["1B_nav_obstacles"]]
 y_sort_enabled = true
@@ -979,15 +960,6 @@ position = Vector2(3798, -2496)
 y_sort_enabled = true
 position = Vector2(6000, -3000)
 
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_1C"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_1C/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8368927, 0.2760289, 0.68658227, 0.41960785)
-
 [node name="Scenary_1C" type="Node2D" parent="WorldChunks/WorldChunk_1C"]
 y_sort_enabled = true
 
@@ -1302,16 +1274,6 @@ position = Vector2(4292, -2593)
 
 [node name="WorldChunk_2A" type="Node2D" parent="WorldChunks"]
 y_sort_enabled = true
-
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_2A"]
-visible = false
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_2A/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
 
 [node name="Scenary_2A" type="Node2D" parent="WorldChunks/WorldChunk_2A" groups=["2A_nav_obstacles"]]
 y_sort_enabled = true
@@ -1858,18 +1820,67 @@ offset_top = 561.0
 offset_right = 2832.0
 offset_bottom = 2946.0
 
+[node name="Spawners_2A_Clout" type="Node2D" parent="WorldChunks/WorldChunk_2A"]
+z_index = 3
+y_sort_enabled = true
+script = SubResource("GDScript_ajggg")
+enemy_scene = ExtResource("109_ltwgh")
+count_per_node = 5
+name_database = ExtResource("110_n8hpi")
+
+[node name="Park" type="Marker2D" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout"]
+position = Vector2(383, 1903)
+
+[node name="ParkRect" type="ReferenceRect" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout"]
+offset_left = 39.0
+offset_top = 1039.0
+offset_right = 833.0
+offset_bottom = 1638.0
+
+[node name="ParkRect2" type="ReferenceRect" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout"]
+offset_left = 33.0
+offset_top = 2022.0
+offset_right = 341.0
+offset_bottom = 2864.0
+
+[node name="FartStreet" type="ReferenceRect" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout"]
+offset_left = 1235.0
+offset_top = 561.0
+offset_right = 2832.0
+offset_bottom = 2946.0
+
+[node name="Spawners_2A_Clout2" type="Node2D" parent="WorldChunks/WorldChunk_2A"]
+z_index = 3
+y_sort_enabled = true
+script = SubResource("GDScript_ajggg")
+enemy_scene = ExtResource("111_gk6x4")
+count_per_node = 15
+name_database = ExtResource("112_t8ie5")
+
+[node name="Park" type="Marker2D" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout2"]
+position = Vector2(383, 1903)
+
+[node name="ParkRect" type="ReferenceRect" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout2"]
+offset_left = 39.0
+offset_top = 1039.0
+offset_right = 833.0
+offset_bottom = 1638.0
+
+[node name="ParkRect2" type="ReferenceRect" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout2"]
+offset_left = 33.0
+offset_top = 2022.0
+offset_right = 341.0
+offset_bottom = 2864.0
+
+[node name="FartStreet" type="ReferenceRect" parent="WorldChunks/WorldChunk_2A/Spawners_2A_Clout2"]
+offset_left = 1235.0
+offset_top = 561.0
+offset_right = 2832.0
+offset_bottom = 2946.0
+
 [node name="WorldChunk_2B" type="Node2D" parent="WorldChunks"]
 y_sort_enabled = true
 position = Vector2(3000, 0)
-
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_2B"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_2B/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
 
 [node name="Scenary_2B" type="Node2D" parent="WorldChunks/WorldChunk_2B" groups=["2B_nav_obstacles"]]
 y_sort_enabled = true
@@ -2290,15 +2301,6 @@ position = Vector2(4175, 605)
 y_sort_enabled = true
 position = Vector2(6000, 0)
 
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_2C"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_2C/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
-
 [node name="Scenary_2C" type="Node2D" parent="WorldChunks/WorldChunk_2C" groups=["2B_nav_obstacles"]]
 y_sort_enabled = true
 
@@ -2536,15 +2538,6 @@ position = Vector2(8866, 193)
 [node name="WorldChunk_3A" type="Node2D" parent="WorldChunks"]
 y_sort_enabled = true
 position = Vector2(0, 3000)
-
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_3A"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_3A/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
 
 [node name="Scenary_3A" type="Node2D" parent="WorldChunks/WorldChunk_3A"]
 y_sort_enabled = true
@@ -2974,15 +2967,6 @@ position = Vector2(434, 5715)
 y_sort_enabled = true
 position = Vector2(3000, 3000)
 
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_3B"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_3B/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
-
 [node name="Scenary_3B" type="Node2D" parent="WorldChunks/WorldChunk_3B"]
 y_sort_enabled = true
 
@@ -3157,15 +3141,6 @@ position = Vector2(4992, 3646)
 [node name="WorldChunk_3C" type="Node2D" parent="WorldChunks"]
 y_sort_enabled = true
 position = Vector2(6000, 3000)
-
-[node name="Area2D" type="Area2D" parent="WorldChunks/WorldChunk_3C"]
-position = Vector2(1500, 1500)
-collision_layer = 524288
-collision_mask = 1048576
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldChunks/WorldChunk_3C/Area2D"]
-shape = SubResource("RectangleShape2D_353rh")
-debug_color = Color(0.8352941, 0.27450982, 0.6862745, 0.41960785)
 
 [node name="Scenary_3C" type="Node2D" parent="WorldChunks/WorldChunk_3C"]
 y_sort_enabled = true

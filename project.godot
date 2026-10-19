@@ -115,6 +115,10 @@ interaction={
 2d_physics/layer_20="ChunkLoading"
 2d_physics/layer_21="PlayerBubble"
 
+[navigation]
+
+2d/merge_rasterizer_cell_scale=0.00999999999999999
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

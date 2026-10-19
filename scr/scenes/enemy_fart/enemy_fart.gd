@@ -35,31 +35,19 @@ var is_dying: bool = false
 @onready var hit_sound_player: AudioStreamPlayer2D = $HitSoundPlayer
 
 func _ready():
-	# Safety Wait
-	# We must wait for the Navigation Server to sync the map befor asking for a path
-	# this prevents "Navigation map query failed" error on spawn 
+	# Wait for the Navigation Server to sync the map before asking for a path
 	await get_tree().physics_frame
 	
-	# Await Critical Connections
-	# makes sure the defined avoidance function is connected 
-	# navigation_agent.velocity_computed.connect(_on_navigation_agent_2d_velocity_computed)
-	
-	# set home if not set externally
 	if home_position == Vector2.ZERO:
 		home_position = global_position
 	
-	# Connect the timer
 	patrol_timer.timeout.connect(_on_patrol_timer_timeout)
-	# animated_sprite.animation_finished.connect(_on_animation_finished)
 	
-	# Start patrolling immediately
+	# Desynchronize timers so 80+ enemies never request paths on the same frame
+	patrol_timer.wait_time = randf_range(3.5, 5.5)
+	patrol_timer.start(randf_range(0.5, 4.0))
+	
 	_pick_new_patrol_target()
-	
-# Previous method of setting up patrol before we used Rectangles and Markers2D
-# Call this function immeditately after .instantiate() to assign a specific zone
-# func setup_patrol(target_zone_center: Vector2, patrol_size: float):
-#	home_position = target_zone_center
-#	patrol_radius = patrol_size
 
 func _exit_tree():
 	print("💀 ENEMY DELETED AT: ", global_position)
@@ -142,7 +130,9 @@ func chase_state(_delta):
 	if current_state != State.CHASE: return
 	
 	if player:
-		navigation_agent.set_target_position(player.global_position)
+		# Spread pathfinding across 10 frames using each enemy's unique instance ID
+		if (Engine.get_physics_frames() + get_instance_id()) % 10 == 0:
+			navigation_agent.set_target_position(player.global_position)
 	else:
 		current_state = State.PATROL
 
@@ -315,21 +305,3 @@ func apply_variant(variant_data: EnemyVariant):
 			anim_sprite.play("idle")
 		elif anim_sprite.sprite_frames.has_animation("default"):
 			anim_sprite.play("default")
-
-
-func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
-	# 1. Wake the brain back up
-	set_physics_process(true)
-	
-	# 2. Now handled by world chunk pausing Throw them back into the Avoidance calculations
-	#if has_node("NavigationAgent2D"):
-	#	$NavigationAgent2D.avoidance_enabled = true
-		
-
-func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-		# 1. Put the enemy's brain to sleep
-	set_physics_process(false)
-	
-	# 2. Now handled by world chunk pausing Pull them out of the Avoidance mosh pit (Saves massive CPU)
-	#if has_node("NavigationAgent2D"):
-	# NavigationAgent2D.avoidance_enabled = false

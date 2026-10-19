@@ -201,7 +201,6 @@ target_desired_distance = 50.0
 
 [node name="PatrolTimer" type="Timer" parent="."]
 wait_time = 4.0
-autostart = true
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -222,8 +221,6 @@ theme_override_fonts/font = ExtResource("6_t5di6")
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(51, 50)
 rect = Rect2(-100, -100, 100, 100)
-enable_mode = 1
-enable_node_path = NodePath("")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -42,6 +42,9 @@ func _ready():
 	
 	# We no longer connect navigation_finished
 	# We no longer call _go_to_next_patrol_point()
+	# We do randomize the calculation frame to load balance patrol process time
+	patrol_timer.wait_time = randf_range(3.5, 5.5)
+	patrol_timer.start(randf_range(0.5, 4.0))
 	_pick_new_patrol_target()
 	# animated_sprite.animation_finished.connect(_on_animation_finished) - can be used for attack animations
 	
@@ -91,10 +94,11 @@ func _physics_process(delta):
 		elif current_state == State.PATROL:
 			animated_sprite.play("idle")
 
-	# 3. SEND VELOCITY TO AGENT
-	# Instead of moving, we tell the agent: "I want to go this fast."
-	# The agent will calculate avoidance and then call the signal below.
-	navigation_agent.set_velocity(intended_velocity)
+# 3. SEND VELOCITY TO AGENT
+	if navigation_agent.avoidance_enabled:
+		navigation_agent.set_velocity(intended_velocity)
+	else:
+		_on_navigation_agent_2d_velocity_computed(intended_velocity)
 
 
 # --- NEW SIGNAL CALLBACK ---
@@ -127,7 +131,8 @@ func chase_state(_delta):
 	
 	if player:
 		# Constantly update the agent's target to the player's position
-		navigation_agent.set_target_position(player.global_position)
+		if (Engine.get_physics_frames() + get_instance_id()) % 10 == 0:
+			navigation_agent.set_target_position(player.global_position)
 	else:
 		# Player got away, go back to patrolling
 		current_state = State.PATROL
@@ -322,21 +327,5 @@ func apply_variant(variant_data: EnemyVariant):
 			anim_sprite.play("default")
 
 
-func _on_visible_on_screen_enabler_2d_screen_entered() -> void:
-	# 1. Wake the brain back up
-	set_physics_process(true)
-	
-	# 2. Throw them back into the Avoidance calculations
-	if has_node("NavigationAgent2D"):
-		$NavigationAgent2D.avoidance_enabled = true
 
-
-
-func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-		# 1. Put the enemy's brain to sleep
-	set_physics_process(false)
-	
-	# 2. Pull them out of the Avoidance mosh pit (Saves massive CPU)
-	if has_node("NavigationAgent2D"):
-		$NavigationAgent2D.avoidance_enabled = false
 	

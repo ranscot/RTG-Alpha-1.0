@@ -22,13 +22,17 @@ var _session_name_pool: Array[String] = []
 var _has_spawned: bool = false
 
 func _ready():
-	# Removed the timer and spawn_all() from here.
-	# The chunk manager will tell us when to spawn. 
-	# Gives the NavigationServer 0.2 seconds to stitch the map together.
-	# await get_tree().create_timer(0.2).timeout
-	# spawn_all()
-	pass
+	var map = get_world_2d().get_navigation_map()
 	
+	# 1. Wait until the NavigationServer finishes its first synchronization (prevents C++ query error)
+	while NavigationServer2D.map_get_iteration_id(map) == 0:
+		await get_tree().physics_frame
+		
+	# 2. Wait until the polygon data is merged into the map (Iteration 2)
+	while NavigationServer2D.map_get_closest_point(map, Vector2(500, 500)) == Vector2.ZERO:
+		await get_tree().physics_frame
+		
+	spawn_all()
 	
 func spawn_all():
 	print("🚨 SPAWN ALL TRIGGERED FOR: ", name) # a check to see if any enemies spawn
