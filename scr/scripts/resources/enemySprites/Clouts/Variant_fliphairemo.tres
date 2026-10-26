@@ -5,6 +5,5 @@
 
 [resource]
 script = ExtResource("1_4cmof")
-name_text = ""
 animation_set = ExtResource("1_wrm8i")
 metadata/_custom_type_script = "uid://d3s8yilywihnt"

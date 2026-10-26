@@ -168,9 +168,11 @@ radius = 181.33394
 radius = 83.240616
 
 [node name="Enemy_engage" type="CharacterBody2D" groups=["overworld_enemies"]]
+scale = Vector2(1.25, 1.25)
 collision_layer = 2064
 collision_mask = 3
 script = ExtResource("1_nhble")
+speed = 75.0
 drop_scene = ExtResource("2_vehos")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["overworld_enemies"]]

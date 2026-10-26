@@ -35,7 +35,7 @@ func _ready():
 	spawn_all()
 	
 func spawn_all():
-	print("🚨 SPAWN ALL TRIGGERED FOR: ", name) # a check to see if any enemies spawn
+	# print("🚨 SPAWN ALL TRIGGERED FOR: ", name) # a check to see if any enemies spawn
 	# Only spawn the first time the chunk wakes up
 	if _has_spawned:
 		return
@@ -46,7 +46,7 @@ func spawn_all():
 	await get_tree().physics_frame
 	
 	if not enemy_scene:
-		print("Error: No Enemy Scene assigned to ", name)
+		# print("Error: No Enemy Scene assigned to ", name)
 		return
 
 	# 1. INITIALIZE THE POOL
@@ -87,7 +87,7 @@ func _spawn_scatter(rect: ReferenceRect):
 	# Get the World ID so we can ask the Server for help
 	var map = get_world_2d().get_navigation_map()
 	
-	print("--- Attempting to spawn enemies in: ", rect.name, " ---") # <--- ADD THIS
+	# print("--- Attempting to spawn enemies in: ", rect.name, " ---") # <--- ADD THIS
 	
 	for i in range(count_per_node):
 		# 1. Blind Guess inside the box
@@ -115,7 +115,7 @@ func _create_enemy(spawn_pos: Vector2, home_pos: Vector2):
 	enemy.global_position = spawn_pos
 	
 	# ADD THIS EXACT LINE
-	print("Spawned an enemy at: ", enemy.global_position)
+	# print("Spawned an enemy at: ", enemy.global_position)
 	
 	var assigned_name = "Enemy"
 	
